@@ -1,0 +1,5 @@
+let dollar = 8.64824 in
+ let dollarAmount = 3.5 in
+    dollarAmount * dollarKurs
+ end
+end

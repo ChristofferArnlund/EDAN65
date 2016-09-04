@@ -1,0 +1,7 @@
+for k = 1.0 until 5.0 do
+   if k then
+	if not 3.0 then
+	    k = 2.0
+	fi
+   fi
+od
