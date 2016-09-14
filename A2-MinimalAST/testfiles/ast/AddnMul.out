@@ -5,6 +5,7 @@ Program
       List
         IdDecl ID="x"
           Opt
+            Numeral NUMERAL="0"
         IdDecl ID="y"
           Opt
         IdUse ID="x"

@@ -6,7 +6,9 @@ Program
         Name ID="b"
       List
         IdDecl ID="x"
+          Opt
         IdDecl ID="y"
+          Opt
         IdUse ID="x"
           Add
             Mul

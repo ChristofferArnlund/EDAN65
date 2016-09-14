@@ -4,7 +4,9 @@ Program
       List
       List
         IdDecl ID="x"
+          Opt
         IdDecl ID="y"
+          Opt
         IdUse ID="x"
           Mul
             Numeral NUMERAL="5"

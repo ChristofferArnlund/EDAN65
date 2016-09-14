@@ -4,6 +4,8 @@ Program
       List
       List
         IdDecl ID="x"
+          Opt
         IdDecl ID="y"
+          Opt
         Return
           Numeral NUMERAL="0"

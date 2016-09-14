@@ -4,13 +4,16 @@ Program
       List
       List
         IdDecl ID="x"
+          Opt
         IdDecl ID="y"
+          Opt
         If
           Equals
             Name ID="x"
             Numeral NUMERAL="5"
           List
             IdDecl ID="z"
+              Opt
           List
         If
           Le
