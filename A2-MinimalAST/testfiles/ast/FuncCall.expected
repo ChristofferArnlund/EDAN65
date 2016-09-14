@@ -1,0 +1,13 @@
+Program
+  List
+    Func ID="a"
+      List
+      List
+        FuncCall ID="printf"
+          List
+            Name ID="x"
+            Name ID="y"
+            Numeral NUMERAL="5"
+            Mul
+              Numeral NUMERAL="5"
+              Numeral NUMERAL="3"

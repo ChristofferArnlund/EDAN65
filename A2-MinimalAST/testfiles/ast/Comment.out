@@ -1,0 +1,9 @@
+Program
+  List
+    Func ID="a"
+      List
+      List
+        IdDecl ID="x"
+        IdDecl ID="y"
+        Return
+          Numeral NUMERAL="0"

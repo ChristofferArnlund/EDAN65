@@ -17,8 +17,7 @@ public class RecursiveDescentCompiler extends RDPTemplate {
 			LangScanner scanner = new LangScanner(new FileReader(args[0]));
 			rdc.parse(scanner);
 		} catch (FileNotFoundException e) {
-			System.out.println("Source file not found");
-			System.exit(1);
+			throw new IllegalArgumentException("No file found!");
 		}
 	}
 

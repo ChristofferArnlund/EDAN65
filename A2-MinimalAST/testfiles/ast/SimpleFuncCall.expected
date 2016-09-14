@@ -1,0 +1,7 @@
+Program
+  List
+    Func ID="a"
+      List
+      List
+        FuncCall ID="printf"
+          List

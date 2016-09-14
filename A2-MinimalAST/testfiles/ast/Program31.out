@@ -1,0 +1,10 @@
+Program
+  List
+    Func ID="gcd1"
+      List
+        Name ID="a"
+        Name ID="b"
+      List
+        Return
+          FuncCall ID="x"
+            List
