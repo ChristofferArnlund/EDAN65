@@ -2,7 +2,7 @@ Program ::= Func*;
 Func ::= <ID> IdDecl* Stmt*;
 
 abstract Stmt;
-IdDecl : Stmt ::= <ID>;
+IdDecl : Stmt ::= <ID> [Expr];
 IdUse : Stmt ::= <ID> Expr;
 While : Stmt ::= Expr Stmt*;
 If : Stmt ::= Expr Do:Stmt* Else:Stmt*;

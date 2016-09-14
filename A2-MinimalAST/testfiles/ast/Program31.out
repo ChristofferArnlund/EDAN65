@@ -5,6 +5,85 @@ Program
         Name ID="a"
         Name ID="b"
       List
+        While
+          Not
+            Name ID="a"
+            Name ID="b"
+          List
+            If
+              Ge
+                Name ID="a"
+                Name ID="b"
+              List
+                IdUse ID="a"
+                  Sub
+                    Name ID="a"
+                    Name ID="b"
+              List
+                IdUse ID="b"
+                  Sub
+                    Name ID="b"
+                    Name ID="a"
         Return
-          FuncCall ID="x"
+          Name ID="a"
+    Func ID="gcd2"
+      List
+        Name ID="a"
+        Name ID="b"
+      List
+        If
+          Equals
+            Name ID="b"
+            Numeral NUMERAL="0"
+          List
+            Return
+              Name ID="a"
+          List
+        Return
+          FuncCall ID="gcd2"
             List
+              Name ID="b"
+              Mod
+                Name ID="a"
+                Name ID="b"
+    Func ID="main"
+      List
+      List
+        IdDecl ID="a"
+          Opt
+        IdDecl ID="b"
+          Opt
+        IdUse ID="a"
+          FuncCall ID="read"
+            List
+        IdUse ID="b"
+          FuncCall ID="read"
+            List
+        FuncCall ID="print"
+          List
+            FuncCall ID="gcd1"
+              List
+                Name ID="a"
+                Name ID="b"
+        FuncCall ID="print"
+          List
+            FuncCall ID="gcd2"
+              List
+                Name ID="a"
+                Name ID="b"
+        IdDecl ID="diff"
+          Opt
+            Sub
+              FuncCall ID="gcd1"
+                List
+                  Name ID="a"
+                  Name ID="b"
+              FuncCall ID="gcd2"
+                List
+                  Name ID="a"
+                  Name ID="b"
+        FuncCall ID="print"
+          List
+            Name ID="diff"
+        Return
+          Numeral NUMERAL="0"

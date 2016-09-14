@@ -73,7 +73,7 @@ whileStmt = WHILE LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA {: return new While
 ifStmt = IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA {: return new If(a, b, new List()); :}
 	| IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA ELSE LBRA opt_stmt_list.c RBRA {: return new If(a, b, c); :};
 
-id_decl = INT ID.a SEMICOLON {:  return new IdDecl(a); :} ;
+id_decl = INT ID.a SEMICOLON {:  return new IdDecl(a, new Opt()); :} | INT ID.a ASSIGN expr.b SEMICOLON {:  return new IdDecl(a, new Opt(b)); :} ;
 id_use = ID.a ASSIGN expr.b SEMICOLON {:  return new IdUse(a, b); :} ;
 
 expr = num_expr.a LE num_expr.b {: return new Le(a, b); :} 

@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /h/d8/a/dat13mro/Desktop/A2-MinimalAST/src/jastadd/lang.ast:17
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/A2-MinimalAST/src/jastadd/lang.ast:17
  * @production Add : {@link BinaryExpr};
 
  */
