@@ -1,0 +1,27 @@
+Program
+  List
+    Func
+      Name ID="a"
+      List
+      List
+        IdDecl
+          Name ID="x"
+          Opt
+        IdDecl
+          Name ID="y"
+          Opt
+        If
+          Equals
+            Name ID="x"
+            Numeral NUMERAL="5"
+          List
+            IdDecl
+              Name ID="z"
+              Opt
+          List
+        If
+          Le
+            Name ID="y"
+            Numeral NUMERAL="5"
+          List
+          List

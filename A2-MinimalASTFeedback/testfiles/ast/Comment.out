@@ -1,0 +1,14 @@
+Program
+  List
+    Func
+      Name ID="a"
+      List
+      List
+        IdDecl
+          Name ID="x"
+          Opt
+        IdDecl
+          Name ID="y"
+          Opt
+        Return
+          Numeral NUMERAL="0"

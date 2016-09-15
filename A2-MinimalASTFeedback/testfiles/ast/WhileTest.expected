@@ -1,0 +1,20 @@
+Program
+  List
+    Func
+      Name ID="a"
+      List
+      List
+        IdDecl
+          Name ID="x"
+          Opt
+        While
+          Ge
+            Name ID="x"
+            Numeral NUMERAL="4"
+          List
+            IdDecl
+              Name ID="y"
+              Opt
+        While
+          Numeral NUMERAL="1"
+          List

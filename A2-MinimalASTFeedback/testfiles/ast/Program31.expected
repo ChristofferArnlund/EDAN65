@@ -1,0 +1,117 @@
+Program
+  List
+    Func
+      Name ID="gcd1"
+      List
+        IdDecl
+          Name ID="a"
+          Opt
+        IdDecl
+          Name ID="b"
+          Opt
+      List
+        While
+          Not
+            Name ID="a"
+            Name ID="b"
+          List
+            If
+              Ge
+                Name ID="a"
+                Name ID="b"
+              List
+                IdUse
+                  Name ID="a"
+                  Sub
+                    Name ID="a"
+                    Name ID="b"
+              List
+                IdUse
+                  Name ID="b"
+                  Sub
+                    Name ID="b"
+                    Name ID="a"
+        Return
+          Name ID="a"
+    Func
+      Name ID="gcd2"
+      List
+        IdDecl
+          Name ID="a"
+          Opt
+        IdDecl
+          Name ID="b"
+          Opt
+      List
+        If
+          Equals
+            Name ID="b"
+            Numeral NUMERAL="0"
+          List
+            Return
+              Name ID="a"
+          List
+        Return
+          FuncCall
+            Name ID="gcd2"
+            List
+              Name ID="b"
+              Mod
+                Name ID="a"
+                Name ID="b"
+    Func
+      Name ID="main"
+      List
+      List
+        IdDecl
+          Name ID="a"
+          Opt
+        IdDecl
+          Name ID="b"
+          Opt
+        IdUse
+          Name ID="a"
+          FuncCall
+            Name ID="read"
+            List
+        IdUse
+          Name ID="b"
+          FuncCall
+            Name ID="read"
+            List
+        FuncCall
+          Name ID="print"
+          List
+            FuncCall
+              Name ID="gcd1"
+              List
+                Name ID="a"
+                Name ID="b"
+        FuncCall
+          Name ID="print"
+          List
+            FuncCall
+              Name ID="gcd2"
+              List
+                Name ID="a"
+                Name ID="b"
+        IdDecl
+          Name ID="diff"
+          Opt
+            Sub
+              FuncCall
+                Name ID="gcd1"
+                List
+                  Name ID="a"
+                  Name ID="b"
+              FuncCall
+                Name ID="gcd2"
+                List
+                  Name ID="a"
+                  Name ID="b"
+        FuncCall
+          Name ID="print"
+          List
+            Name ID="diff"
+        Return
+          Numeral NUMERAL="0"

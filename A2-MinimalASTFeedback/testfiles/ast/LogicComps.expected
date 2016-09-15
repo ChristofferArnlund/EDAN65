@@ -1,0 +1,30 @@
+Program
+  List
+    Func
+      Name ID="a"
+      List
+      List
+        IdDecl
+          Name ID="x"
+          Opt
+        IdDecl
+          Name ID="y"
+          Opt
+        IdUse
+          Name ID="x"
+          Ge
+            Numeral NUMERAL="5"
+            Add
+              Mul
+                Numeral NUMERAL="3"
+                Numeral NUMERAL="2"
+              Numeral NUMERAL="4"
+        IdUse
+          Name ID="y"
+          Not
+            Add
+              Numeral NUMERAL="4"
+              Mul
+                Numeral NUMERAL="3"
+                Numeral NUMERAL="2"
+            Numeral NUMERAL="1"
