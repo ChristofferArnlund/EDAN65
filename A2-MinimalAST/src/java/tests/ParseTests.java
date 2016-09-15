@@ -8,6 +8,31 @@ public class ParseTests extends AbstractTestSuite {
 		super("testfiles/parser");// where test input files are
 	}
 
+	
+	@Test
+	public void BadSyntax() {
+		testSyntaxError("BadSyntax.lang");
+	}
+	@Test
+	public void Comment() {
+		testValidSyntax("Comment.lang");
+	}
+	@Test
+	public void FuncCall() {
+		testValidSyntax("FuncCall.lang");
+	}
+	@Test
+	public void If() {
+		testValidSyntax("If.lang");
+	}
+	@Test
+	public void ParamDecl() {
+		testValidSyntax("ParamDecl.lang");
+	}
+	@Test
+	public void Parens() {
+		testValidSyntax("Parens.lang");
+	}
 	@Test
 	public void SimplefunDecls() {
 		testValidSyntax("SimplefunDecls.lang");
