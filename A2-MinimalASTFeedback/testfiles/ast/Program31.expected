@@ -1,7 +1,9 @@
 Program
   List
     Func
-      Name ID="gcd1"
+      IdDecl
+        Name ID="gcd1"
+        Opt
       List
         IdDecl
           Name ID="a"
@@ -9,59 +11,50 @@ Program
         IdDecl
           Name ID="b"
           Opt
-      List
-        While
-          Not
-            Name ID="a"
-            Name ID="b"
-          List
-            If
-              Ge
+      StmtBlock
+        List
+          While
+            Not
+              IdUse
                 Name ID="a"
+              IdUse
                 Name ID="b"
+            StmtBlock
               List
-                IdUse
-                  Name ID="a"
-                  Sub
-                    Name ID="a"
-                    Name ID="b"
-              List
-                IdUse
-                  Name ID="b"
-                  Sub
-                    Name ID="b"
-                    Name ID="a"
-        Return
-          Name ID="a"
-    Func
-      Name ID="gcd2"
-      List
-        IdDecl
-          Name ID="a"
-          Opt
-        IdDecl
-          Name ID="b"
-          Opt
-      List
-        If
-          Equals
-            Name ID="b"
-            Numeral NUMERAL="0"
-          List
-            Return
+                If
+                  Ge
+                    IdUse
+                      Name ID="a"
+                    IdUse
+                      Name ID="b"
+                  StmtBlock
+                    List
+                      Assign
+                        IdUse
+                          Name ID="a"
+                        Sub
+                          IdUse
+                            Name ID="a"
+                          IdUse
+                            Name ID="b"
+                  Opt
+                    StmtBlock
+                      List
+                        Assign
+                          IdUse
+                            Name ID="b"
+                          Sub
+                            IdUse
+                              Name ID="b"
+                            IdUse
+                              Name ID="a"
+          Return
+            IdUse
               Name ID="a"
-          List
-        Return
-          FuncCall
-            Name ID="gcd2"
-            List
-              Name ID="b"
-              Mod
-                Name ID="a"
-                Name ID="b"
     Func
-      Name ID="main"
-      List
+      IdDecl
+        Name ID="gcd2"
+        Opt
       List
         IdDecl
           Name ID="a"
@@ -69,49 +62,110 @@ Program
         IdDecl
           Name ID="b"
           Opt
-        IdUse
-          Name ID="a"
-          FuncCall
-            Name ID="read"
-            List
-        IdUse
-          Name ID="b"
-          FuncCall
-            Name ID="read"
-            List
-        FuncCall
-          Name ID="print"
-          List
-            FuncCall
-              Name ID="gcd1"
-              List
-                Name ID="a"
+      StmtBlock
+        List
+          If
+            Equals
+              IdUse
                 Name ID="b"
-        FuncCall
-          Name ID="print"
-          List
-            FuncCall
-              Name ID="gcd2"
+              Numeral NUMERAL="0"
+            StmtBlock
               List
-                Name ID="a"
-                Name ID="b"
-        IdDecl
-          Name ID="diff"
-          Opt
-            Sub
-              FuncCall
-                Name ID="gcd1"
-                List
-                  Name ID="a"
-                  Name ID="b"
-              FuncCall
+                Return
+                  IdUse
+                    Name ID="a"
+            Opt
+          Return
+            FuncCall
+              IdUse
                 Name ID="gcd2"
-                List
-                  Name ID="a"
+              List
+                IdUse
                   Name ID="b"
-        FuncCall
-          Name ID="print"
-          List
+                Mod
+                  IdUse
+                    Name ID="a"
+                  IdUse
+                    Name ID="b"
+    Func
+      IdDecl
+        Name ID="main"
+        Opt
+      List
+      StmtBlock
+        List
+          IdDecl
+            Name ID="a"
+            Opt
+          IdDecl
+            Name ID="b"
+            Opt
+          Assign
+            IdUse
+              Name ID="a"
+            FuncCall
+              IdUse
+                Name ID="read"
+              List
+          Assign
+            IdUse
+              Name ID="b"
+            FuncCall
+              IdUse
+                Name ID="read"
+              List
+          FuncCallStmt
+            FuncCall
+              IdUse
+                Name ID="print"
+              List
+                FuncCall
+                  IdUse
+                    Name ID="gcd1"
+                  List
+                    IdUse
+                      Name ID="a"
+                    IdUse
+                      Name ID="b"
+          FuncCallStmt
+            FuncCall
+              IdUse
+                Name ID="print"
+              List
+                FuncCall
+                  IdUse
+                    Name ID="gcd2"
+                  List
+                    IdUse
+                      Name ID="a"
+                    IdUse
+                      Name ID="b"
+          IdDecl
             Name ID="diff"
-        Return
-          Numeral NUMERAL="0"
+            Opt
+              Sub
+                FuncCall
+                  IdUse
+                    Name ID="gcd1"
+                  List
+                    IdUse
+                      Name ID="a"
+                    IdUse
+                      Name ID="b"
+                FuncCall
+                  IdUse
+                    Name ID="gcd2"
+                  List
+                    IdUse
+                      Name ID="a"
+                    IdUse
+                      Name ID="b"
+          FuncCallStmt
+            FuncCall
+              IdUse
+                Name ID="print"
+              List
+                IdUse
+                  Name ID="diff"
+          Return
+            Numeral NUMERAL="0"

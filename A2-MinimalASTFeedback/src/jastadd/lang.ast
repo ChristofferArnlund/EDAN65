@@ -1,17 +1,20 @@
 Program ::= Func*;
-Func ::= Name IdDecl* Stmt*;
+Func ::= FuncName:IdDecl FuncParams:IdDecl* StmtBlock;
+StmtBlock ::= Stmt*;
 
 abstract Stmt;
 IdDecl : Stmt ::= Name [Expr];
-IdUse : Stmt ::= Name Expr;
-While : Stmt ::= Expr Stmt*;
-If : Stmt ::= Expr Do:Stmt* Else:Stmt*;
+While : Stmt ::= Expr StmtBlock;
+If : Stmt ::= Expr Do:StmtBlock [Else:StmtBlock];
 Return : Stmt ::= Expr;
+FuncCallStmt : Stmt ::= FuncCall;
+Assign : Stmt ::= IdUse Expr;
 
-abstract Expr : Stmt;
-FuncCall : Expr ::= Name Expr*;
+abstract Expr;
+FuncCall : Expr ::= IdUse Expr*;
 Name : Expr ::= <ID>;
 Numeral : Expr ::= <NUMERAL>;
+IdUse : Expr ::= Name;
 
 abstract BinaryExpr : Expr ::= Left:Expr Right:Expr;
 Add : BinaryExpr;

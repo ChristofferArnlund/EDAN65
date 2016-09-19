@@ -1,15 +1,22 @@
 Program
   List
     Func
-      Name ID="a"
+      IdDecl
+        Name ID="a"
+        Opt
       List
-      List
-        FuncCall
-          Name ID="printf"
-          List
-            Name ID="x"
-            Name ID="y"
-            Numeral NUMERAL="5"
-            Mul
-              Numeral NUMERAL="5"
-              Numeral NUMERAL="3"
+      StmtBlock
+        List
+          FuncCallStmt
+            FuncCall
+              IdUse
+                Name ID="printf"
+              List
+                IdUse
+                  Name ID="x"
+                IdUse
+                  Name ID="y"
+                Numeral NUMERAL="5"
+                Mul
+                  Numeral NUMERAL="5"
+                  Numeral NUMERAL="3"

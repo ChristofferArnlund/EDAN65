@@ -1,20 +1,26 @@
 Program
   List
     Func
-      Name ID="a"
+      IdDecl
+        Name ID="a"
+        Opt
       List
-      List
-        IdDecl
-          Name ID="x"
-          Opt
-        While
-          Ge
+      StmtBlock
+        List
+          IdDecl
             Name ID="x"
-            Numeral NUMERAL="4"
-          List
-            IdDecl
-              Name ID="y"
-              Opt
-        While
-          Numeral NUMERAL="1"
-          List
+            Opt
+          While
+            Ge
+              IdUse
+                Name ID="x"
+              Numeral NUMERAL="4"
+            StmtBlock
+              List
+                IdDecl
+                  Name ID="y"
+                  Opt
+          While
+            Numeral NUMERAL="1"
+            StmtBlock
+              List

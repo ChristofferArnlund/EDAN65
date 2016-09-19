@@ -1,10 +1,16 @@
 Program
   List
     Func
-      Name ID="x"
+      IdDecl
+        Name ID="x"
+        Opt
       List
-      List
+      StmtBlock
+        List
     Func
-      Name ID="y"
+      IdDecl
+        Name ID="y"
+        Opt
       List
-      List
+      StmtBlock
+        List

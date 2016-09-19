@@ -1,30 +1,35 @@
 Program
   List
     Func
-      Name ID="a"
+      IdDecl
+        Name ID="a"
+        Opt
       List
-      List
-        IdDecl
-          Name ID="x"
-          Opt
-        IdDecl
-          Name ID="y"
-          Opt
-        IdUse
-          Name ID="x"
-          Ge
-            Numeral NUMERAL="5"
-            Add
-              Mul
-                Numeral NUMERAL="3"
-                Numeral NUMERAL="2"
-              Numeral NUMERAL="4"
-        IdUse
-          Name ID="y"
-          Not
-            Add
-              Numeral NUMERAL="4"
-              Mul
-                Numeral NUMERAL="3"
-                Numeral NUMERAL="2"
-            Numeral NUMERAL="1"
+      StmtBlock
+        List
+          IdDecl
+            Name ID="x"
+            Opt
+          IdDecl
+            Name ID="y"
+            Opt
+          Assign
+            IdUse
+              Name ID="x"
+            Ge
+              Numeral NUMERAL="5"
+              Add
+                Mul
+                  Numeral NUMERAL="3"
+                  Numeral NUMERAL="2"
+                Numeral NUMERAL="4"
+          Assign
+            IdUse
+              Name ID="y"
+            Not
+              Add
+                Numeral NUMERAL="4"
+                Mul
+                  Numeral NUMERAL="3"
+                  Numeral NUMERAL="2"
+              Numeral NUMERAL="1"
