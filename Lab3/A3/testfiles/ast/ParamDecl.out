@@ -1,0 +1,30 @@
+Program
+  List
+    Func
+      IdDecl ID="a"
+        Opt
+      List
+        IdDecl ID="z"
+          Opt
+        IdDecl ID="b"
+          Opt
+      StmtBlock
+        List
+          IdDecl ID="x"
+            Opt
+          IdDecl ID="y"
+            Opt
+          Assign
+            IdUse ID="x"
+            Add
+              Mul
+                Numeral NUMERAL="5"
+                Numeral NUMERAL="2"
+              Numeral NUMERAL="3"
+          Assign
+            IdUse ID="y"
+            Add
+              Numeral NUMERAL="3"
+              Mul
+                Numeral NUMERAL="5"
+                Numeral NUMERAL="2"

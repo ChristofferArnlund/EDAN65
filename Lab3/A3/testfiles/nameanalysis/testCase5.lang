@@ -1,0 +1,7 @@
+int main(int a) {
+	return a; // okay: a refers to the parameter
+}
+
+int k() {
+	int m = a;
+}

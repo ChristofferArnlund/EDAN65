@@ -1,0 +1,12 @@
+int a() {
+	int x;
+	int y;
+	if(x == 5) {
+		int z;
+	}
+	if(y < 5) {
+	}
+	else {
+	}
+}
+

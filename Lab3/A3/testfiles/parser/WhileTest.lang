@@ -1,0 +1,8 @@
+int a() {
+	int x;
+	while(x > 4) {
+		int y;
+	}
+	while(1){
+	}
+}

@@ -1,0 +1,18 @@
+Program
+  List
+    Func
+      IdDecl ID="a"
+        Opt
+      List
+      StmtBlock
+        List
+          FuncCallStmt
+            FuncCall
+              IdUse ID="printf"
+              List
+                IdUse ID="x"
+                IdUse ID="y"
+                Numeral NUMERAL="5"
+                Mul
+                  Numeral NUMERAL="5"
+                  Numeral NUMERAL="3"

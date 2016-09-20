@@ -1,0 +1,28 @@
+aspect MinValue {
+	// Exercise 1
+	// Deklarerar ett attribut localMin för Node alla subklasser får attributet
+	syn int Node.localMin() = 0;
+	eq Leaf.localMin() = getNumber();
+	eq Pair.localMin() {
+		int leftLM = getLeft().localMin();
+		int rightLM = getRight().localMin();
+		return leftLM < rightLM ? leftLM : rightLM;
+	}
+
+	// Exercise 2
+	// Säger att alla noder(därmed Leaf och Pair) skall ärva attributet globalMin
+	// globalMin är localMin för noden som Program pekar på(kör från Program context)
+	inh int Node.globalMin();
+	eq Program.getNode().globalMin() = getNode().localMin();
+
+	// Exercise 3
+	// Skapar attribut för alla leafs, har tillgång till
+	// globalMin från föregående uppgift.
+	syn boolean Leaf.isMinValue() = getNumber() == globalMin();
+	
+	// Exercise 4
+	syn int Program.nbrOfMinValues() = getNode().nbrOfMinValues();
+	syn int Node.nbrOfMinValues();
+	eq Leaf.nbrOfMinValues() = isMinValue() ? 1 : 0;
+	eq Pair.nbrOfMinValues() = getLeft().nbrOfMinValues() + getRight().nbrOfMinValues();
+}

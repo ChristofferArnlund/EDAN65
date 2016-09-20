@@ -1,0 +1,84 @@
+import java.util.Set;
+import java.util.HashSet;
+
+aspect NameAnalysis {
+	public class SymbolTable {
+		private static final SymbolTable BOTTOM = new SymbolTable() {
+			@Override
+			public boolean declare(String name) {
+				throw new UnsupportedOperationException("Cant add name to bottom of stack");
+			}
+		
+			@Override
+			public boolean lookup(String name) {
+				return false;
+			}
+		};
+
+		private final SymbolTable tail;
+		private final Set<String> names = new HashSet<String>();
+		
+		public SymbolTable() {
+			tail = BOTTOM;
+		}
+
+		public SymbolTable(SymbolTable tail) {
+			this.tail = tail;
+		}
+
+		public boolean declare(String name) {
+			return names.add(name);
+		}
+	
+		public boolean lookup(String name) {
+			return names.contains(name) || tail.lookup(name);
+		}
+
+		public SymbolTable push() {
+			return new SymbolTable(this);
+		}
+	}
+
+	// Entry point Program for nameanalysis
+	public void Program.checkNames(PrintStream err) {
+		SymbolTable symbols = new SymbolTable();
+		checkNames(err, symbols);		
+	}
+
+	// Default checkNames method checking all children
+	public void ASTNode.checkNames(PrintStream err, SymbolTable symbols) {
+		for(int i = 0; i < getNumChild(); ++i) 
+			getChild(i).checkNames(err, symbols);
+	}
+
+	public void StmtBlock.checkNames(PrintStream err, SymbolTable symbols) {
+		symbols = symbols.push(); //"new namespace"
+		for(int i = 0; i < getNumStmt(); ++i) 
+			getStmt(i).checkNames(err, symbols);
+		//added "namespace" will pop
+	}
+
+	public void IdDecl.checkNames(PrintStream err, SymbolTable symbols) {
+		String id = getID();
+		if(!symbols.declare(id)) {
+			err.format("Error at line %d: symbol \'%s\' is already declared!", getLine(), id);
+			err.println();
+		}
+	}
+
+	public void IdUse.checkNames(PrintStream err, SymbolTable symbols) {
+		String id = getID();
+		if(!symbols.lookup(id)) {
+			err.format("Error at line %d: symbol \'%s\' has not been declared before this use!", getLine(), id);
+			err.println();
+		}
+	}
+
+         /** 
+	 * Helper method
+	 * @return line number of this token
+	 */
+	public int ASTNode.getLine() {
+		return getLine(getStart());
+	}
+}

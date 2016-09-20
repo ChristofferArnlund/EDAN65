@@ -1,0 +1,12 @@
+Program
+  List
+    Func
+      IdDecl ID="a"
+        Opt
+      List
+      StmtBlock
+        List
+          FuncCallStmt
+            FuncCall
+              IdUse ID="printf"
+              List
