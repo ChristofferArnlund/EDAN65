@@ -68,25 +68,24 @@ public class LangParser extends Parser {
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9orbjbpL4KKXtyzT#O670c2CM2C60aaHf1830YI8B99b2ri0OIWu08APPKFFbXbbN#7LLP" +
-		"PFcXPnT$Weo#uu88Bee9B5DIuusxxtRuzaxutCwCycAclp#cpzEtRopsHp56jLfyMw1Qrwo" +
-		"OjrNPDKxEcwmhDq4nDLHb$cvRfDWrefLRb$CFEtw5#tQZ5wjOrEV#Ud7zXphy$vr#Uyp#0V" +
-		"y9xjRfolQArkbL7DPTHYYhO4$GYhTNbcL7gZp1BHzIa#HdRNPdUvanlLwPtBoltY0xQxtIb" +
-		"NyCTseXsG7tssupjJcmJcIi2VJ3GRm$qEyXcHsgCNQfXYvrjZcvGRzNMcOkR5ypXsggs2Eq" +
-		"wftMenykRdKmpqp5JFMsNk9DIptkfxLLkjCjSkqQjJbReqpeTKejcQugkroODyGuFQRqsw6" +
-		"vjqJPjrKwDQBVsQbJxTB$kquEwXnqzJER3d5gZ0gUXYUoO$Bdg97y#9w2RMVVWR#7fhPo1s" +
-		"UnbBNyRvxcTjPh32lqV$WblHwvNajY31ToNDlHUjoD9BpjAun5YSXf5DEePLdyHDwhart0g" +
-		"EsIuLIPdYx65cVz5Dsv79e$TLiDMSBRq7bTiSIwkEJE7oLfUffdfcAcUjh6RLptlfRPb$vP" +
-		"9M#0RbCWAXcV5pAVCLwhWlCtyokwNl5rYZMcBJf#6jSXDBh4dXYpfs5DoVtlWWDTVXBFmX6" +
-		"JM8Pz1hlI#5n9P3#8sGh#FVGvzVQ9RQ$z2d8INuJIy0#C#PpWDrvZlbuFn4cO4$HQO2SpTJ" +
-		"8UEHlFnEPsm7BfW07fW5Io4rT0BQs4DmSUH6s2JpztiPHziyVesM08xOIk64yZTmVFsmJ9W" +
-		"JSrs3AUG#s47xAB$CNBKnww0lLuVWX6KyyY3tdR8ooEJtuiAAmrw$IKl7$FhFHR43VtB#Ym" +
-		"DOaTppsZoyeoNuRXXtaWkxqAWp$Bod9VZZURZOxgzVDhBPxrytilZGUnWdJ4Ev$gFLdJMvs" +
-		"AD#CS3FSxvMWFzoHgvNHEw6V1oE1TpB1NkBbJ$x9$mZVtQVcKlsFFsI$k5itxYsdFsVLhEY" +
-		"tqFJjatdFLN#Dd#PBb3zcrxqe$pBhnbNxEls5Vjc$Pr#ukzYEKZ#13Em0TmklhSt#4tfvtD" +
-		"pETpEvxfV#RbfwuTgzh$W1$WU$kZ$Hj3FvN5K5yI2bIO9fX2PIb1aMzbGaJTCH1HJmnL8I7" +
-		"YMrIWYWaCjIoXG7KoDUaYVfxxFokXJ0sBe4GbAr9heZeOQaNaCNpFem33jxn2v6Ix#pOQBV" +
-		"u7mGW#X0==");
+		"U9ojbLbpL4KOXjypPsP2CeHWP4#80Y5e8108HeW8CI04a1s2e0WguCf$q2fBh$I6Aw#yydT" +
+		"uuusb8egue1W15NTS0K5jd#xJC#bpPYObbbFrzFTzRozVzvnUfEY8TgbPazIYoRf9hMfKIS" +
+		"jrg#ReDlLgffPaeYVKe7vDrKBTulL#JTEwp2Wx62MjxAjI3bGfHr3QrQby9kVjcgi#pT8A3" +
+		"MYLLcjGYpKnrJDiFpqLRKf5MrFHI2ewf25ZzBJvIJShfxnvKxjrduPqKB6vX9RCmcfte8tr" +
+		"R0lyUO6$Cl3l2lox0tzDuDz3BbRlye$bilaBDRIYqphKfQKLhIdJRaCmpzaLRxuMU6#Pjqc" +
+		"FfBpJVO74JqOFQwkL6osVqY8zehKkY#LUzLHyIuyUrHHjr0nDKBVMQrYFQREsQ9ksQwVsw7" +
+		"xjrNuzf0VrW8xgOVRZutfIzdUOjSpb2tIomYxMQDSrYw$Jpjext6vDHmKLoL1YFcMzcvsqg" +
+		"COe$qrfO0M5JCw8dHMplgcScUciSIOvqpt7c$6$ZoB#ZuMSem8dfS3UQbGJsaIl9REmMX4j" +
+		"xFb$#P5RVJgNpH$Lq79EIqvoMSkFEyzghsoJ7abPT7D8$6JqiBPQkT6oXmnBy6mMIv7xgEn" +
+		"R9g54xAWIDrMEieHImYiIvx7DU7QTpPpPF3K5HemCFnJfs3DkKtEpIizx$oHy3ArIj0Rx79" +
+		"ppTIzPMm$Q3rEq#BRRYGUzFmXlm6jm2jwXBjit1dPKr4ZmDxObgDjCSHoxpCUjGLq3p1XdJ" +
+		"csm73gW7#R007J2AbW0gs45ZIzYLy9QttUTjzsmtljsNJsm1JOWl8xT4UJR3Rsm4pOXdC3k" +
+		"WOsmbVWZx8XlsmUxl3y4Ut7EO$TvRR#tXwhNnTqa7SsijSbQFkveq6wWtdzJOypXJFoijwU" +
+		"zpMNgN$3sZBUZOJtpk1IqxStqlJ3EF5xqzhYtBtlxYhUl1ZakrnbZMoOU2VnSZVO70h#KgP" +
+		"iI#8Thz9qzvaTzTUPpB37cBmK$yoVyOButtvblpJVcQtFHgUTS#RdX79fHOC#Oq#PTSzBt#" +
+		"X3UDoVCsoww2h#Rtym7s5FcBVEUkM8k6ywO#GpEmgVm2PofvBq6VpZlgzHylZ0$fk8Btfvt" +
+		"vPSL$Jhy0Z#RNmsdbNU$boEzs97Z1MY02Rmq1SXpPrfYthq8OjwZY5lDOc#u72#P8E8zi#H" +
+		"uhQAQp6ESBlfqClvyHubtBOO2xr5SXuYt8lP4tETnGCIjNYPsjWtQOUa$b7ix1W==");
 
 	static public class SyntaxError extends RuntimeException { public SyntaxError(String msg) {super(msg);}}
 	// Disable syntax error recovery
@@ -122,56 +121,50 @@ public class LangParser extends Parser {
 					 return a.add(b);
 				}
 			},
-			new Action() {	// [3] func = INT id.id LPAR RPAR LBRA opt_stmt_list.b RBRA
+			new Action() {	// [3] func = INT ID.id LPAR RPAR LBRA opt_stmt_list.b RBRA
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_id = _symbols[offset + 2];
-					final Name id = (Name) _symbol_id.value;
+					final Symbol id = _symbols[offset + 2];
 					final Symbol _symbol_b = _symbols[offset + 6];
-					final List b = (List) _symbol_b.value;
-					 return new Func(id, new List(),b);
+					final StmtBlock b = (StmtBlock) _symbol_b.value;
+					 return new Func(new IdDecl(id, new Opt()), new List(),b);
 				}
 			},
-			new Action() {	// [4] func = INT id.id LPAR param_decl_list.a RPAR LBRA opt_stmt_list.b RBRA
+			new Action() {	// [4] func = INT ID.id LPAR param_decl_list.a RPAR LBRA opt_stmt_list.b RBRA
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_id = _symbols[offset + 2];
-					final Name id = (Name) _symbol_id.value;
+					final Symbol id = _symbols[offset + 2];
 					final Symbol _symbol_a = _symbols[offset + 4];
 					final List a = (List) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 7];
-					final List b = (List) _symbol_b.value;
-					 return new Func(id, a, b);
+					final StmtBlock b = (StmtBlock) _symbol_b.value;
+					 return new Func(new IdDecl(id, new Opt()), a, b);
 				}
 			},
-			new Action() {	// [5] funcCall = id.a LPAR call_param_list.b RPAR SEMICOLON
+			new Action() {	// [5] funcCall = ID.a LPAR call_param_list.b RPAR SEMICOLON
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 1];
-					final Name a = (Name) _symbol_a.value;
+					final Symbol a = _symbols[offset + 1];
 					final Symbol _symbol_b = _symbols[offset + 3];
 					final List b = (List) _symbol_b.value;
-					 return new FuncCall(a, b);
+					 return new FuncCallStmt(new FuncCall(new IdUse(a), b));
 				}
 			},
-			new Action() {	// [6] funcCall = id.a LPAR RPAR SEMICOLON
+			new Action() {	// [6] funcCall = ID.a LPAR RPAR SEMICOLON
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 1];
-					final Name a = (Name) _symbol_a.value;
-					 return new FuncCall(a, new List());
+					final Symbol a = _symbols[offset + 1];
+					 return new FuncCallStmt(new FuncCall(new IdUse(a), new List()));
 				}
 			},
-			new Action() {	// [7] nestedFuncCall = id.a LPAR call_param_list.b RPAR
+			new Action() {	// [7] nestedFuncCall = ID.a LPAR call_param_list.b RPAR
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 1];
-					final Name a = (Name) _symbol_a.value;
+					final Symbol a = _symbols[offset + 1];
 					final Symbol _symbol_b = _symbols[offset + 3];
 					final List b = (List) _symbol_b.value;
-					 return new FuncCall(a, b);
+					 return new FuncCall(new IdUse(a), b);
 				}
 			},
-			new Action() {	// [8] nestedFuncCall = id.a LPAR RPAR
+			new Action() {	// [8] nestedFuncCall = ID.a LPAR RPAR
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 1];
-					final Name a = (Name) _symbol_a.value;
-					 return new FuncCall(a, new List());
+					final Symbol a = _symbols[offset + 1];
+					 return new FuncCall(new IdUse(a), new List());
 				}
 			},
 			new Action() {	// [9] call_param_list = call_param.a
@@ -213,23 +206,22 @@ public class LangParser extends Parser {
 					 return a.add(b);
 				}
 			},
-			new Action() {	// [14] param = INT id.a
+			new Action() {	// [14] param = INT ID.a
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 2];
-					final Name a = (Name) _symbol_a.value;
+					final Symbol a = _symbols[offset + 2];
 					 return new IdDecl(a, new Opt());
 				}
 			},
 			new Action() {	// [15] opt_stmt_list = 
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					 return new List();
+					 return new StmtBlock(new List());
 				}
 			},
 			new Action() {	// [16] opt_stmt_list = stmt_list.a
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final List a = (List) _symbol_a.value;
-					 return a;
+					 return new StmtBlock(a);
 				}
 			},
 			new Action() {	// [17] stmt_list = stmt.a
@@ -249,70 +241,67 @@ public class LangParser extends Parser {
 				}
 			},
 			Action.RETURN,	// [19] stmt = id_decl
-			Action.RETURN,	// [20] stmt = id_use
+			Action.RETURN,	// [20] stmt = id_assign
 			Action.RETURN,	// [21] stmt = whileStmt
 			Action.RETURN,	// [22] stmt = ifStmt
 			Action.RETURN,	// [23] stmt = return_stmt
 			Action.RETURN,	// [24] stmt = funcCall
-			new Action() {	// [25] return_stmt = RETURN expr.a SEMICOLON
+			new Action() {	// [25] id_assign = ID.a ASSIGN expr.b SEMICOLON
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol a = _symbols[offset + 1];
+					final Symbol _symbol_b = _symbols[offset + 3];
+					final Expr b = (Expr) _symbol_b.value;
+					 return new Assign(new IdUse(a), b);
+				}
+			},
+			new Action() {	// [26] return_stmt = RETURN expr.a SEMICOLON
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_a = _symbols[offset + 2];
 					final Expr a = (Expr) _symbol_a.value;
 					 System.out.println("Did retr retr"); return new Return(a);
 				}
 			},
-			new Action() {	// [26] whileStmt = WHILE LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA
+			new Action() {	// [27] whileStmt = WHILE LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_a = _symbols[offset + 3];
 					final Expr a = (Expr) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 6];
-					final List b = (List) _symbol_b.value;
+					final StmtBlock b = (StmtBlock) _symbol_b.value;
 					 return new While(a, b);
 				}
 			},
-			new Action() {	// [27] ifStmt = IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA
+			new Action() {	// [28] ifStmt = IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_a = _symbols[offset + 3];
 					final Expr a = (Expr) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 6];
-					final List b = (List) _symbol_b.value;
-					 return new If(a, b, new List());
+					final StmtBlock b = (StmtBlock) _symbol_b.value;
+					 return new If(a, b, new Opt());
 				}
 			},
-			new Action() {	// [28] ifStmt = IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA ELSE LBRA opt_stmt_list.c RBRA
+			new Action() {	// [29] ifStmt = IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA ELSE LBRA opt_stmt_list.c RBRA
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_a = _symbols[offset + 3];
 					final Expr a = (Expr) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 6];
-					final List b = (List) _symbol_b.value;
+					final StmtBlock b = (StmtBlock) _symbol_b.value;
 					final Symbol _symbol_c = _symbols[offset + 10];
-					final List c = (List) _symbol_c.value;
-					 return new If(a, b, c);
+					final StmtBlock c = (StmtBlock) _symbol_c.value;
+					 return new If(a, b, new Opt(c));
 				}
 			},
-			new Action() {	// [29] id_decl = INT id.a SEMICOLON
+			new Action() {	// [30] id_decl = INT ID.a SEMICOLON
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 2];
-					final Name a = (Name) _symbol_a.value;
+					final Symbol a = _symbols[offset + 2];
 					  return new IdDecl(a, new Opt());
 				}
 			},
-			new Action() {	// [30] id_decl = INT id.a ASSIGN expr.b SEMICOLON
+			new Action() {	// [31] id_decl = INT ID.a ASSIGN expr.b SEMICOLON
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 2];
-					final Name a = (Name) _symbol_a.value;
+					final Symbol a = _symbols[offset + 2];
 					final Symbol _symbol_b = _symbols[offset + 4];
 					final Expr b = (Expr) _symbol_b.value;
 					  return new IdDecl(a, new Opt(b));
-				}
-			},
-			new Action() {	// [31] id_use = id.a ASSIGN expr.b SEMICOLON
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_a = _symbols[offset + 1];
-					final Name a = (Name) _symbol_a.value;
-					final Symbol _symbol_b = _symbols[offset + 3];
-					final Expr b = (Expr) _symbol_b.value;
-					  return new IdUse(a, b);
 				}
 			},
 			new Action() {	// [32] expr = num_expr.a LE num_expr.b
@@ -417,7 +406,7 @@ public class LangParser extends Parser {
 				}
 			},
 			Action.RETURN,	// [45] term = factor
-			Action.RETURN,	// [46] factor = id
+			Action.RETURN,	// [46] factor = id_use
 			Action.RETURN,	// [47] factor = numeral
 			new Action() {	// [48] factor = LPAR num_expr.a RPAR
 				public Symbol reduce(Symbol[] _symbols, int offset) {
@@ -427,16 +416,16 @@ public class LangParser extends Parser {
 				}
 			},
 			Action.RETURN,	// [49] factor = nestedFuncCall
-			new Action() {	// [50] numeral = NUMERAL.a
+			new Action() {	// [50] id_use = ID.a
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol a = _symbols[offset + 1];
+					 return new IdUse(a);
+				}
+			},
+			new Action() {	// [51] numeral = NUMERAL.a
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol a = _symbols[offset + 1];
 					 return new Numeral(a);
-				}
-			},
-			new Action() {	// [51] id = ID.a
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol a = _symbols[offset + 1];
-					 return new Name(a);
 				}
 			}
 		};

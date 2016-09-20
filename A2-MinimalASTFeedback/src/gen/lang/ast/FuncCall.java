@@ -6,8 +6,8 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/lang.ast:12
- * @production FuncCall : {@link Expr} ::= <span class="component">{@link Name}</span> <span class="component">{@link Expr}*</span>;
+ * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:14
+ * @production FuncCall : {@link Expr} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}*</span>;
 
  */
 public class FuncCall extends Expr implements Cloneable {
@@ -31,7 +31,7 @@ public class FuncCall extends Expr implements Cloneable {
   /**
    * @declaredat ASTNode:14
    */
-  public FuncCall(Name p0, List<Expr> p1) {
+  public FuncCall(IdUse p0, List<Expr> p1) {
     setChild(p0, 0);
     setChild(p1, 1);
   }
@@ -135,30 +135,30 @@ public class FuncCall extends Expr implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the Name child.
-   * @param node The new node to replace the Name child.
+   * Replaces the IdUse child.
+   * @param node The new node to replace the IdUse child.
    * @apilevel high-level
    */
-  public void setName(Name node) {
+  public void setIdUse(IdUse node) {
     setChild(node, 0);
   }
   /**
-   * Retrieves the Name child.
-   * @return The current node used as the Name child.
+   * Retrieves the IdUse child.
+   * @return The current node used as the IdUse child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="Name")
-  public Name getName() {
-    return (Name) getChild(0);
+  @ASTNodeAnnotation.Child(name="IdUse")
+  public IdUse getIdUse() {
+    return (IdUse) getChild(0);
   }
   /**
-   * Retrieves the Name child.
+   * Retrieves the IdUse child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the Name child.
+   * @return The current node used as the IdUse child.
    * @apilevel low-level
    */
-  public Name getNameNoTransform() {
-    return (Name) getChildNoTransform(0);
+  public IdUse getIdUseNoTransform() {
+    return (IdUse) getChildNoTransform(0);
   }
   /**
    * Replaces the Expr list.

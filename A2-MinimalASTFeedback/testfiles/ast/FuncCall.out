@@ -1,21 +1,17 @@
 Program
   List
     Func
-      IdDecl
-        Name ID="a"
+      IdDecl ID="a"
         Opt
       List
       StmtBlock
         List
           FuncCallStmt
             FuncCall
-              IdUse
-                Name ID="printf"
+              IdUse ID="printf"
               List
-                IdUse
-                  Name ID="x"
-                IdUse
-                  Name ID="y"
+                IdUse ID="x"
+                IdUse ID="y"
                 Numeral NUMERAL="5"
                 Mul
                   Numeral NUMERAL="5"

@@ -3,7 +3,7 @@ Func ::= FuncName:IdDecl FuncParams:IdDecl* StmtBlock;
 StmtBlock ::= Stmt*;
 
 abstract Stmt;
-IdDecl : Stmt ::= Name [Expr];
+IdDecl : Stmt ::= <ID> [Expr];
 While : Stmt ::= Expr StmtBlock;
 If : Stmt ::= Expr Do:StmtBlock [Else:StmtBlock];
 Return : Stmt ::= Expr;
@@ -12,9 +12,8 @@ Assign : Stmt ::= IdUse Expr;
 
 abstract Expr;
 FuncCall : Expr ::= IdUse Expr*;
-Name : Expr ::= <ID>;
 Numeral : Expr ::= <NUMERAL>;
-IdUse : Expr ::= Name;
+IdUse : Expr ::= <ID>;
 
 abstract BinaryExpr : Expr ::= Left:Expr Right:Expr;
 Add : BinaryExpr;

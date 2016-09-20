@@ -1,33 +1,27 @@
 Program
   List
     Func
-      IdDecl
-        Name ID="a"
+      IdDecl ID="a"
         Opt
       List
       StmtBlock
         List
-          IdDecl
-            Name ID="x"
+          IdDecl ID="x"
             Opt
-          IdDecl
-            Name ID="y"
+          IdDecl ID="y"
             Opt
           If
             Equals
-              IdUse
-                Name ID="x"
+              IdUse ID="x"
               Numeral NUMERAL="5"
             StmtBlock
               List
-                IdDecl
-                  Name ID="z"
+                IdDecl ID="z"
                   Opt
             Opt
           If
             Le
-              IdUse
-                Name ID="y"
+              IdUse ID="y"
               Numeral NUMERAL="5"
             StmtBlock
               List

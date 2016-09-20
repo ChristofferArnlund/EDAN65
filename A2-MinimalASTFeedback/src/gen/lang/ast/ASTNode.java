@@ -12,12 +12,12 @@ import java.lang.reflect.InvocationTargetException;
 public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneable {
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/DumpTree.jrag:9
+   * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/DumpTree.jrag:9
    */
   private String DUMP_TREE_INDENT = "  ";
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/DumpTree.jrag:11
+   * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/DumpTree.jrag:11
    */
   public String dumpTree() {
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -26,7 +26,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/DumpTree.jrag:17
+   * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/DumpTree.jrag:17
    */
   public void dumpTree(PrintStream out) {
 		dumpTree(out, "");
@@ -34,7 +34,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/DumpTree.jrag:22
+   * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/DumpTree.jrag:22
    */
   public void dumpTree(PrintStream out, String indent) {
 		out.print(indent + getClass().getSimpleName());
@@ -50,7 +50,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/DumpTree.jrag:35
+   * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/DumpTree.jrag:35
    */
   public String getTokens() {
 		StringBuilder sb = new StringBuilder();

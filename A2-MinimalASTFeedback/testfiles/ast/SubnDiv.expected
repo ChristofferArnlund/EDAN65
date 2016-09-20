@@ -1,29 +1,24 @@
 Program
   List
     Func
-      IdDecl
-        Name ID="a"
+      IdDecl ID="a"
         Opt
       List
       StmtBlock
         List
-          IdDecl
-            Name ID="x"
+          IdDecl ID="x"
             Opt
-          IdDecl
-            Name ID="y"
+          IdDecl ID="y"
             Opt
           Assign
-            IdUse
-              Name ID="x"
+            IdUse ID="x"
             Sub
               Div
                 Numeral NUMERAL="5"
                 Numeral NUMERAL="2"
               Numeral NUMERAL="3"
           Assign
-            IdUse
-              Name ID="y"
+            IdUse ID="y"
             Sub
               Numeral NUMERAL="3"
               Div

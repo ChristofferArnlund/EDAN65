@@ -1,171 +1,124 @@
 Program
   List
     Func
-      IdDecl
-        Name ID="gcd1"
+      IdDecl ID="gcd1"
         Opt
       List
-        IdDecl
-          Name ID="a"
+        IdDecl ID="a"
           Opt
-        IdDecl
-          Name ID="b"
+        IdDecl ID="b"
           Opt
       StmtBlock
         List
           While
             Not
-              IdUse
-                Name ID="a"
-              IdUse
-                Name ID="b"
+              IdUse ID="a"
+              IdUse ID="b"
             StmtBlock
               List
                 If
                   Ge
-                    IdUse
-                      Name ID="a"
-                    IdUse
-                      Name ID="b"
+                    IdUse ID="a"
+                    IdUse ID="b"
                   StmtBlock
                     List
                       Assign
-                        IdUse
-                          Name ID="a"
+                        IdUse ID="a"
                         Sub
-                          IdUse
-                            Name ID="a"
-                          IdUse
-                            Name ID="b"
+                          IdUse ID="a"
+                          IdUse ID="b"
                   Opt
                     StmtBlock
                       List
                         Assign
-                          IdUse
-                            Name ID="b"
+                          IdUse ID="b"
                           Sub
-                            IdUse
-                              Name ID="b"
-                            IdUse
-                              Name ID="a"
+                            IdUse ID="b"
+                            IdUse ID="a"
           Return
-            IdUse
-              Name ID="a"
+            IdUse ID="a"
     Func
-      IdDecl
-        Name ID="gcd2"
+      IdDecl ID="gcd2"
         Opt
       List
-        IdDecl
-          Name ID="a"
+        IdDecl ID="a"
           Opt
-        IdDecl
-          Name ID="b"
+        IdDecl ID="b"
           Opt
       StmtBlock
         List
           If
             Equals
-              IdUse
-                Name ID="b"
+              IdUse ID="b"
               Numeral NUMERAL="0"
             StmtBlock
               List
                 Return
-                  IdUse
-                    Name ID="a"
+                  IdUse ID="a"
             Opt
           Return
             FuncCall
-              IdUse
-                Name ID="gcd2"
+              IdUse ID="gcd2"
               List
-                IdUse
-                  Name ID="b"
+                IdUse ID="b"
                 Mod
-                  IdUse
-                    Name ID="a"
-                  IdUse
-                    Name ID="b"
+                  IdUse ID="a"
+                  IdUse ID="b"
     Func
-      IdDecl
-        Name ID="main"
+      IdDecl ID="main"
         Opt
       List
       StmtBlock
         List
-          IdDecl
-            Name ID="a"
+          IdDecl ID="a"
             Opt
-          IdDecl
-            Name ID="b"
+          IdDecl ID="b"
             Opt
           Assign
-            IdUse
-              Name ID="a"
+            IdUse ID="a"
             FuncCall
-              IdUse
-                Name ID="read"
+              IdUse ID="read"
               List
           Assign
-            IdUse
-              Name ID="b"
+            IdUse ID="b"
             FuncCall
-              IdUse
-                Name ID="read"
+              IdUse ID="read"
               List
           FuncCallStmt
             FuncCall
-              IdUse
-                Name ID="print"
+              IdUse ID="print"
               List
                 FuncCall
-                  IdUse
-                    Name ID="gcd1"
+                  IdUse ID="gcd1"
                   List
-                    IdUse
-                      Name ID="a"
-                    IdUse
-                      Name ID="b"
+                    IdUse ID="a"
+                    IdUse ID="b"
           FuncCallStmt
             FuncCall
-              IdUse
-                Name ID="print"
+              IdUse ID="print"
               List
                 FuncCall
-                  IdUse
-                    Name ID="gcd2"
+                  IdUse ID="gcd2"
                   List
-                    IdUse
-                      Name ID="a"
-                    IdUse
-                      Name ID="b"
-          IdDecl
-            Name ID="diff"
+                    IdUse ID="a"
+                    IdUse ID="b"
+          IdDecl ID="diff"
             Opt
               Sub
                 FuncCall
-                  IdUse
-                    Name ID="gcd1"
+                  IdUse ID="gcd1"
                   List
-                    IdUse
-                      Name ID="a"
-                    IdUse
-                      Name ID="b"
+                    IdUse ID="a"
+                    IdUse ID="b"
                 FuncCall
-                  IdUse
-                    Name ID="gcd2"
+                  IdUse ID="gcd2"
                   List
-                    IdUse
-                      Name ID="a"
-                    IdUse
-                      Name ID="b"
+                    IdUse ID="a"
+                    IdUse ID="b"
           FuncCallStmt
             FuncCall
-              IdUse
-                Name ID="print"
+              IdUse ID="print"
               List
-                IdUse
-                  Name ID="diff"
+                IdUse ID="diff"
           Return
             Numeral NUMERAL="0"

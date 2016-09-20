@@ -1,24 +1,20 @@
 Program
   List
     Func
-      IdDecl
-        Name ID="a"
+      IdDecl ID="a"
         Opt
       List
       StmtBlock
         List
-          IdDecl
-            Name ID="x"
+          IdDecl ID="x"
             Opt
           While
             Ge
-              IdUse
-                Name ID="x"
+              IdUse ID="x"
               Numeral NUMERAL="4"
             StmtBlock
               List
-                IdDecl
-                  Name ID="y"
+                IdDecl ID="y"
                   Opt
           While
             Numeral NUMERAL="1"

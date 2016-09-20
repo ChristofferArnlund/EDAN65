@@ -6,8 +6,8 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/lang.ast:7
- * @production While : {@link Stmt} ::= <span class="component">{@link Expr}</span> <span class="component">{@link Stmt}*</span>;
+ * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:7
+ * @production While : {@link Stmt} ::= <span class="component">{@link Expr}</span> <span class="component">{@link StmtBlock}</span>;
 
  */
 public class While extends Stmt implements Cloneable {
@@ -26,42 +26,41 @@ public class While extends Stmt implements Cloneable {
    */
   public void init$Children() {
     children = new ASTNode[2];
-    setChild(new List(), 1);
   }
   /**
-   * @declaredat ASTNode:14
+   * @declaredat ASTNode:13
    */
-  public While(Expr p0, List<Stmt> p1) {
+  public While(Expr p0, StmtBlock p1) {
     setChild(p0, 0);
     setChild(p1, 1);
   }
   /** @apilevel low-level 
-   * @declaredat ASTNode:19
+   * @declaredat ASTNode:18
    */
   protected int numChildren() {
     return 2;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:23
+   * @declaredat ASTNode:22
    */
   public void flushAttrCache() {
     super.flushAttrCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:27
+   * @declaredat ASTNode:26
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:31
+   * @declaredat ASTNode:30
    */
   public While clone() throws CloneNotSupportedException {
     While node = (While) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:36
+   * @declaredat ASTNode:35
    */
   public While copy() {
     try {
@@ -81,7 +80,7 @@ public class While extends Stmt implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:55
+   * @declaredat ASTNode:54
    */
   @Deprecated
   public While fullCopy() {
@@ -92,7 +91,7 @@ public class While extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:65
+   * @declaredat ASTNode:64
    */
   public While treeCopyNoTransform() {
     While tree = (While) copy();
@@ -113,7 +112,7 @@ public class While extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:85
+   * @declaredat ASTNode:84
    */
   public While treeCopy() {
     While tree = (While) copy();
@@ -129,7 +128,7 @@ public class While extends Stmt implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:99
+   * @declaredat ASTNode:98
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -161,113 +160,29 @@ public class While extends Stmt implements Cloneable {
     return (Expr) getChildNoTransform(0);
   }
   /**
-   * Replaces the Stmt list.
-   * @param list The new list node to be used as the Stmt list.
+   * Replaces the StmtBlock child.
+   * @param node The new node to replace the StmtBlock child.
    * @apilevel high-level
    */
-  public void setStmtList(List<Stmt> list) {
-    setChild(list, 1);
+  public void setStmtBlock(StmtBlock node) {
+    setChild(node, 1);
   }
   /**
-   * Retrieves the number of children in the Stmt list.
-   * @return Number of children in the Stmt list.
+   * Retrieves the StmtBlock child.
+   * @return The current node used as the StmtBlock child.
    * @apilevel high-level
    */
-  public int getNumStmt() {
-    return getStmtList().getNumChild();
+  @ASTNodeAnnotation.Child(name="StmtBlock")
+  public StmtBlock getStmtBlock() {
+    return (StmtBlock) getChild(1);
   }
   /**
-   * Retrieves the number of children in the Stmt list.
-   * Calling this method will not trigger rewrites.
-   * @return Number of children in the Stmt list.
-   * @apilevel low-level
-   */
-  public int getNumStmtNoTransform() {
-    return getStmtListNoTransform().getNumChildNoTransform();
-  }
-  /**
-   * Retrieves the element at index {@code i} in the Stmt list.
-   * @param i Index of the element to return.
-   * @return The element at position {@code i} in the Stmt list.
-   * @apilevel high-level
-   */
-  public Stmt getStmt(int i) {
-    return (Stmt) getStmtList().getChild(i);
-  }
-  /**
-   * Check whether the Stmt list has any children.
-   * @return {@code true} if it has at least one child, {@code false} otherwise.
-   * @apilevel high-level
-   */
-  public boolean hasStmt() {
-    return getStmtList().getNumChild() != 0;
-  }
-  /**
-   * Append an element to the Stmt list.
-   * @param node The element to append to the Stmt list.
-   * @apilevel high-level
-   */
-  public void addStmt(Stmt node) {
-    List<Stmt> list = (parent == null) ? getStmtListNoTransform() : getStmtList();
-    list.addChild(node);
-  }
-  /** @apilevel low-level 
-   */
-  public void addStmtNoTransform(Stmt node) {
-    List<Stmt> list = getStmtListNoTransform();
-    list.addChild(node);
-  }
-  /**
-   * Replaces the Stmt list element at index {@code i} with the new node {@code node}.
-   * @param node The new node to replace the old list element.
-   * @param i The list index of the node to be replaced.
-   * @apilevel high-level
-   */
-  public void setStmt(Stmt node, int i) {
-    List<Stmt> list = getStmtList();
-    list.setChild(node, i);
-  }
-  /**
-   * Retrieves the Stmt list.
-   * @return The node representing the Stmt list.
-   * @apilevel high-level
-   */
-  @ASTNodeAnnotation.ListChild(name="Stmt")
-  public List<Stmt> getStmtList() {
-    List<Stmt> list = (List<Stmt>) getChild(1);
-    return list;
-  }
-  /**
-   * Retrieves the Stmt list.
+   * Retrieves the StmtBlock child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the Stmt list.
+   * @return The current node used as the StmtBlock child.
    * @apilevel low-level
    */
-  public List<Stmt> getStmtListNoTransform() {
-    return (List<Stmt>) getChildNoTransform(1);
-  }
-  /**
-   * @return the element at index {@code i} in the Stmt list without
-   * triggering rewrites.
-   */
-  public Stmt getStmtNoTransform(int i) {
-    return (Stmt) getStmtListNoTransform().getChildNoTransform(i);
-  }
-  /**
-   * Retrieves the Stmt list.
-   * @return The node representing the Stmt list.
-   * @apilevel high-level
-   */
-  public List<Stmt> getStmts() {
-    return getStmtList();
-  }
-  /**
-   * Retrieves the Stmt list.
-   * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the Stmt list.
-   * @apilevel low-level
-   */
-  public List<Stmt> getStmtsNoTransform() {
-    return getStmtListNoTransform();
+  public StmtBlock getStmtBlockNoTransform() {
+    return (StmtBlock) getChildNoTransform(1);
   }
 }

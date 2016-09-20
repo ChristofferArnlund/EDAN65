@@ -6,15 +6,15 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:25
- * @production Not : {@link BinaryExpr};
+ * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:10
+ * @production FuncCallStmt : {@link Stmt} ::= <span class="component">{@link FuncCall}</span>;
 
  */
-public class Not extends BinaryExpr implements Cloneable {
+public class FuncCallStmt extends Stmt implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public Not() {
+  public FuncCallStmt() {
     super();
   }
   /**
@@ -25,46 +25,45 @@ public class Not extends BinaryExpr implements Cloneable {
    * @declaredat ASTNode:10
    */
   public void init$Children() {
-    children = new ASTNode[2];
+    children = new ASTNode[1];
   }
   /**
    * @declaredat ASTNode:13
    */
-  public Not(Expr p0, Expr p1) {
+  public FuncCallStmt(FuncCall p0) {
     setChild(p0, 0);
-    setChild(p1, 1);
   }
   /** @apilevel low-level 
-   * @declaredat ASTNode:18
+   * @declaredat ASTNode:17
    */
   protected int numChildren() {
-    return 2;
+    return 1;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:22
+   * @declaredat ASTNode:21
    */
   public void flushAttrCache() {
     super.flushAttrCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:26
+   * @declaredat ASTNode:25
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:30
+   * @declaredat ASTNode:29
    */
-  public Not clone() throws CloneNotSupportedException {
-    Not node = (Not) super.clone();
+  public FuncCallStmt clone() throws CloneNotSupportedException {
+    FuncCallStmt node = (FuncCallStmt) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:35
+   * @declaredat ASTNode:34
    */
-  public Not copy() {
+  public FuncCallStmt copy() {
     try {
-      Not node = (Not) clone();
+      FuncCallStmt node = (FuncCallStmt) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -80,10 +79,10 @@ public class Not extends BinaryExpr implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:54
+   * @declaredat ASTNode:53
    */
   @Deprecated
-  public Not fullCopy() {
+  public FuncCallStmt fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -91,10 +90,10 @@ public class Not extends BinaryExpr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:64
+   * @declaredat ASTNode:63
    */
-  public Not treeCopyNoTransform() {
-    Not tree = (Not) copy();
+  public FuncCallStmt treeCopyNoTransform() {
+    FuncCallStmt tree = (FuncCallStmt) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -112,10 +111,10 @@ public class Not extends BinaryExpr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:84
+   * @declaredat ASTNode:83
    */
-  public Not treeCopy() {
-    Not tree = (Not) copy();
+  public FuncCallStmt treeCopy() {
+    FuncCallStmt tree = (FuncCallStmt) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -128,61 +127,35 @@ public class Not extends BinaryExpr implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:98
+   * @declaredat ASTNode:97
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the Left child.
-   * @param node The new node to replace the Left child.
+   * Replaces the FuncCall child.
+   * @param node The new node to replace the FuncCall child.
    * @apilevel high-level
    */
-  public void setLeft(Expr node) {
+  public void setFuncCall(FuncCall node) {
     setChild(node, 0);
   }
   /**
-   * Retrieves the Left child.
-   * @return The current node used as the Left child.
+   * Retrieves the FuncCall child.
+   * @return The current node used as the FuncCall child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="Left")
-  public Expr getLeft() {
-    return (Expr) getChild(0);
+  @ASTNodeAnnotation.Child(name="FuncCall")
+  public FuncCall getFuncCall() {
+    return (FuncCall) getChild(0);
   }
   /**
-   * Retrieves the Left child.
+   * Retrieves the FuncCall child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the Left child.
+   * @return The current node used as the FuncCall child.
    * @apilevel low-level
    */
-  public Expr getLeftNoTransform() {
-    return (Expr) getChildNoTransform(0);
-  }
-  /**
-   * Replaces the Right child.
-   * @param node The new node to replace the Right child.
-   * @apilevel high-level
-   */
-  public void setRight(Expr node) {
-    setChild(node, 1);
-  }
-  /**
-   * Retrieves the Right child.
-   * @return The current node used as the Right child.
-   * @apilevel high-level
-   */
-  @ASTNodeAnnotation.Child(name="Right")
-  public Expr getRight() {
-    return (Expr) getChild(1);
-  }
-  /**
-   * Retrieves the Right child.
-   * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the Right child.
-   * @apilevel low-level
-   */
-  public Expr getRightNoTransform() {
-    return (Expr) getChildNoTransform(1);
+  public FuncCall getFuncCallNoTransform() {
+    return (FuncCall) getChildNoTransform(0);
   }
 }

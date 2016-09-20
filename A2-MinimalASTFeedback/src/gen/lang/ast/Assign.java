@@ -6,15 +6,15 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:25
- * @production Not : {@link BinaryExpr};
+ * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:11
+ * @production Assign : {@link Stmt} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}</span>;
 
  */
-public class Not extends BinaryExpr implements Cloneable {
+public class Assign extends Stmt implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public Not() {
+  public Assign() {
     super();
   }
   /**
@@ -30,7 +30,7 @@ public class Not extends BinaryExpr implements Cloneable {
   /**
    * @declaredat ASTNode:13
    */
-  public Not(Expr p0, Expr p1) {
+  public Assign(IdUse p0, Expr p1) {
     setChild(p0, 0);
     setChild(p1, 1);
   }
@@ -55,16 +55,16 @@ public class Not extends BinaryExpr implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:30
    */
-  public Not clone() throws CloneNotSupportedException {
-    Not node = (Not) super.clone();
+  public Assign clone() throws CloneNotSupportedException {
+    Assign node = (Assign) super.clone();
     return node;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:35
    */
-  public Not copy() {
+  public Assign copy() {
     try {
-      Not node = (Not) clone();
+      Assign node = (Assign) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -83,7 +83,7 @@ public class Not extends BinaryExpr implements Cloneable {
    * @declaredat ASTNode:54
    */
   @Deprecated
-  public Not fullCopy() {
+  public Assign fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -93,8 +93,8 @@ public class Not extends BinaryExpr implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:64
    */
-  public Not treeCopyNoTransform() {
-    Not tree = (Not) copy();
+  public Assign treeCopyNoTransform() {
+    Assign tree = (Assign) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -114,8 +114,8 @@ public class Not extends BinaryExpr implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:84
    */
-  public Not treeCopy() {
-    Not tree = (Not) copy();
+  public Assign treeCopy() {
+    Assign tree = (Assign) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -134,55 +134,55 @@ public class Not extends BinaryExpr implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the Left child.
-   * @param node The new node to replace the Left child.
+   * Replaces the IdUse child.
+   * @param node The new node to replace the IdUse child.
    * @apilevel high-level
    */
-  public void setLeft(Expr node) {
+  public void setIdUse(IdUse node) {
     setChild(node, 0);
   }
   /**
-   * Retrieves the Left child.
-   * @return The current node used as the Left child.
+   * Retrieves the IdUse child.
+   * @return The current node used as the IdUse child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="Left")
-  public Expr getLeft() {
-    return (Expr) getChild(0);
+  @ASTNodeAnnotation.Child(name="IdUse")
+  public IdUse getIdUse() {
+    return (IdUse) getChild(0);
   }
   /**
-   * Retrieves the Left child.
+   * Retrieves the IdUse child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the Left child.
+   * @return The current node used as the IdUse child.
    * @apilevel low-level
    */
-  public Expr getLeftNoTransform() {
-    return (Expr) getChildNoTransform(0);
+  public IdUse getIdUseNoTransform() {
+    return (IdUse) getChildNoTransform(0);
   }
   /**
-   * Replaces the Right child.
-   * @param node The new node to replace the Right child.
+   * Replaces the Expr child.
+   * @param node The new node to replace the Expr child.
    * @apilevel high-level
    */
-  public void setRight(Expr node) {
+  public void setExpr(Expr node) {
     setChild(node, 1);
   }
   /**
-   * Retrieves the Right child.
-   * @return The current node used as the Right child.
+   * Retrieves the Expr child.
+   * @return The current node used as the Expr child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="Right")
-  public Expr getRight() {
+  @ASTNodeAnnotation.Child(name="Expr")
+  public Expr getExpr() {
     return (Expr) getChild(1);
   }
   /**
-   * Retrieves the Right child.
+   * Retrieves the Expr child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the Right child.
+   * @return The current node used as the Expr child.
    * @apilevel low-level
    */
-  public Expr getRightNoTransform() {
+  public Expr getExprNoTransform() {
     return (Expr) getChildNoTransform(1);
   }
 }

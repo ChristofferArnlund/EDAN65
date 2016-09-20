@@ -6,8 +6,8 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/lang.ast:2
- * @production Func : {@link ASTNode} ::= <span class="component">{@link Name}</span> <span class="component">{@link IdDecl}*</span> <span class="component">{@link Stmt}*</span>;
+ * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:2
+ * @production Func : {@link ASTNode} ::= <span class="component">FuncName:{@link IdDecl}</span> <span class="component">FuncParams:{@link IdDecl}*</span> <span class="component">{@link StmtBlock}</span>;
 
  */
 public class Func extends ASTNode<ASTNode> implements Cloneable {
@@ -27,43 +27,42 @@ public class Func extends ASTNode<ASTNode> implements Cloneable {
   public void init$Children() {
     children = new ASTNode[3];
     setChild(new List(), 1);
-    setChild(new List(), 2);
   }
   /**
-   * @declaredat ASTNode:15
+   * @declaredat ASTNode:14
    */
-  public Func(Name p0, List<IdDecl> p1, List<Stmt> p2) {
+  public Func(IdDecl p0, List<IdDecl> p1, StmtBlock p2) {
     setChild(p0, 0);
     setChild(p1, 1);
     setChild(p2, 2);
   }
   /** @apilevel low-level 
-   * @declaredat ASTNode:21
+   * @declaredat ASTNode:20
    */
   protected int numChildren() {
     return 3;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:25
+   * @declaredat ASTNode:24
    */
   public void flushAttrCache() {
     super.flushAttrCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:29
+   * @declaredat ASTNode:28
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:33
+   * @declaredat ASTNode:32
    */
   public Func clone() throws CloneNotSupportedException {
     Func node = (Func) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:38
+   * @declaredat ASTNode:37
    */
   public Func copy() {
     try {
@@ -83,7 +82,7 @@ public class Func extends ASTNode<ASTNode> implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:57
+   * @declaredat ASTNode:56
    */
   @Deprecated
   public Func fullCopy() {
@@ -94,7 +93,7 @@ public class Func extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:67
+   * @declaredat ASTNode:66
    */
   public Func treeCopyNoTransform() {
     Func tree = (Func) copy();
@@ -115,7 +114,7 @@ public class Func extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:87
+   * @declaredat ASTNode:86
    */
   public Func treeCopy() {
     Func tree = (Func) copy();
@@ -131,255 +130,171 @@ public class Func extends ASTNode<ASTNode> implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:101
+   * @declaredat ASTNode:100
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the Name child.
-   * @param node The new node to replace the Name child.
+   * Replaces the FuncName child.
+   * @param node The new node to replace the FuncName child.
    * @apilevel high-level
    */
-  public void setName(Name node) {
+  public void setFuncName(IdDecl node) {
     setChild(node, 0);
   }
   /**
-   * Retrieves the Name child.
-   * @return The current node used as the Name child.
+   * Retrieves the FuncName child.
+   * @return The current node used as the FuncName child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="Name")
-  public Name getName() {
-    return (Name) getChild(0);
+  @ASTNodeAnnotation.Child(name="FuncName")
+  public IdDecl getFuncName() {
+    return (IdDecl) getChild(0);
   }
   /**
-   * Retrieves the Name child.
+   * Retrieves the FuncName child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the Name child.
+   * @return The current node used as the FuncName child.
    * @apilevel low-level
    */
-  public Name getNameNoTransform() {
-    return (Name) getChildNoTransform(0);
+  public IdDecl getFuncNameNoTransform() {
+    return (IdDecl) getChildNoTransform(0);
   }
   /**
-   * Replaces the IdDecl list.
-   * @param list The new list node to be used as the IdDecl list.
+   * Replaces the FuncParams list.
+   * @param list The new list node to be used as the FuncParams list.
    * @apilevel high-level
    */
-  public void setIdDeclList(List<IdDecl> list) {
+  public void setFuncParamsList(List<IdDecl> list) {
     setChild(list, 1);
   }
   /**
-   * Retrieves the number of children in the IdDecl list.
-   * @return Number of children in the IdDecl list.
+   * Retrieves the number of children in the FuncParams list.
+   * @return Number of children in the FuncParams list.
    * @apilevel high-level
    */
-  public int getNumIdDecl() {
-    return getIdDeclList().getNumChild();
+  public int getNumFuncParams() {
+    return getFuncParamsList().getNumChild();
   }
   /**
-   * Retrieves the number of children in the IdDecl list.
+   * Retrieves the number of children in the FuncParams list.
    * Calling this method will not trigger rewrites.
-   * @return Number of children in the IdDecl list.
+   * @return Number of children in the FuncParams list.
    * @apilevel low-level
    */
-  public int getNumIdDeclNoTransform() {
-    return getIdDeclListNoTransform().getNumChildNoTransform();
+  public int getNumFuncParamsNoTransform() {
+    return getFuncParamsListNoTransform().getNumChildNoTransform();
   }
   /**
-   * Retrieves the element at index {@code i} in the IdDecl list.
+   * Retrieves the element at index {@code i} in the FuncParams list.
    * @param i Index of the element to return.
-   * @return The element at position {@code i} in the IdDecl list.
+   * @return The element at position {@code i} in the FuncParams list.
    * @apilevel high-level
    */
-  public IdDecl getIdDecl(int i) {
-    return (IdDecl) getIdDeclList().getChild(i);
+  public IdDecl getFuncParams(int i) {
+    return (IdDecl) getFuncParamsList().getChild(i);
   }
   /**
-   * Check whether the IdDecl list has any children.
+   * Check whether the FuncParams list has any children.
    * @return {@code true} if it has at least one child, {@code false} otherwise.
    * @apilevel high-level
    */
-  public boolean hasIdDecl() {
-    return getIdDeclList().getNumChild() != 0;
+  public boolean hasFuncParams() {
+    return getFuncParamsList().getNumChild() != 0;
   }
   /**
-   * Append an element to the IdDecl list.
-   * @param node The element to append to the IdDecl list.
+   * Append an element to the FuncParams list.
+   * @param node The element to append to the FuncParams list.
    * @apilevel high-level
    */
-  public void addIdDecl(IdDecl node) {
-    List<IdDecl> list = (parent == null) ? getIdDeclListNoTransform() : getIdDeclList();
+  public void addFuncParams(IdDecl node) {
+    List<IdDecl> list = (parent == null) ? getFuncParamsListNoTransform() : getFuncParamsList();
     list.addChild(node);
   }
   /** @apilevel low-level 
    */
-  public void addIdDeclNoTransform(IdDecl node) {
-    List<IdDecl> list = getIdDeclListNoTransform();
+  public void addFuncParamsNoTransform(IdDecl node) {
+    List<IdDecl> list = getFuncParamsListNoTransform();
     list.addChild(node);
   }
   /**
-   * Replaces the IdDecl list element at index {@code i} with the new node {@code node}.
+   * Replaces the FuncParams list element at index {@code i} with the new node {@code node}.
    * @param node The new node to replace the old list element.
    * @param i The list index of the node to be replaced.
    * @apilevel high-level
    */
-  public void setIdDecl(IdDecl node, int i) {
-    List<IdDecl> list = getIdDeclList();
+  public void setFuncParams(IdDecl node, int i) {
+    List<IdDecl> list = getFuncParamsList();
     list.setChild(node, i);
   }
   /**
-   * Retrieves the IdDecl list.
-   * @return The node representing the IdDecl list.
+   * Retrieves the FuncParams list.
+   * @return The node representing the FuncParams list.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.ListChild(name="IdDecl")
-  public List<IdDecl> getIdDeclList() {
+  @ASTNodeAnnotation.ListChild(name="FuncParams")
+  public List<IdDecl> getFuncParamsList() {
     List<IdDecl> list = (List<IdDecl>) getChild(1);
     return list;
   }
   /**
-   * Retrieves the IdDecl list.
+   * Retrieves the FuncParams list.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the IdDecl list.
+   * @return The node representing the FuncParams list.
    * @apilevel low-level
    */
-  public List<IdDecl> getIdDeclListNoTransform() {
+  public List<IdDecl> getFuncParamsListNoTransform() {
     return (List<IdDecl>) getChildNoTransform(1);
   }
   /**
-   * @return the element at index {@code i} in the IdDecl list without
+   * @return the element at index {@code i} in the FuncParams list without
    * triggering rewrites.
    */
-  public IdDecl getIdDeclNoTransform(int i) {
-    return (IdDecl) getIdDeclListNoTransform().getChildNoTransform(i);
+  public IdDecl getFuncParamsNoTransform(int i) {
+    return (IdDecl) getFuncParamsListNoTransform().getChildNoTransform(i);
   }
   /**
-   * Retrieves the IdDecl list.
-   * @return The node representing the IdDecl list.
+   * Retrieves the FuncParams list.
+   * @return The node representing the FuncParams list.
    * @apilevel high-level
    */
-  public List<IdDecl> getIdDecls() {
-    return getIdDeclList();
+  public List<IdDecl> getFuncParamss() {
+    return getFuncParamsList();
   }
   /**
-   * Retrieves the IdDecl list.
+   * Retrieves the FuncParams list.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the IdDecl list.
+   * @return The node representing the FuncParams list.
    * @apilevel low-level
    */
-  public List<IdDecl> getIdDeclsNoTransform() {
-    return getIdDeclListNoTransform();
+  public List<IdDecl> getFuncParamssNoTransform() {
+    return getFuncParamsListNoTransform();
   }
   /**
-   * Replaces the Stmt list.
-   * @param list The new list node to be used as the Stmt list.
+   * Replaces the StmtBlock child.
+   * @param node The new node to replace the StmtBlock child.
    * @apilevel high-level
    */
-  public void setStmtList(List<Stmt> list) {
-    setChild(list, 2);
+  public void setStmtBlock(StmtBlock node) {
+    setChild(node, 2);
   }
   /**
-   * Retrieves the number of children in the Stmt list.
-   * @return Number of children in the Stmt list.
+   * Retrieves the StmtBlock child.
+   * @return The current node used as the StmtBlock child.
    * @apilevel high-level
    */
-  public int getNumStmt() {
-    return getStmtList().getNumChild();
+  @ASTNodeAnnotation.Child(name="StmtBlock")
+  public StmtBlock getStmtBlock() {
+    return (StmtBlock) getChild(2);
   }
   /**
-   * Retrieves the number of children in the Stmt list.
-   * Calling this method will not trigger rewrites.
-   * @return Number of children in the Stmt list.
-   * @apilevel low-level
-   */
-  public int getNumStmtNoTransform() {
-    return getStmtListNoTransform().getNumChildNoTransform();
-  }
-  /**
-   * Retrieves the element at index {@code i} in the Stmt list.
-   * @param i Index of the element to return.
-   * @return The element at position {@code i} in the Stmt list.
-   * @apilevel high-level
-   */
-  public Stmt getStmt(int i) {
-    return (Stmt) getStmtList().getChild(i);
-  }
-  /**
-   * Check whether the Stmt list has any children.
-   * @return {@code true} if it has at least one child, {@code false} otherwise.
-   * @apilevel high-level
-   */
-  public boolean hasStmt() {
-    return getStmtList().getNumChild() != 0;
-  }
-  /**
-   * Append an element to the Stmt list.
-   * @param node The element to append to the Stmt list.
-   * @apilevel high-level
-   */
-  public void addStmt(Stmt node) {
-    List<Stmt> list = (parent == null) ? getStmtListNoTransform() : getStmtList();
-    list.addChild(node);
-  }
-  /** @apilevel low-level 
-   */
-  public void addStmtNoTransform(Stmt node) {
-    List<Stmt> list = getStmtListNoTransform();
-    list.addChild(node);
-  }
-  /**
-   * Replaces the Stmt list element at index {@code i} with the new node {@code node}.
-   * @param node The new node to replace the old list element.
-   * @param i The list index of the node to be replaced.
-   * @apilevel high-level
-   */
-  public void setStmt(Stmt node, int i) {
-    List<Stmt> list = getStmtList();
-    list.setChild(node, i);
-  }
-  /**
-   * Retrieves the Stmt list.
-   * @return The node representing the Stmt list.
-   * @apilevel high-level
-   */
-  @ASTNodeAnnotation.ListChild(name="Stmt")
-  public List<Stmt> getStmtList() {
-    List<Stmt> list = (List<Stmt>) getChild(2);
-    return list;
-  }
-  /**
-   * Retrieves the Stmt list.
+   * Retrieves the StmtBlock child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the Stmt list.
+   * @return The current node used as the StmtBlock child.
    * @apilevel low-level
    */
-  public List<Stmt> getStmtListNoTransform() {
-    return (List<Stmt>) getChildNoTransform(2);
-  }
-  /**
-   * @return the element at index {@code i} in the Stmt list without
-   * triggering rewrites.
-   */
-  public Stmt getStmtNoTransform(int i) {
-    return (Stmt) getStmtListNoTransform().getChildNoTransform(i);
-  }
-  /**
-   * Retrieves the Stmt list.
-   * @return The node representing the Stmt list.
-   * @apilevel high-level
-   */
-  public List<Stmt> getStmts() {
-    return getStmtList();
-  }
-  /**
-   * Retrieves the Stmt list.
-   * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the Stmt list.
-   * @apilevel low-level
-   */
-  public List<Stmt> getStmtsNoTransform() {
-    return getStmtListNoTransform();
+  public StmtBlock getStmtBlockNoTransform() {
+    return (StmtBlock) getChildNoTransform(2);
   }
 }

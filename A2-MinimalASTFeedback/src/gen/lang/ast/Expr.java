@@ -6,11 +6,11 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/A2-MinimalAST/src/jastadd/lang.ast:11
- * @production Expr : {@link Stmt};
+ * @declaredat /home/marcus/git/EDAN65/A2-MinimalASTFeedback/src/jastadd/lang.ast:13
+ * @production Expr : {@link ASTNode};
 
  */
-public abstract class Expr extends Stmt implements Cloneable {
+public abstract class Expr extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */

@@ -1,14 +1,12 @@
 Program
   List
     Func
-      IdDecl
-        Name ID="a"
+      IdDecl ID="a"
         Opt
       List
       StmtBlock
         List
           FuncCallStmt
             FuncCall
-              IdUse
-                Name ID="printf"
+              IdUse ID="printf"
               List
