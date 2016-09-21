@@ -14,6 +14,19 @@ import java.util.HashSet;
  */
 public class If extends Stmt implements Cloneable {
   /**
+   * @aspect NameAnalysis
+   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:68
+   */
+  public void checkNames(PrintStream err, SymbolTable symbols) {
+		getExpr().checkNames(err, symbols);
+		SymbolTable symbolsDo = symbols.push();		
+		getDo().checkNames(err, symbolsDo);
+		if(hasElse()) {
+			SymbolTable symbolsElse = symbols.push();
+			getElse().checkNames(err, symbolsElse);	
+		}
+	}
+  /**
    * @aspect PrettyPrint
    * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/PrettyPrint.jrag:52
    */

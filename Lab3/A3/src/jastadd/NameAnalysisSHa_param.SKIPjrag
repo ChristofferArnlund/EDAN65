@@ -59,20 +59,11 @@ aspect NameAnalysis {
 		getStmtBlock().checkNames(err, symbols);
 	}
 
-	public void While.checkNames(PrintStream err, SymbolTable symbols) {
-		getExpr().checkNames(err, symbols);
-		symbols = symbols.push();		
-		getStmtBlock().checkNames(err, symbols);
-	}
-
-	public void If.checkNames(PrintStream err, SymbolTable symbols) {
-		getExpr().checkNames(err, symbols);
-		SymbolTable symbolsDo = symbols.push();		
-		getDo().checkNames(err, symbolsDo);
-		if(hasElse()) {
-			SymbolTable symbolsElse = symbols.push();
-			getElse().checkNames(err, symbolsElse);	
-		}
+	public void StmtBlock.checkNames(PrintStream err, SymbolTable symbols) {
+		symbols = symbols.push(); //"new namespace"
+		for(int i = 0; i < getNumStmt(); ++i) 
+			getStmt(i).checkNames(err, symbols);
+		//added "namespace" will pop
 	}
 
 	public void IdDecl.checkNames(PrintStream err, SymbolTable symbols) {

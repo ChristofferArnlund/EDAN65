@@ -14,6 +14,15 @@ import java.util.HashSet;
  */
 public class While extends Stmt implements Cloneable {
   /**
+   * @aspect NameAnalysis
+   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:62
+   */
+  public void checkNames(PrintStream err, SymbolTable symbols) {
+		getExpr().checkNames(err, symbols);
+		symbols = symbols.push();		
+		getStmtBlock().checkNames(err, symbols);
+	}
+  /**
    * @aspect PrettyPrint
    * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/PrettyPrint.jrag:70
    */

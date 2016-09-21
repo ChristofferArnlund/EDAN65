@@ -15,7 +15,7 @@ import java.util.HashSet;
 public class IdUse extends Expr implements Cloneable {
   /**
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:80
+   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:89
    */
   public void checkNames(PrintStream err, SymbolTable symbols) {
 		String id = getID();

@@ -15,7 +15,7 @@ import java.util.HashSet;
 public class IdDecl extends Stmt implements Cloneable {
   /**
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:69
+   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:78
    */
   public void checkNames(PrintStream err, SymbolTable symbols) {
 		String id = getID();

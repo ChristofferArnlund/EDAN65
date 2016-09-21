@@ -14,16 +14,6 @@ import java.util.HashSet;
  */
 public class StmtBlock extends ASTNode<ASTNode> implements Cloneable {
   /**
-   * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:62
-   */
-  public void checkNames(PrintStream err, SymbolTable symbols) {
-		symbols = symbols.push(); //"new namespace"
-		for(int i = 0; i < getNumStmt(); ++i) 
-			getStmt(i).checkNames(err, symbols);
-		//added "namespace" will pop
-	}
-  /**
    * @aspect PrettyPrint
    * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/PrettyPrint.jrag:63
    */

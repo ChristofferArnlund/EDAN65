@@ -81,7 +81,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    * Helper method
    * @return line number of this token
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:92
+   * @declaredat /home/marcus/git/EDAN65/Lab3/A3/src/jastadd/NameAnalysis.jrag:101
    */
   public int getLine() {
 		return getLine(getStart());
