@@ -1,0 +1,7 @@
+int l(int nbr) {
+
+}
+
+int m() {
+	return l(5 > 3);
+}

@@ -1,0 +1,13 @@
+aspect ParamChecker {
+	//All IdDecl has inherited function attribute
+	inh Func IdDecl.function();	
+
+	//If not defining function lets set them to UnknownFunc for IdDecl
+	eq Program.getChild().function() = unknownFunc();
+	
+	//Only when declaring a function is function attribute set to an "actual" function
+	eq Func.getFuncName().function() = this;
+
+	//Telling error to produce error(grötigt uttryck)
+	syn boolean FuncCall.wrongNbrCallParams() = getIdUse().decl().function().getNumFuncParams() != getNumExpr();
+}

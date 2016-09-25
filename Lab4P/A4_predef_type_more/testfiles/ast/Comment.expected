@@ -1,0 +1,15 @@
+Program
+  List
+    Func
+      IdDecl ID="a"
+      List
+      StmtBlock
+        List
+          IdDeclStmt
+            IdDecl ID="x"
+            Opt
+          IdDeclStmt
+            IdDecl ID="y"
+            Opt
+          Return
+            Numeral NUMERAL="0"

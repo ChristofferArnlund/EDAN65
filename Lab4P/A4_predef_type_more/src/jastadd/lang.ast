@@ -1,0 +1,41 @@
+Program ::= Func*;
+Func ::= FuncName:IdDecl FuncParams:IdDeclStmt* StmtBlock;
+StmtBlock ::= Stmt*;
+
+abstract Type;
+IntType: Type;
+BoolType: Type;
+UnknownType: Type ::= <ID>;
+
+UnknownFunc : Func;
+
+abstract Stmt;
+IdDeclStmt : Stmt ::= IdDecl [Expr];
+While : Stmt ::= Expr StmtBlock;
+If : Stmt ::= Expr Do:StmtBlock [Else:StmtBlock];
+Return : Stmt ::= Expr;
+FuncCallStmt : Stmt ::= FuncCall;
+Assign : Stmt ::= IdUseExpr Expr;
+
+UnknownDecl : IdDecl;
+
+abstract Expr;
+FuncCall : Expr ::= IdUse Expr*;
+Numeral : Expr ::= <NUMERAL>;
+IdUseExpr : Expr ::= IdUse;
+
+IdUse ::= <ID>;
+IdDecl ::= <ID>;
+
+abstract BinaryExpr : Expr ::= Left:Expr Right:Expr;
+Add : BinaryExpr;
+Mul: BinaryExpr;
+Sub : BinaryExpr;
+Div : BinaryExpr;
+Mod : BinaryExpr;
+Equals : BinaryExpr;
+Not  : BinaryExpr;
+Leq  : BinaryExpr;
+Le : BinaryExpr;
+Geq : BinaryExpr;
+Ge : BinaryExpr;

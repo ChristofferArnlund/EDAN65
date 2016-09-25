@@ -1,0 +1,14 @@
+aspect UnknownType {
+	syn nta UnknownType Program.unknownType() = new UnknownType("<Unknown>");
+
+	//Fix method for checking for unknown
+	syn boolean Type.isUnknownType() = false;
+	eq UnknownType.isUnknownType() = true;
+
+	//Broadcast UnknownType
+	inh UnknownType ASTNode.unknownType();
+	eq Program.getChild().unknownType() = unknownType();
+
+	//UnknownDecl has unknown type
+	syn Type UnknownDecl.type() = unknownType();
+}

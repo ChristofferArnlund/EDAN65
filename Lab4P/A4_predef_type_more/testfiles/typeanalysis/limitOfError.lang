@@ -1,0 +1,4 @@
+int m() {
+	int hello = 5 > 3;
+	int goodbye = hello % 3;
+}

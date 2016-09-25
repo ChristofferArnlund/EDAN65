@@ -1,0 +1,114 @@
+%class "LangParser";
+%package "lang.ast";
+
+%embed {:
+	static public class SyntaxError extends RuntimeException { public SyntaxError(String msg) {super(msg);}}
+	// Disable syntax error recovery
+	protected void recoverFromError(Symbol token, TokenStream in) {
+		throw new SyntaxError("Cannot recover from the syntax error");
+	}
+:};
+
+%terminals ID, INT, LPAR, RPAR, LBRA, RBRA, NUMERAL, ASSIGN, SEMICOLON, ADD, MUL, SUB, DIV, MOD, LE, GE, EQUALS, NOT, LEQ, GEQ, WHILE, IF, ELSE, RETURN, COMMA;
+
+%typeof program = "Program";
+%typeof func_list = "List";
+%typeof stmt_list = "List";
+%typeof opt_stmt_list = "StmtBlock";
+%typeof param_decl_list = "List";
+%typeof call_param_list = "List";
+%typeof call_param = "Expr";
+%typeof stmt = "Stmt";
+%typeof func = "Func";
+%typeof id_decl_stmt = "IdDeclStmt";
+%typeof numeral = "Numeral";
+%typeof num_expr = "Expr";
+%typeof expr = "Expr";
+%typeof term = "Expr";
+%typeof factor = "Expr";
+%typeof whileStmt = "While";
+%typeof ifStmt = "If";
+%typeof return_stmt = "Return";
+%typeof param = "IdDeclStmt";
+%typeof funcCall = "FuncCallStmt";
+%typeof nestedFuncCall = "FuncCall";
+%typeof id_assign = "Assign";
+%typeof id_use_expr = "IdUseExpr";
+%typeof id_decl = "IdDecl";
+%typeof id_use = "IdUse";
+
+%goal program;
+
+program = func_list.a {: return new Program(a); :} ;
+
+func_list = func.a {: return new List().add(a); :} 
+	  | func_list.a func.b {: return a.add(b); :};
+
+func = INT id_decl.id LPAR RPAR LBRA opt_stmt_list.b RBRA {: return new Func(id, new List(),b); :}
+     | INT id_decl.id LPAR param_decl_list.a RPAR LBRA opt_stmt_list.b RBRA {: return new Func(id, a, b); :};
+
+funcCall = id_use.a LPAR call_param_list.b RPAR SEMICOLON {: return new FuncCallStmt(new FuncCall(a, b)); :}
+	 | id_use.a LPAR RPAR SEMICOLON {: return new FuncCallStmt(new FuncCall(a, new List())); :};
+
+nestedFuncCall = id_use.a LPAR call_param_list.b RPAR {: return new FuncCall(a, b); :}
+	       | id_use.a LPAR RPAR {: return new FuncCall(a, new List()); :};
+
+call_param_list = call_param.a {: return new List().add(a); :}
+	        | call_param_list.a COMMA call_param.b {: return a.add(b); :};
+
+call_param = expr.a {: return a; :}; 
+
+param_decl_list = param.a {: return new List().add(a); :}
+	        | param_decl_list.a COMMA param.b {: return a.add(b); :};
+
+param = INT id_decl.a {: return new IdDeclStmt(a, new Opt()); :};
+
+opt_stmt_list = /* Eps */ {: return new StmtBlock(new List()); :} 
+              | stmt_list.a {: return new StmtBlock(a); :};
+
+stmt_list = stmt.a {: return new List().add(a); :} 
+          | stmt_list.a stmt.b {: return a.add(b); :};
+
+stmt = id_decl_stmt | id_assign | whileStmt | ifStmt | return_stmt | funcCall;
+
+id_assign = id_use_expr.a ASSIGN expr.b SEMICOLON {: return new Assign(a, b); :};
+
+return_stmt = RETURN expr.a SEMICOLON{:  return new Return(a); :};
+
+whileStmt = WHILE LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA {: return new While(a, b); :};
+
+ifStmt = IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA {: return new If(a, b, new Opt()); :}
+       | IF LPAR expr.a RPAR LBRA opt_stmt_list.b RBRA ELSE LBRA opt_stmt_list.c RBRA {: return new If(a, b, new Opt(c)); :};
+
+id_decl_stmt = INT id_decl.a SEMICOLON {:  return new IdDeclStmt(a, new Opt()); :} 
+             | INT id_decl.a ASSIGN expr.b SEMICOLON {:  return new IdDeclStmt(a, new Opt(b)); :};
+
+expr = num_expr.a LE num_expr.b {: return new Le(a, b); :} 
+     | num_expr.a GE num_expr.b {: return new Ge(a, b); :} 
+     | num_expr.a LEQ num_expr.b {: return new Leq(a, b); :} 
+     | num_expr.a GEQ num_expr.b {: return new Geq(a, b); :} 
+     | num_expr.a NOT num_expr.b {: return new Not(a, b); :} 
+     | num_expr.a EQUALS num_expr.b {: return new Equals(a, b); :} 
+     | num_expr;
+
+num_expr = num_expr.a ADD term.b {: return new Add(a, b); :} 
+	 | num_expr.a SUB term.b {: return new Sub(a, b); :}
+	 | term;
+
+term = term.a MOD factor.b {: return new Mod(a, b); :} 
+     | term.a DIV factor.b {: return new Div(a, b); :}	
+     | term.a MUL factor.b {: return new Mul(a, b); :} 
+     | factor;
+
+factor = id_use_expr 
+       | numeral 
+       | LPAR num_expr.a RPAR {: return a; :} 
+       | nestedFuncCall;
+
+id_use_expr = id_use.a {: return new IdUseExpr(a); :};
+
+id_use = ID.a {: return new IdUse(a); :};
+
+id_decl = ID.a {: return new IdDecl(a); :};
+
+numeral = NUMERAL.a {: return new Numeral(a); :};
