@@ -135,7 +135,7 @@ protected boolean compatibleType_visited = false;
 /** @apilevel internal */
 protected boolean expectedType_visited = false;
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:56
+    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:60
     if (!compatibleType()) {
       {
         Program target = (Program) (program());

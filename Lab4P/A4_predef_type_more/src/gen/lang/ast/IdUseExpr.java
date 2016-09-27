@@ -161,6 +161,24 @@ public class IdUseExpr extends Expr implements Cloneable {
     return (IdUse) getChildNoTransform(0);
   }
 /** @apilevel internal */
+protected boolean isCircular_visited = false;
+  /**
+   * @attribute syn
+   * @aspect CircularDefinitions
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:98
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:98")
+  public boolean isCircular() {
+    if (isCircular_visited) {
+      throw new RuntimeException("Circular definition of attribute IdUseExpr.isCircular().");
+    }
+    isCircular_visited = true;
+    boolean isCircular_value = inExprOf(getIdUse().decl());
+    isCircular_visited = false;
+    return isCircular_value;
+  }
+/** @apilevel internal */
 protected boolean type_visited = false;
   /**
    * @attribute syn
@@ -178,8 +196,40 @@ protected boolean type_visited = false;
     type_visited = false;
     return type_value;
   }
+  /**
+   * @attribute inh
+   * @aspect CircularDefinitions
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:101
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:101")
+  public boolean inExprOf(IdDecl decl) {
+    Object _parameters = decl;
+    if (inExprOf_IdDecl_visited == null) inExprOf_IdDecl_visited = new java.util.HashSet(4);
+    if (inExprOf_IdDecl_visited.contains(_parameters)) {
+      throw new RuntimeException("Circular definition of attribute IdUseExpr.inExprOf(IdDecl).");
+    }
+    inExprOf_IdDecl_visited.add(_parameters);
+    boolean inExprOf_IdDecl_value = getParent().Define_inExprOf(this, null, decl);
+    inExprOf_IdDecl_visited.remove(_parameters);
+    return inExprOf_IdDecl_value;
+  }
+/** @apilevel internal */
+protected java.util.Set inExprOf_IdDecl_visited;
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:48
+    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:40
+    if (isCircular()) {
+      {
+        Program target = (Program) (program());
+        java.util.Set<ASTNode> contributors = _map.get(target);
+        if (contributors == null) {
+          contributors = new java.util.LinkedHashSet<ASTNode>();
+          _map.put((ASTNode) target, contributors);
+        }
+        contributors.add(this);
+      }
+    }
+    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:52
     if (!getIdUse().decl().isVariable() && !getIdUse().decl().isUnknown()) {
       {
         Program target = (Program) (program());
@@ -195,6 +245,9 @@ protected boolean type_visited = false;
   }
   protected void contributeTo_Program_errors(Set<ErrorMessage> collection) {
     super.contributeTo_Program_errors(collection);
+    if (isCircular()) {
+      collection.add(error("Variable '" + getIdUse().getID() + " is circular!"));
+    }
     if (!getIdUse().decl().isVariable() && !getIdUse().decl().isUnknown()) {
       collection.add(error("'" + getIdUse().getID() + "' is not a variable"));
     }

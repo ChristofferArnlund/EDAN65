@@ -277,10 +277,10 @@ protected boolean wrongNbrCallParams_visited = false;
   /**
    * @attribute syn
    * @aspect ParamChecker
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:12
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:20
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:12")
+  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:20")
   public boolean wrongNbrCallParams() {
     if (wrongNbrCallParams_visited) {
       throw new RuntimeException("Circular definition of attribute FuncCall.wrongNbrCallParams().");
@@ -308,7 +308,7 @@ protected boolean wrongNbrCallParams_visited = false;
     return true;
   }
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:40
+    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:44
     if (!getIdUse().decl().isFunction() && !getIdUse().decl().isUnknown()) {
       {
         Program target = (Program) (program());
@@ -320,7 +320,7 @@ protected boolean wrongNbrCallParams_visited = false;
         contributors.add(this);
       }
     }
-    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:44
+    // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/Errors.jrag:48
     if (wrongNbrCallParams()) {
       {
         Program target = (Program) (program());

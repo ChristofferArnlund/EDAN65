@@ -37,6 +37,10 @@ aspect ErrorContributions {
 		when decl().isUnknown()
 		to Program.errors() for program();
 
+	IdUseExpr contributes error("Variable '" + getIdUse().getID() + " is circular!")
+		when isCircular()
+		to Program.errors() for program();
+
 	FuncCall contributes error("Function call '" + getIdUse().getID() + "' does not point to function")
 		when !getIdUse().decl().isFunction() && !getIdUse().decl().isUnknown()
 		to Program.errors() for program();

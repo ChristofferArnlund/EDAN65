@@ -7,32 +7,31 @@
 	* both variables and functions share the same name space are the same as in assignment 3
 **/
 aspect NameAnalysis {
-	//Eq for computation of decl attribute in IdUse, lookup is inherited.
+	//Attribute for decl & inherited lookup
 	syn IdDecl IdUse.decl() = lookup(getID()); 
 	inh IdDecl IdUse.lookup(String name); 
-	
-	//isVar and isFunc for IdDecl inherited
-	inh boolean IdDecl.isFunction();
-	inh boolean IdDecl.isVariable();
-	eq Func.getFuncName().isFunction() = true;
-	eq Func.getFuncName().isVariable() = false;
-	eq IdDeclStmt.getIdDecl().isVariable() = true;
-	eq IdDeclStmt.getIdDecl().isFunction() = false;
 
-	inh IdDecl IdDecl.lookup(String name); 
+	//Attribute for multiplyDeclared and inherited lookup
 	syn boolean IdDecl.isMultiplyDeclared() {
 		IdDecl decl = lookup(getID());
 		return !decl.isUnknown() ? decl != this : false;
 	}
-
-	//StmtBlock tells its statements that if you dont know
-	//how to find the IdDecl then ask me!Declare before use will now only apply for variables
+	inh IdDecl IdDecl.lookup(String name); 	
+	
+	/*
+		StmtBlock tells its statements that if you dont know
+		how to find the IdDecl then ask me! Declare before use 
+		will now only apply for variables.
+	*/
 	eq StmtBlock.getStmt(int index).lookup(String name) {
 		IdDecl idDecl = localLookup(name, index);
 		return !idDecl.isUnknown() ? idDecl : lookup(name); 
 	}
+	
+	// Inherited lookup for StmtBlock
+	inh IdDecl StmtBlock.lookup(String name);
 
-	// Scanning stmtblock 
+	//Local scanning in StmtBlock
 	syn IdDecl StmtBlock.localLookup(String name, int until) {
 		for(int i = 0; i <= until; i++) {
 			Stmt stmt = getStmt(i);
@@ -43,16 +42,13 @@ aspect NameAnalysis {
 		return unknownDecl();
 	}
 
-	//StmtBlock inherits lookup from parent(nested blocks or function)
-	inh IdDecl StmtBlock.lookup(String name);
-
 	//IdDeclStmt(var) may declare something of use
 	syn IdDecl IdDeclStmt.localLookup(String name) {
  		return getIdDecl().getID().equals(name) ? getIdDecl() : unknownDecl();
 	}
 
 	//Scanning function for params matching name
-	eq Func.getStmtBlock().lookup(String name) {
+	eq Func.getChild().lookup(String name) {
 		for(int i = 0; i < getNumFuncParams(); i++) {
 			IdDecl decl = getFuncParams(i).getIdDecl();
 			if(decl.getID().equals(name))
@@ -64,21 +60,26 @@ aspect NameAnalysis {
 	//Inherit lookup method from program
 	inh IdDecl Func.lookup(String name);
 
-	//lookup for the children of Program(Funcs)
-	//First checks if the name is one of the predefinedFunctions.
+	/*
+		Lookup for children(Funcs) of Program. First
+		checks if name is a predefined function. If not
+		performs localLookup for userdefined functions.
+	*/
 	eq Program.getChild().lookup(String name) {
-		for(Func func : predefinedFunctions()) //Look for our predefined functions
-			if(func.getFuncName().getID().equals(name))
+		for(Func func : predefinedFunctions()) 
+			if(func.getFuncName().getID().equals(name)) 		
 				return func.getFuncName();
 		return localLookup(name);
 	}
 
-	//LocalLookup for Program checks if the name is one
-	//of the userdefined functions
+	/*
+		LocalLookup for Program checks if the name is one
+		of the userdefined functions.
+	*/
 	syn IdDecl Program.localLookup(String name) {
 		for(int i = 0; i < getNumFunc(); i++) {
 			IdDecl funcName = getFunc(i).getFuncName();			
-			if(funcName.getID().equals(name))
+			if(funcName.getID().equals(name)) 		
 				return funcName; 
 		}
 		return unknownDecl();
@@ -87,4 +88,21 @@ aspect NameAnalysis {
 	//Fallback if statement does not declare something visible outside
 	syn IdDecl Stmt.localLookup(String name) = unknownDecl();
 
+}
+
+/**
+	Checks for circular definitions
+**/
+aspect CircularDefinitions {
+	//I am circular if i am used in my definition
+	syn boolean IdUseExpr.isCircular() = inExprOf(getIdUse().decl());
+
+	//I dont know if i am in use in my def
+	inh boolean IdUseExpr.inExprOf(IdDecl decl);
+
+	//For all ids in the expr you are my definition	if 
+	eq IdDeclStmt.getExpr().inExprOf(IdDecl decl) = decl == getIdDecl();
+
+	//You cant be circular
+	eq Func.getChild().inExprOf(IdDecl decl) = false;
 }

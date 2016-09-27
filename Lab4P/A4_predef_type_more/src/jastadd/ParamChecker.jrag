@@ -1,4 +1,12 @@
 aspect ParamChecker {
+	//isVar and isFunc for IdDecl inherited
+	inh boolean IdDecl.isFunction();
+	inh boolean IdDecl.isVariable();
+	eq Func.getFuncName().isFunction() = true;
+	eq Func.getFuncName().isVariable() = false;
+	eq IdDeclStmt.getIdDecl().isVariable() = true;
+	eq IdDeclStmt.getIdDecl().isFunction() = false;	
+
 	//All IdDecl has inherited function attribute
 	inh Func IdDecl.function();	
 
