@@ -56,7 +56,10 @@ aspect NameAnalysis {
 		}
 		return lookup(name);
 	}
-
+	
+	//Funcname should look in program
+	eq Func.getFuncName().lookup(String name) = lookup(name);
+	
 	//Inherit lookup method from program
 	inh IdDecl Func.lookup(String name);
 
@@ -88,21 +91,4 @@ aspect NameAnalysis {
 	//Fallback if statement does not declare something visible outside
 	syn IdDecl Stmt.localLookup(String name) = unknownDecl();
 
-}
-
-/**
-	Checks for circular definitions
-**/
-aspect CircularDefinitions {
-	//I am circular if i am used in my definition
-	syn boolean IdUseExpr.isCircular() = inExprOf(getIdUse().decl());
-
-	//I dont know if i am in use in my def
-	inh boolean IdUseExpr.inExprOf(IdDecl decl);
-
-	//For all ids in the expr you are my definition	if 
-	eq IdDeclStmt.getExpr().inExprOf(IdDecl decl) = decl == getIdDecl();
-
-	//You cant be circular
-	eq Func.getChild().inExprOf(IdDecl decl) = false;
 }

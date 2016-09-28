@@ -237,12 +237,12 @@ protected java.util.Set localLookup_String_visited;
     }
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:101
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/CircularDefinitions.jrag:9
    * @apilevel internal
    */
   public boolean Define_inExprOf(ASTNode _callerNode, ASTNode _childNode, IdDecl decl) {
     if (_callerNode == getExprOptNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:104
+      // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/CircularDefinitions.jrag:12
       return decl == getIdDecl();
     }
     else {
@@ -253,12 +253,12 @@ protected java.util.Set localLookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:4
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:4
    * @apilevel internal
    */
   public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:7
+      // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:7
       return true;
     }
     else {
@@ -269,12 +269,12 @@ protected java.util.Set localLookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:3
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:3
    * @apilevel internal
    */
   public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:8
+      // @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:8
       return false;
     }
     else {

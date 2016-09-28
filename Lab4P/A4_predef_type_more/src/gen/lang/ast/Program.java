@@ -274,10 +274,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:79
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:82
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:79")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:82")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -566,7 +566,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:11
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:3
    * @apilevel internal
    */
   public Func Define_function(ASTNode _callerNode, ASTNode _childNode) {
@@ -610,7 +610,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:4
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:4
    * @apilevel internal
    */
   public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
@@ -626,7 +626,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:3
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:3
    * @apilevel internal
    */
   public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {

@@ -277,10 +277,10 @@ protected boolean wrongNbrCallParams_visited = false;
   /**
    * @attribute syn
    * @aspect ParamChecker
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:20
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:12
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:20")
+  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:12")
   public boolean wrongNbrCallParams() {
     if (wrongNbrCallParams_visited) {
       throw new RuntimeException("Circular definition of attribute FuncCall.wrongNbrCallParams().");

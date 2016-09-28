@@ -1,0 +1,9 @@
+aspect IdUseTypeAnalysis {
+	//isVar and isFunc for IdDecl inherited
+	inh boolean IdDecl.isFunction();
+	inh boolean IdDecl.isVariable();
+	eq Func.getFuncName().isFunction() = true;
+	eq Func.getFuncName().isVariable() = false;
+	eq IdDeclStmt.getIdDecl().isVariable() = true;
+	eq IdDeclStmt.getIdDecl().isFunction() = false;	
+}

@@ -255,6 +255,42 @@ protected boolean isUnknown_visited = false;
   }
   /**
    * @attribute inh
+   * @aspect IdUseTypeAnalysis
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:3
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="IdUseTypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:3")
+  public boolean isFunction() {
+    if (isFunction_visited) {
+      throw new RuntimeException("Circular definition of attribute IdDecl.isFunction().");
+    }
+    isFunction_visited = true;
+    boolean isFunction_value = getParent().Define_isFunction(this, null);
+    isFunction_visited = false;
+    return isFunction_value;
+  }
+/** @apilevel internal */
+protected boolean isFunction_visited = false;
+  /**
+   * @attribute inh
+   * @aspect IdUseTypeAnalysis
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:4
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="IdUseTypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:4")
+  public boolean isVariable() {
+    if (isVariable_visited) {
+      throw new RuntimeException("Circular definition of attribute IdDecl.isVariable().");
+    }
+    isVariable_visited = true;
+    boolean isVariable_value = getParent().Define_isVariable(this, null);
+    isVariable_visited = false;
+    return isVariable_value;
+  }
+/** @apilevel internal */
+protected boolean isVariable_visited = false;
+  /**
+   * @attribute inh
    * @aspect NameAnalysis
    * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:19
    */
@@ -280,42 +316,6 @@ protected java.util.Set lookup_String_visited;
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
   @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:3")
-  public boolean isFunction() {
-    if (isFunction_visited) {
-      throw new RuntimeException("Circular definition of attribute IdDecl.isFunction().");
-    }
-    isFunction_visited = true;
-    boolean isFunction_value = getParent().Define_isFunction(this, null);
-    isFunction_visited = false;
-    return isFunction_value;
-  }
-/** @apilevel internal */
-protected boolean isFunction_visited = false;
-  /**
-   * @attribute inh
-   * @aspect ParamChecker
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:4
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:4")
-  public boolean isVariable() {
-    if (isVariable_visited) {
-      throw new RuntimeException("Circular definition of attribute IdDecl.isVariable().");
-    }
-    isVariable_visited = true;
-    boolean isVariable_value = getParent().Define_isVariable(this, null);
-    isVariable_visited = false;
-    return isVariable_value;
-  }
-/** @apilevel internal */
-protected boolean isVariable_visited = false;
-  /**
-   * @attribute inh
-   * @aspect ParamChecker
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:11
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:11")
   public Func function() {
     if (function_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.function().");

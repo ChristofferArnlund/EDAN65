@@ -639,7 +639,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:17
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:9
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute function
    */
@@ -719,7 +719,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:7
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:7
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isVariable
    */
@@ -739,7 +739,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/ParamChecker.jrag:8
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/IdUseTypeAnalysis.jrag:8
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isFunction
    */
@@ -799,7 +799,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:104
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/CircularDefinitions.jrag:12
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute inExprOf
    */

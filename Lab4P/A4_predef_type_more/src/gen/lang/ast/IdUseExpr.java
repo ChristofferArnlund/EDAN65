@@ -165,10 +165,10 @@ protected boolean isCircular_visited = false;
   /**
    * @attribute syn
    * @aspect CircularDefinitions
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:98
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/CircularDefinitions.jrag:6
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:98")
+  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/CircularDefinitions.jrag:6")
   public boolean isCircular() {
     if (isCircular_visited) {
       throw new RuntimeException("Circular definition of attribute IdUseExpr.isCircular().");
@@ -199,10 +199,10 @@ protected boolean type_visited = false;
   /**
    * @attribute inh
    * @aspect CircularDefinitions
-   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:101
+   * @declaredat /home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/CircularDefinitions.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/NameAnalysis.jrag:101")
+  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab4P/A4_predef_type_more/src/jastadd/CircularDefinitions.jrag:9")
   public boolean inExprOf(IdDecl decl) {
     Object _parameters = decl;
     if (inExprOf_IdDecl_visited == null) inExprOf_IdDecl_visited = new java.util.HashSet(4);
