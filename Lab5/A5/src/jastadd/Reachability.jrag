@@ -1,0 +1,12 @@
+import java.util.HashSet;
+import java.util.Set;
+aspect Reachability {
+	syn Set<Func> Func.reachable() circular [new HashSet<Func>()] {
+		Set<Func> reachable = new HashSet<Func>();
+		for(Func func : functionCalls()) {
+			reachable.add(func);
+			reachable.addAll(func.reachable());
+		}
+		return reachable;
+	}
+}

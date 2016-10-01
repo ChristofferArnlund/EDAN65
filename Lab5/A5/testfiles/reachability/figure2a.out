@@ -1,0 +1,3 @@
+reach(fac) = {fac}
+reach(f) = {fac, print}
+reach(main) = {fac, f, print}

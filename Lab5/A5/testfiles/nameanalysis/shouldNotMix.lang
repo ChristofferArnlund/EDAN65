@@ -1,0 +1,5 @@
+//Should not mix localvars with functions
+int m() {
+	int x = 5;
+	return x(); //should find x and complain about that
+}

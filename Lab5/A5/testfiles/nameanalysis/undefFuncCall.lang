@@ -1,0 +1,3 @@
+int m() {
+	return x(); //should not find x
+}

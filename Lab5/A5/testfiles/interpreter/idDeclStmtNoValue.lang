@@ -1,0 +1,4 @@
+int main() {
+	int x; //With java default to zero
+	print(x); //print zero
+}

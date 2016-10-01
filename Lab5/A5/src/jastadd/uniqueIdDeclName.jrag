@@ -1,0 +1,21 @@
+aspect uniqueIdDeclName {
+	syn String IdDecl.uniqueName() {
+		return uniqueNamePrefix() + getID();
+	}
+
+	inh String IdDecl.uniqueNamePrefix();
+
+	eq StmtBlock.getStmt(int index).uniqueNamePrefix() {
+		return uniqueNamePrefix() + index + "_";
+	}
+
+	inh String StmtBlock.uniqueNamePrefix();
+
+	eq Func.getChild().uniqueNamePrefix() {
+		return "";	
+	}
+
+	eq Program.getChild().uniqueNamePrefix() {
+		return "<Unknown>";
+	}
+}

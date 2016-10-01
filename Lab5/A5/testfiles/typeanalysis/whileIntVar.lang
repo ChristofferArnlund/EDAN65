@@ -1,0 +1,6 @@
+int m() {
+	int k = 5;
+	while(k) { //Not ok k is int!
+		print(k);	
+	}
+}

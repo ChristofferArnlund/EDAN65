@@ -1,0 +1,6 @@
+reach(a) = {b, c, e, a, f, d}
+reach(b) = {c, b, e, a, f, d}
+reach(c) = {b, c, e, a, f, d}
+reach(d) = {b, c, e, a, f, d}
+reach(e) = {b, c, a, e, f, d}
+reach(f) = {b, c, a, e, f, d}

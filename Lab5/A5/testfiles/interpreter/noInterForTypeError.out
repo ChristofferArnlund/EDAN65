@@ -1,0 +1,4 @@
+*************************************
+* Interpreter halt, semantic error! *
+*************************************
+Error at line 2: Expected type INT but found BOOL

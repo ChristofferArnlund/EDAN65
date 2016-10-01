@@ -1,0 +1,8 @@
+int m() {
+	int k = 5;
+	while(k == 0) {
+		int imshy = 1337;
+	}
+	int q = imshy; //imshy should not be visible
+}
+

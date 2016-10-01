@@ -1,0 +1,5 @@
+int m() {
+	int mmk = 1337; //ok
+	int mmk = 1336; //redecl be mad!
+}
+

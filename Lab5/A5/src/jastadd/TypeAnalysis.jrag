@@ -1,0 +1,52 @@
+aspect TypeAnalysis {
+	//Ntas for int&bool with broadcast
+	syn String Type.getDesc() = "Unknown";
+	syn nta IntType Program.intType() = new IntType(); 
+	inh IntType ASTNode.intType();				
+	eq Program.getChild().intType() = intType();
+	syn String IntType.getDesc() = "INT";
+
+	syn nta BoolType Program.boolType() = new BoolType(); 
+	inh BoolType ASTNode.boolType();
+	eq Program.getChild().boolType() = boolType();
+	syn String BoolType.getDesc() = "BOOL";
+
+	//If someone does not set type default to unknown
+	syn Type Expr.type() = unknownType();
+
+	//Vars, params, return is type int
+	syn Type IdDecl.type() = intType();
+	syn Type IdUseExpr.type() = intType();
+	syn Type Numeral.type() = intType();
+
+	//Arithmetical operations is of type int 
+	syn Type BinaryExpr.type() = intType();
+
+	//Logical operations is of type bool(overrides arith)
+	syn Type Equals.type() = boolType();
+	syn Type Not.type() = boolType();
+	syn Type Leq.type() = boolType();
+	syn Type Le.type() = boolType();
+	syn Type Geq.type() = boolType();
+	syn Type Ge.type() = boolType();
+
+	//Parent will tell what is expected of the expr
+	inh Type Expr.expectedType();
+
+	//Set expectations from the parent on the expr for
+	//error checking
+	eq IdDeclStmt.getExpr().expectedType() = intType();
+	eq While.getExpr().expectedType() = boolType();
+	eq If.getExpr().expectedType() = boolType();
+	eq Return.getExpr().expectedType() = intType();
+	eq Assign.getExpr().expectedType() = intType();
+	eq Assign.getIdUseExpr().expectedType() = intType();
+	eq FuncCall.getExpr().expectedType() = intType();
+	eq FuncCallStmt.getFuncCall().expectedType() = intType();
+
+	//All children to Binary exprs (Left & Right is expected to be ints)
+	eq BinaryExpr.getChild().expectedType() = intType();
+
+	//Compatible check(used in error reporting)
+	syn boolean Expr.compatibleType() = type() == expectedType() || type().isUnknownType();
+}

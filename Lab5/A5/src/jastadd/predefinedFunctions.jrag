@@ -1,0 +1,9 @@
+aspect PredefinedFunctions {
+	//Ntas for predefined functions
+	syn nta List<Func> Program.predefinedFunctions() {
+		List<Func> list = new List<Func>();
+		list.add(new Func(new IdDecl("print"), new List().add(new FuncParam(new IdDecl("output"))), new StmtBlock()));
+		list.add(new Func(new IdDecl("read"), new List(), new StmtBlock()));
+		return list;
+	}
+}

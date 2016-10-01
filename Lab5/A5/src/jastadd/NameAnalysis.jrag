@@ -1,0 +1,94 @@
+/**
+	Name analysis for SimpliC. In the instructions it is stated that
+	* Declare before use will now only apply for variables:
+		Will be checked since StmtBlock only looks before use
+		Functions will be found in Program.lookup where the
+		entire program is searched.
+	* both variables and functions share the same name space are the same as in assignment 3
+**/
+aspect NameAnalysis {
+	//Attribute for decl & inherited lookup
+	syn IdDecl IdUse.decl() = lookup(getID()); 
+	inh IdDecl IdUse.lookup(String name); 
+
+	//Attribute for multiplyDeclared and inherited lookup
+	syn boolean IdDecl.isMultiplyDeclared() {
+		IdDecl decl = lookup(getID());
+		return !decl.isUnknown() ? decl != this : false;
+	}
+	inh IdDecl IdDecl.lookup(String name); 	
+	
+	/*
+		StmtBlock tells its statements that if you dont know
+		how to find the IdDecl then ask me! Declare before use 
+		will now only apply for variables.
+	*/
+	eq StmtBlock.getStmt(int index).lookup(String name) {
+		IdDecl idDecl = localLookup(name, index);
+		return !idDecl.isUnknown() ? idDecl : lookup(name); 
+	}
+	
+	// Inherited lookup for StmtBlock
+	inh IdDecl StmtBlock.lookup(String name);
+
+	//Local scanning in StmtBlock
+	syn IdDecl StmtBlock.localLookup(String name, int until) {
+		for(int i = 0; i <= until; i++) {
+			Stmt stmt = getStmt(i);
+			IdDecl idDecl = stmt.localLookup(name); //Do not ask up
+			if(!idDecl.isUnknown()) 
+				return idDecl;
+		}
+		return unknownDecl();
+	}
+
+	//IdDeclStmt(var) may declare something of use
+	syn IdDecl IdDeclStmt.localLookup(String name) {
+ 		return getIdDecl().getID().equals(name) ? getIdDecl() : unknownDecl();
+	}
+
+	//Scanning function for params matching name
+	eq Func.getChild().lookup(String name) {
+		for(int i = 0; i < getNumFuncParams(); i++) {
+			IdDecl decl = getFuncParams(i).getIdDecl();
+			if(decl.getID().equals(name))
+				return decl;
+		}
+		return lookup(name);
+	}
+	
+	//Funcname should look in program
+	eq Func.getFuncName().lookup(String name) = lookup(name);
+	
+	//Inherit lookup method from program
+	inh IdDecl Func.lookup(String name);
+
+	/*
+		Lookup for children(Funcs) of Program. First
+		checks if name is a predefined function. If not
+		performs localLookup for userdefined functions.
+	*/
+	eq Program.getChild().lookup(String name) {
+		for(Func func : predefinedFunctions()) 
+			if(func.getFuncName().getID().equals(name)) 		
+				return func.getFuncName();
+		return localLookup(name);
+	}
+
+	/*
+		LocalLookup for Program checks if the name is one
+		of the userdefined functions.
+	*/
+	syn IdDecl Program.localLookup(String name) {
+		for(int i = 0; i < getNumFunc(); i++) {
+			IdDecl funcName = getFunc(i).getFuncName();			
+			if(funcName.getID().equals(name)) 		
+				return funcName; 
+		}
+		return unknownDecl();
+	}
+
+	//Fallback if statement does not declare something visible outside
+	syn IdDecl Stmt.localLookup(String name) = unknownDecl();
+
+}

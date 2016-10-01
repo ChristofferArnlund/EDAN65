@@ -1,0 +1,24 @@
+Program
+  List
+    Func
+      IdDecl ID="a"
+      List
+      StmtBlock
+        List
+          IdDeclStmt
+            IdDecl ID="x"
+            Opt
+          While
+            Ge
+              IdUseExpr
+                IdUse ID="x"
+              Numeral NUMERAL="4"
+            StmtBlock
+              List
+                IdDeclStmt
+                  IdDecl ID="y"
+                  Opt
+          While
+            Numeral NUMERAL="1"
+            StmtBlock
+              List
