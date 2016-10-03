@@ -415,10 +415,10 @@ protected boolean isUnknownFunc_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownFunc
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7")
+  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9")
   public boolean isUnknownFunc() {
     if (isUnknownFunc_visited) {
       throw new RuntimeException("Circular definition of attribute Func.isUnknownFunc().");
@@ -607,4 +607,25 @@ protected boolean Func_functionCalls_visited = false;
   /** @apilevel internal */
   protected Set<Func> Func_functionCalls_value;
 
+  protected void collect_contributors_Program_deadFuncs(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
+    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:11
+    if (!program().mainFuncReachable().contains(this) && !this.getFuncName().getID().equals("main")) {
+      {
+        Program target = (Program) (program());
+        java.util.Set<ASTNode> contributors = _map.get(target);
+        if (contributors == null) {
+          contributors = new java.util.LinkedHashSet<ASTNode>();
+          _map.put((ASTNode) target, contributors);
+        }
+        contributors.add(this);
+      }
+    }
+    super.collect_contributors_Program_deadFuncs(_root, _map);
+  }
+  protected void contributeTo_Program_deadFuncs(Set<Func> collection) {
+    super.contributeTo_Program_deadFuncs(collection);
+    if (!program().mainFuncReachable().contains(this) && !this.getFuncName().getID().equals("main")) {
+      collection.add(this);
+    }
+  }
 }

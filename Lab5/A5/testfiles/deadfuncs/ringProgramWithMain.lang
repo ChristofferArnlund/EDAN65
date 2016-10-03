@@ -1,0 +1,8 @@
+int main() {a();}
+int a() {b();}
+int b() {c();}
+int c() {d();}
+int d() {e();}
+int e() {f();}
+int f() {a();}
+

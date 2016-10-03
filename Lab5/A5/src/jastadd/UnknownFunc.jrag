@@ -4,6 +4,8 @@ aspect UnknownFunc {
 	inh UnknownFunc ASTNode.unknownFunc();
 	eq Program.getChild().unknownFunc() = unknownFunc();
 
+	syn Func UnknownDecl.function() = unknownFunc();
+
 	syn boolean Func.isUnknownFunc() = false;
 	eq UnknownFunc.isUnknownFunc() = true;
 }

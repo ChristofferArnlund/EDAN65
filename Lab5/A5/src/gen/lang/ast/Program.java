@@ -77,17 +77,22 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
     Program_errors_computed = false;
     
     Program_errors_value = null;
+    Program_deadFuncs_visited = false;
+    Program_deadFuncs_computed = false;
+    
+    Program_deadFuncs_value = null;
     contributorMap_Program_errors = null;
+    contributorMap_Program_deadFuncs = null;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:41
+   * @declaredat ASTNode:46
    */
   public Program clone() throws CloneNotSupportedException {
     Program node = (Program) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:46
+   * @declaredat ASTNode:51
    */
   public Program copy() {
     try {
@@ -107,7 +112,7 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:65
+   * @declaredat ASTNode:70
    */
   @Deprecated
   public Program fullCopy() {
@@ -118,7 +123,7 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:75
+   * @declaredat ASTNode:80
    */
   public Program treeCopyNoTransform() {
     Program tree = (Program) copy();
@@ -139,7 +144,7 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:95
+   * @declaredat ASTNode:100
    */
   public Program treeCopy() {
     Program tree = (Program) copy();
@@ -155,7 +160,7 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:109
+   * @declaredat ASTNode:114
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -280,6 +285,19 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
     if (contributorMap_Program_errors == null) {
       contributorMap_Program_errors = new java.util.IdentityHashMap<ASTNode, java.util.Set<ASTNode>>();
       collect_contributors_Program_errors(this, contributorMap_Program_errors);
+    }
+  }
+
+  /**
+   * @aspect <NoAspect>
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
+   */
+  protected java.util.Map<ASTNode, java.util.Set<ASTNode>> contributorMap_Program_deadFuncs = null;
+
+  protected void survey_Program_deadFuncs() {
+    if (contributorMap_Program_deadFuncs == null) {
+      contributorMap_Program_deadFuncs = new java.util.IdentityHashMap<ASTNode, java.util.Set<ASTNode>>();
+      collect_contributors_Program_deadFuncs(this, contributorMap_Program_deadFuncs);
     }
   }
 
@@ -505,6 +523,24 @@ protected boolean unknownType_visited = false;
     state().leaveLazyAttribute();
     unknownType_visited = false;
     return unknownType_value;
+  }
+/** @apilevel internal */
+protected boolean mainFuncReachable_visited = false;
+  /**
+   * @attribute syn
+   * @aspect deadFuncs
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:9
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="deadFuncs", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:9")
+  public Set<Func> mainFuncReachable() {
+    if (mainFuncReachable_visited) {
+      throw new RuntimeException("Circular definition of attribute Program.mainFuncReachable().");
+    }
+    mainFuncReachable_visited = true;
+    Set<Func> mainFuncReachable_value = localLookup("main").function().reachable();
+    mainFuncReachable_visited = false;
+    return mainFuncReachable_value;
   }
 /** @apilevel internal */
 protected boolean predefinedFunctions_visited = false;
@@ -736,5 +772,52 @@ protected boolean Program_errors_visited = false;
 
   /** @apilevel internal */
   protected Set<ErrorMessage> Program_errors_value;
+
+/** @apilevel internal */
+protected boolean Program_deadFuncs_visited = false;
+  /**
+   * @attribute coll
+   * @aspect deadFuncs
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.COLL)
+  @ASTNodeAnnotation.Source(aspect="deadFuncs", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4")
+  public Set<Func> deadFuncs() {
+    ASTNode$State state = state();
+    if (Program_deadFuncs_computed) {
+      return Program_deadFuncs_value;
+    }
+    if (Program_deadFuncs_visited) {
+      throw new RuntimeException("Circular definition of attribute Program.deadFuncs().");
+    }
+    Program_deadFuncs_visited = true;
+    state().enterLazyAttribute();
+    Program_deadFuncs_value = deadFuncs_compute();
+    Program_deadFuncs_computed = true;
+    state().leaveLazyAttribute();
+    Program_deadFuncs_visited = false;
+    return Program_deadFuncs_value;
+  }
+  /** @apilevel internal */
+  private Set<Func> deadFuncs_compute() {
+    ASTNode node = this;
+    while (node != null && !(node instanceof Program)) {
+      node = node.getParent();
+    }
+    Program root = (Program) node;
+    root.survey_Program_deadFuncs();
+    Set<Func> _computedValue = new TreeSet<Func>();
+    if (root.contributorMap_Program_deadFuncs.containsKey(this)) {
+      for (ASTNode contributor : root.contributorMap_Program_deadFuncs.get(this)) {
+        contributor.contributeTo_Program_deadFuncs(_computedValue);
+      }
+    }
+    return _computedValue;
+  }
+  /** @apilevel internal */
+  protected boolean Program_deadFuncs_computed = false;
+
+  /** @apilevel internal */
+  protected Set<Func> Program_deadFuncs_value;
 
 }

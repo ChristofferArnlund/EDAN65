@@ -190,6 +190,24 @@ protected boolean isUnknown_visited = false;
     return isUnknown_value;
   }
 /** @apilevel internal */
+protected boolean function_visited = false;
+  /**
+   * @attribute syn
+   * @aspect UnknownFunc
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7")
+  public Func function() {
+    if (function_visited) {
+      throw new RuntimeException("Circular definition of attribute UnknownDecl.function().");
+    }
+    function_visited = true;
+    Func function_value = unknownFunc();
+    function_visited = false;
+    return function_value;
+  }
+/** @apilevel internal */
 protected boolean type_visited = false;
   /**
    * @attribute syn
