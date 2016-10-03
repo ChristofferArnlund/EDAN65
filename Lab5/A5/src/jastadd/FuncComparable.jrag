@@ -1,0 +1,7 @@
+aspect FuncComparable {
+	public class Func implements Comparable<Func> {
+		public int compareTo(Func otherFunc) {
+			return getFuncName().getID().compareTo(otherFunc.getFuncName().getID());
+		}
+	}
+}

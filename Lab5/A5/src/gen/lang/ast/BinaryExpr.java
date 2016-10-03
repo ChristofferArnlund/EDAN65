@@ -9,7 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
-import java.util.HashSet;
 /**
  * @ast node
  * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:31
@@ -19,14 +18,14 @@ import java.util.HashSet;
 public abstract class BinaryExpr extends Expr implements Cloneable {
   /**
    * @aspect ExprComputation
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:97
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:96
    */
   public int eval(ActivationRecord actRec) {
 		return evalOp(getLeft().eval(actRec), getRight().eval(actRec));
 	}
   /**
    * @aspect ExprComputation
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:102
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:101
    */
   public abstract int evalOp(int l, int r);
   /**

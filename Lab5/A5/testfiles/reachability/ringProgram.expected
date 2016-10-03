@@ -1,6 +1,6 @@
-reach(a) = {b, c, e, a, f, d}
-reach(b) = {c, b, e, a, f, d}
-reach(c) = {b, c, e, a, f, d}
-reach(d) = {b, c, e, a, f, d}
-reach(e) = {b, c, a, e, f, d}
-reach(f) = {b, c, a, e, f, d}
+reach(a) = {a, b, c, d, e, f}
+reach(b) = {a, b, c, d, e, f}
+reach(c) = {a, b, c, d, e, f}
+reach(d) = {a, b, c, d, e, f}
+reach(e) = {a, b, c, d, e, f}
+reach(f) = {a, b, c, d, e, f}

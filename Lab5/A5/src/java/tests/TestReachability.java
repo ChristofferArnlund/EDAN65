@@ -37,9 +37,9 @@ public class TestReachability extends AbstractParameterizedTest {
 	 */
 	@Test
 	public void runTest() throws Exception {
-		PrintStream out = System.out;
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(baos)); //hijack
+		//PrintStream out = System.out;
+		//ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		//System.setOut(new PrintStream(baos)); //hijack
 		StringBuilder sb = new StringBuilder();
 		try{
 			Program program = (Program) parse(inFile);
@@ -68,9 +68,9 @@ public class TestReachability extends AbstractParameterizedTest {
 			sb.append("***********************************************").append("\n");
 			System.out.println(e.getMessage());
 		}
-		sb.append(baos.toString());
+		//sb.append(baos.toString());
 		compareOutput(sb.toString(), outFile, expectedFile);
-		System.setOut(out);
+		//System.setOut(out);
 	}
 
 	@SuppressWarnings("javadoc")

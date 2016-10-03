@@ -1,8 +1,8 @@
 import java.util.Set;
-import java.util.HashSet;
+import java.util.TreeSet;
 aspect callGraphAnalysis {
 	//Collection of functions called from a function
-	coll Set<Func> Func.functionCalls() [new HashSet<Func>()]
+	coll Set<Func> Func.functionCalls() [new TreeSet<Func>()]
 	with add
 	root Func;
 

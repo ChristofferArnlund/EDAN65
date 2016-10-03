@@ -9,7 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
-import java.util.HashSet;
 /**
  * @ast node
  * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:37
@@ -19,7 +18,7 @@ import java.util.HashSet;
 public class Equals extends BinaryExpr implements Cloneable {
   /**
    * @aspect ExprComputation
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:124
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:123
    */
   public int evalOp(int l, int r) {
 		return l == r ? 1 : 0;

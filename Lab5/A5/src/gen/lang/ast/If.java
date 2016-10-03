@@ -9,7 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
-import java.util.HashSet;
 /**
  * @ast node
  * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:16
@@ -19,7 +18,7 @@ import java.util.HashSet;
 public class If extends Stmt implements Cloneable {
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:62
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:61
    */
   public void eval(ActivationRecord actRec) throws ReturnException {
 		if(getExpr().eval(actRec) == 1)

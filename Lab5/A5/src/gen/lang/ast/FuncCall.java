@@ -9,7 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
-import java.util.HashSet;
 /**
  * @ast node
  * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:24
@@ -25,9 +24,8 @@ public class FuncCall extends Expr implements Cloneable {
 		ActivationRecord newActRec = new ActivationRecord();
 		Func func = getIdUse().decl().function();
 		Iterator<Expr> exprItr = getExprs().iterator();
-		for(FuncParam fParam : func.getFuncParamss()) {
+		for(FuncParam fParam : func.getFuncParamss()) 
 			newActRec.put(fParam.getIdDecl().getID(), exprItr.next().eval(actRec));
-		}
 		return func.eval(newActRec);
 	}
   /**

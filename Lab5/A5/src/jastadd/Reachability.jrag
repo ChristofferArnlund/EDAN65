@@ -1,8 +1,8 @@
-import java.util.HashSet;
+import java.util.TreeSet;
 import java.util.Set;
 aspect Reachability {
-	syn Set<Func> Func.reachable() circular [new HashSet<Func>()] {
-		Set<Func> reachable = new HashSet<Func>();
+	syn Set<Func> Func.reachable() circular [new TreeSet<Func>()] {
+		Set<Func> reachable = new TreeSet<Func>();
 		for(Func func : functionCalls()) {
 			reachable.add(func);
 			reachable.addAll(func.reachable());

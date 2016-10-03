@@ -9,17 +9,24 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
-import java.util.HashSet;
 /**
  * @ast node
  * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:2
  * @production Func : {@link ASTNode} ::= <span class="component">FuncName:{@link IdDecl}</span> <span class="component">FuncParams:{@link FuncParam}*</span> <span class="component">{@link StmtBlock}</span>;
 
  */
-public class Func extends ASTNode<ASTNode> implements Cloneable {
+public class Func extends ASTNode<ASTNode> implements Cloneable, Comparable<Func> {
+  /**
+   * @aspect FuncComparable
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/FuncComparable.jrag:3
+   */
+  
+		public int compareTo(Func otherFunc) {
+			return getFuncName().getID().compareTo(otherFunc.getFuncName().getID());
+		}
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:37
+   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:36
    */
   public int eval(ActivationRecord actRec) {
 		if(getFuncName().getID().equals("print"))
@@ -361,7 +368,7 @@ protected ASTNode$State.Cycle reachable_cycle = null;
     ASTNode$State state = state();
     if (!reachable_initialized) {
       reachable_initialized = true;
-      reachable_value = new HashSet<Func>();
+      reachable_value = new TreeSet<Func>();
     }
     if (!state.inCircle() || state.calledByLazyAttribute()) {
       state.enterCircle();
@@ -396,7 +403,7 @@ protected ASTNode$State.Cycle reachable_cycle = null;
   }
   /** @apilevel internal */
   private Set<Func> reachable_compute() {
-  		Set<Func> reachable = new HashSet<Func>();
+  		Set<Func> reachable = new TreeSet<Func>();
   		for(Func func : functionCalls()) {
   			reachable.add(func);
   			reachable.addAll(func.reachable());
@@ -586,7 +593,7 @@ protected boolean Func_functionCalls_visited = false;
     }
     Func root = (Func) node;
     root.survey_Func_functionCalls();
-    Set<Func> _computedValue = new HashSet<Func>();
+    Set<Func> _computedValue = new TreeSet<Func>();
     if (root.contributorMap_Func_functionCalls.containsKey(this)) {
       for (ASTNode contributor : root.contributorMap_Func_functionCalls.get(this)) {
         contributor.contributeTo_Func_functionCalls(_computedValue);

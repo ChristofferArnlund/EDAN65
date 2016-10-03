@@ -28,9 +28,8 @@ aspect Interp {
 		ActivationRecord newActRec = new ActivationRecord();
 		Func func = getIdUse().decl().function();
 		Iterator<Expr> exprItr = getExprs().iterator();
-		for(FuncParam fParam : func.getFuncParamss()) {
+		for(FuncParam fParam : func.getFuncParamss()) 
 			newActRec.put(fParam.getIdDecl().getID(), exprItr.next().eval(actRec));
-		}
 		return func.eval(newActRec);
 	}
 
