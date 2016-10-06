@@ -9,9 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:11
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:11
  * @production UnknownFunc : {@link Func};
 
  */
@@ -307,10 +308,10 @@ protected boolean isUnknownFunc_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownFunc
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9")
+  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9")
   public boolean isUnknownFunc() {
     if (isUnknownFunc_visited) {
       throw new RuntimeException("Circular definition of attribute Func.isUnknownFunc().");

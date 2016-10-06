@@ -9,9 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:21
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:21
  * @production UnknownDecl : {@link IdDecl};
 
  */
@@ -176,10 +177,10 @@ protected boolean isUnknown_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownDecl
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7")
+  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7")
   public boolean isUnknown() {
     if (isUnknown_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.isUnknown().");
@@ -194,10 +195,10 @@ protected boolean function_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownFunc
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7")
+  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:7")
   public Func function() {
     if (function_visited) {
       throw new RuntimeException("Circular definition of attribute UnknownDecl.function().");
@@ -212,10 +213,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownType
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:13
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:13
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:13")
+  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:13")
   public Type type() {
     if (type_visited) {
       throw new RuntimeException("Circular definition of attribute UnknownDecl.type().");

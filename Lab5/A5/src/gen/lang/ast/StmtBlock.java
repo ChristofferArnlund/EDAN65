@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:4
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:4
  * @production StmtBlock : {@link ASTNode} ::= <span class="component">{@link Stmt}*</span>;
 
  */
 public class StmtBlock extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:47
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:52
    */
   public void eval(ActivationRecord actRec) throws ReturnException {
 		for(Stmt stmt : getStmts())
@@ -261,10 +262,10 @@ protected java.util.Set localLookup_String_int_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:35
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:35
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:35")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:35")
   public IdDecl localLookup(String name, int until) {
     java.util.List _parameters = new java.util.ArrayList(2);
     _parameters.add(name);
@@ -290,10 +291,10 @@ protected java.util.Set localLookup_String_int_visited;
   /**
    * @attribute inh
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:32
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:32
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:32")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:32")
   public IdDecl lookup(String name) {
     Object _parameters = name;
     if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
@@ -310,10 +311,10 @@ protected java.util.Set lookup_String_visited;
   /**
    * @attribute inh
    * @aspect uniqueIdDeclName
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:12
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:12
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="uniqueIdDeclName", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:12")
+  @ASTNodeAnnotation.Source(aspect="uniqueIdDeclName", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:12")
   public String uniqueNamePrefix() {
     if (uniqueNamePrefix_visited) {
       throw new RuntimeException("Circular definition of attribute StmtBlock.uniqueNamePrefix().");
@@ -326,12 +327,12 @@ protected java.util.Set lookup_String_visited;
 /** @apilevel internal */
 protected boolean uniqueNamePrefix_visited = false;
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
    * @apilevel internal
    */
   public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
     if (_callerNode == getStmtListNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:26
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:26
       int index = _callerNode.getIndexOfChild(_childNode);
       {
       		IdDecl idDecl = localLookup(name, index);
@@ -346,12 +347,12 @@ protected boolean uniqueNamePrefix_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
    * @apilevel internal
    */
   public String Define_uniqueNamePrefix(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getStmtListNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:8
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:8
       int index = _callerNode.getIndexOfChild(_childNode);
       {
       		return uniqueNamePrefix() + index + "_";

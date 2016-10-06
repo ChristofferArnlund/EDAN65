@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:19
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:19
  * @production Assign : {@link Stmt} ::= <span class="component">{@link IdUseExpr}</span> <span class="component">{@link Expr}</span>;
 
  */
 public class Assign extends Stmt implements Cloneable {
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:73
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:78
    */
   public void eval(ActivationRecord actRec) {
 		actRec.put(getIdUseExpr().getIdUse().decl().uniqueName(), getExpr().eval(actRec));
@@ -198,16 +199,16 @@ public class Assign extends Stmt implements Cloneable {
     return (Expr) getChildNoTransform(1);
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:34
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:34
    * @apilevel internal
    */
   public Type Define_expectedType(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdUseExprNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:43
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:43
       return intType();
     }
     else if (_callerNode == getExprNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:42
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:42
       return intType();
     }
     else {

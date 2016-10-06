@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:2
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:2
  * @production Func : {@link ASTNode} ::= <span class="component">FuncName:{@link IdDecl}</span> <span class="component">FuncParams:{@link FuncParam}*</span> <span class="component">{@link StmtBlock}</span>;
 
  */
 public class Func extends ASTNode<ASTNode> implements Cloneable, Comparable<Func> {
   /**
    * @aspect FuncComparable
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/FuncComparable.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/FuncComparable.jrag:3
    */
   
 		public int compareTo(Func otherFunc) {
@@ -26,11 +27,18 @@ public class Func extends ASTNode<ASTNode> implements Cloneable, Comparable<Func
 		}
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:36
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:5
+   */
+  private static final Scanner scanner = new Scanner(System.in);
+  /**
+   * @aspect Interp
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:39
    */
   public int eval(ActivationRecord actRec) {
 		if(getFuncName().getID().equals("print"))
 			System.out.println(actRec.get("output"));
+		if(getFuncName().getID().equals("read"))
+			return scanner.nextInt();
 		try{
 			getStmtBlock().eval(actRec);
 		} catch (ReturnException e) {
@@ -332,7 +340,7 @@ public class Func extends ASTNode<ASTNode> implements Cloneable, Comparable<Func
   }
   /**
    * @aspect <NoAspect>
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5
    */
   protected java.util.Map<ASTNode, java.util.Set<ASTNode>> contributorMap_Func_functionCalls = null;
 
@@ -360,7 +368,7 @@ protected ASTNode$State.Cycle reachable_cycle = null;
   /** @apilevel internal */
   protected boolean reachable_initialized = false;
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isCircular=true)
-  @ASTNodeAnnotation.Source(aspect="Reachability", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Reachability.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="Reachability", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Reachability.jrag:4")
   public Set<Func> reachable() {
     if (reachable_computed) {
       return reachable_value;
@@ -415,10 +423,10 @@ protected boolean isUnknownFunc_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownFunc
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9")
+  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:9")
   public boolean isUnknownFunc() {
     if (isUnknownFunc_visited) {
       throw new RuntimeException("Circular definition of attribute Func.isUnknownFunc().");
@@ -431,10 +439,10 @@ protected boolean isUnknownFunc_visited = false;
   /**
    * @attribute inh
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:64
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:64
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:64")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:64")
   public IdDecl lookup(String name) {
     Object _parameters = name;
     if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
@@ -449,7 +457,7 @@ protected boolean isUnknownFunc_visited = false;
 /** @apilevel internal */
 protected java.util.Set lookup_String_visited;
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:9
    * @apilevel internal
    */
   public boolean Define_inExprOf(ASTNode _callerNode, ASTNode _childNode, IdDecl decl) {
@@ -460,12 +468,12 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
    * @apilevel internal
    */
   public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getFuncNameNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:5
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:5
       return true;
     }
     else {
@@ -476,12 +484,12 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
    * @apilevel internal
    */
   public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getFuncNameNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:6
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:6
       return false;
     }
     else {
@@ -492,12 +500,12 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
    * @apilevel internal
    */
   public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
     if (_callerNode == getFuncNameNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:61
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:61
       return lookup(name);
     }
     else {
@@ -516,12 +524,12 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3
    * @apilevel internal
    */
   public Func Define_function(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getFuncNameNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:9
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:9
       return this;
     }
     else {
@@ -532,12 +540,12 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:11
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:10
    * @apilevel internal
    */
   public Func Define_enclosingFunction(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getStmtBlockNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:14
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:13
       return this;
     }
     else {
@@ -548,7 +556,7 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
    * @apilevel internal
    */
   public String Define_uniqueNamePrefix(ASTNode _callerNode, ASTNode _childNode) {
@@ -565,10 +573,10 @@ protected boolean Func_functionCalls_visited = false;
   /**
    * @attribute coll
    * @aspect callGraphAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.COLL)
-  @ASTNodeAnnotation.Source(aspect="callGraphAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5")
+  @ASTNodeAnnotation.Source(aspect="callGraphAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5")
   public Set<Func> functionCalls() {
     ASTNode$State state = state();
     if (Func_functionCalls_computed) {
@@ -608,7 +616,7 @@ protected boolean Func_functionCalls_visited = false;
   protected Set<Func> Func_functionCalls_value;
 
   protected void collect_contributors_Program_deadFuncs(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:11
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:11
     if (!program().mainFuncReachable().contains(this) && !this.getFuncName().getID().equals("main")) {
       {
         Program target = (Program) (program());

@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:15
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:15
  * @production While : {@link Stmt} ::= <span class="component">{@link Expr}</span> <span class="component">{@link StmtBlock}</span>;
 
  */
 public class While extends Stmt implements Cloneable {
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:68
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:73
    */
   public void eval(ActivationRecord actRec) throws ReturnException {
 		while(getExpr().eval(actRec) == 1)
@@ -199,12 +200,12 @@ public class While extends Stmt implements Cloneable {
     return (StmtBlock) getChildNoTransform(1);
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:34
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:34
    * @apilevel internal
    */
   public Type Define_expectedType(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getExprNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:39
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:39
       return boolType();
     }
     else {

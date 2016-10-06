@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:42
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:42
  * @production Ge : {@link BinaryExpr};
 
  */
 public class Ge extends BinaryExpr implements Cloneable {
   /**
    * @aspect ExprComputation
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:143
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:148
    */
   public int evalOp(int l, int r) {
 		return l > r ? 1 : 0;
@@ -202,10 +203,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:31
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:31
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:31")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:31")
   public Type type() {
     if (type_visited) {
       throw new RuntimeException("Circular definition of attribute Ge.type().");

@@ -9,9 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:28
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:28
  * @production IdUse : {@link ASTNode} ::= <span class="component">&lt;ID:String&gt;</span>;
 
  */
@@ -185,10 +186,10 @@ protected boolean decl_visited = false;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:11
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:11
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:11")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:11")
   public IdDecl decl() {
     if (decl_visited) {
       throw new RuntimeException("Circular definition of attribute IdUse.decl().");
@@ -201,10 +202,10 @@ protected boolean decl_visited = false;
   /**
    * @attribute inh
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:12
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:12
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:12")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:12")
   public IdDecl lookup(String name) {
     Object _parameters = name;
     if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
@@ -219,7 +220,7 @@ protected boolean decl_visited = false;
 /** @apilevel internal */
 protected java.util.Set lookup_String_visited;
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:36
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:36
     if (decl().isUnknown()) {
       {
         Program target = (Program) (program());

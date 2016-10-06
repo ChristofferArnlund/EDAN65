@@ -9,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
  * @production ASTNode;
@@ -17,12 +18,12 @@ import java.util.Iterator;
 public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneable {
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:9
    */
   private String DUMP_TREE_INDENT = "  ";
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:11
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:11
    */
   public String dumpTree() {
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -31,7 +32,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:17
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:17
    */
   public void dumpTree(PrintStream out) {
 		dumpTree(out, "");
@@ -39,7 +40,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:22
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:22
    */
   public void dumpTree(PrintStream out, String indent) {
 		out.print(indent + getClass().getSimpleName());
@@ -55,7 +56,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:35
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/DumpTree.jrag:35
    */
   public String getTokens() {
 		StringBuilder sb = new StringBuilder();
@@ -74,7 +75,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect Errors
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:22
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:22
    */
   protected ErrorMessage error(String message) {
 		return new ErrorMessage(message, getLine(getStart()));
@@ -471,7 +472,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
   }
   /**
    * @aspect <NoAspect>
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26
    */
     protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
     for (int i = 0; i < getNumChild(); i++) {
@@ -483,7 +484,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 
   /**
    * @aspect <NoAspect>
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
    */
     protected void collect_contributors_Program_deadFuncs(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
     for (int i = 0; i < getNumChild(); i++) {
@@ -495,7 +496,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 
   /**
    * @aspect <NoAspect>
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:5
    */
     protected void collect_contributors_Func_functionCalls(Func _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
     for (int i = 0; i < getNumChild(); i++) {
@@ -508,10 +509,10 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
   /**
    * @attribute inh
    * @aspect Errors
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:28
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:28
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Errors", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:28")
+  @ASTNodeAnnotation.Source(aspect="Errors", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:28")
   public Program program() {
     if (program_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.program().");
@@ -526,10 +527,10 @@ protected boolean program_visited = false;
   /**
    * @attribute inh
    * @aspect TypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:5
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:5")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:5")
   public IntType intType() {
     if (intType_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.intType().");
@@ -544,10 +545,10 @@ protected boolean intType_visited = false;
   /**
    * @attribute inh
    * @aspect TypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:10
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:10
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:10")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:10")
   public BoolType boolType() {
     if (boolType_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.boolType().");
@@ -562,10 +563,10 @@ protected boolean boolType_visited = false;
   /**
    * @attribute inh
    * @aspect UnknownDecl
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:4
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:4")
   public UnknownDecl unknownDecl() {
     if (unknownDecl_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.unknownDecl().");
@@ -580,10 +581,10 @@ protected boolean unknownDecl_visited = false;
   /**
    * @attribute inh
    * @aspect UnknownFunc
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:4
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:4")
   public UnknownFunc unknownFunc() {
     if (unknownFunc_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.unknownFunc().");
@@ -598,10 +599,10 @@ protected boolean unknownFunc_visited = false;
   /**
    * @attribute inh
    * @aspect UnknownType
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:9")
+  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:9")
   public UnknownType unknownType() {
     if (unknownType_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.unknownType().");
@@ -626,7 +627,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:29
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:29
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute program
    */
@@ -646,7 +647,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:26
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:26
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute lookup
    */
@@ -666,7 +667,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:9
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute function
    */
@@ -686,7 +687,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:6
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:6
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute intType
    */
@@ -706,7 +707,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:11
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:11
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute boolType
    */
@@ -726,7 +727,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:5
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute unknownDecl
    */
@@ -746,7 +747,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:7
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:7
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isVariable
    */
@@ -766,7 +767,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:8
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:8
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isFunction
    */
@@ -786,7 +787,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:5
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute unknownFunc
    */
@@ -806,7 +807,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:10
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:10
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute unknownType
    */
@@ -826,7 +827,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:8
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:8
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute uniqueNamePrefix
    */
@@ -846,7 +847,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:12
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:12
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute inExprOf
    */
@@ -866,7 +867,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:14
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:13
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute enclosingFunction
    */
@@ -886,7 +887,7 @@ protected boolean unknownType_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:48
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:48
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute expectedType
    */

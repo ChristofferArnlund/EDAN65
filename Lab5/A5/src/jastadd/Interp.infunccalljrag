@@ -1,8 +1,5 @@
 import java.util.Iterator;
-import java.util.Scanner;
 aspect Interp {
-	
-	private static final Scanner Func.scanner = new Scanner(System.in);
 
 	public class ReturnException extends Exception {
 		private int returnValue;
@@ -31,16 +28,18 @@ aspect Interp {
 		ActivationRecord newActRec = new ActivationRecord();
 		Func func = getIdUse().decl().function();
 		Iterator<Expr> exprItr = getExprs().iterator();
+		if(func.getFuncName().getID().equals("print")) {
+			System.out.println(exprItr.next().eval(actRec));
+			return 0;
+		}
 		for(FuncParam fParam : func.getFuncParamss()) 
 			newActRec.put(fParam.getIdDecl().getID(), exprItr.next().eval(actRec));
 		return func.eval(newActRec);
 	}
 
 	public int Func.eval(ActivationRecord actRec) {
-		if(getFuncName().getID().equals("print"))
-			System.out.println(actRec.get("output"));
-		if(getFuncName().getID().equals("read"))
-			return scanner.nextInt();
+		//if(getFuncName().getID().equals("print"))
+		//	System.out.println(actRec.get("output"));
 		try{
 			getStmtBlock().eval(actRec);
 		} catch (ReturnException e) {

@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:24
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:24
  * @production FuncCall : {@link Expr} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}*</span>;
 
  */
 public class FuncCall extends Expr implements Cloneable {
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:27
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:30
    */
   public int eval(ActivationRecord actRec) {
 		ActivationRecord newActRec = new ActivationRecord();
@@ -292,10 +293,10 @@ protected boolean wrongNbrCallParams_visited = false;
   /**
    * @attribute syn
    * @aspect ParamChecker
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:12
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:12
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:12")
+  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:12")
   public boolean wrongNbrCallParams() {
     if (wrongNbrCallParams_visited) {
       throw new RuntimeException("Circular definition of attribute FuncCall.wrongNbrCallParams().");
@@ -308,10 +309,10 @@ protected boolean wrongNbrCallParams_visited = false;
   /**
    * @attribute inh
    * @aspect callGraphAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:11
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:10
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="callGraphAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:11")
+  @ASTNodeAnnotation.Source(aspect="callGraphAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:10")
   public Func enclosingFunction() {
     if (enclosingFunction_visited) {
       throw new RuntimeException("Circular definition of attribute FuncCall.enclosingFunction().");
@@ -324,12 +325,12 @@ protected boolean wrongNbrCallParams_visited = false;
 /** @apilevel internal */
 protected boolean enclosingFunction_visited = false;
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:34
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:34
    * @apilevel internal
    */
   public Type Define_expectedType(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getExprListNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:44
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:44
       int childIndex = _callerNode.getIndexOfChild(_childNode);
       return intType();
     }
@@ -341,7 +342,7 @@ protected boolean enclosingFunction_visited = false;
     return true;
   }
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:44
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:44
     if (!getIdUse().decl().isFunction() && !getIdUse().decl().isUnknown()) {
       {
         Program target = (Program) (program());
@@ -353,7 +354,7 @@ protected boolean enclosingFunction_visited = false;
         contributors.add(this);
       }
     }
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:48
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:48
     if (wrongNbrCallParams()) {
       {
         Program target = (Program) (program());
@@ -368,17 +369,15 @@ protected boolean enclosingFunction_visited = false;
     super.collect_contributors_Program_errors(_root, _map);
   }
   protected void collect_contributors_Func_functionCalls(Func _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:17
-    if (true) {
-      {
-        Func target = (Func) (enclosingFunction());
-        java.util.Set<ASTNode> contributors = _map.get(target);
-        if (contributors == null) {
-          contributors = new java.util.LinkedHashSet<ASTNode>();
-          _map.put((ASTNode) target, contributors);
-        }
-        contributors.add(this);
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/callGraphAnalysis.jrag:16
+    {
+      Func target = (Func) (enclosingFunction());
+      java.util.Set<ASTNode> contributors = _map.get(target);
+      if (contributors == null) {
+        contributors = new java.util.LinkedHashSet<ASTNode>();
+        _map.put((ASTNode) target, contributors);
       }
+      contributors.add(this);
     }
     super.collect_contributors_Func_functionCalls(_root, _map);
   }
@@ -393,8 +392,6 @@ protected boolean enclosingFunction_visited = false;
   }
   protected void contributeTo_Func_functionCalls(Set<Func> collection) {
     super.contributeTo_Func_functionCalls(collection);
-    if (true) {
-      collection.add(getIdUse().decl().function());
-    }
+    collection.add(getIdUse().decl().function());
   }
 }

@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:1
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:1
  * @production Program : {@link ASTNode} ::= <span class="component">{@link Func}*</span>;
 
  */
 public class Program extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect Interp
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:15
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:18
    */
   public void eval() {
 		IdDecl mainFunc = localLookup("main");
@@ -277,7 +278,7 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
   }
   /**
    * @aspect <NoAspect>
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26
    */
   protected java.util.Map<ASTNode, java.util.Set<ASTNode>> contributorMap_Program_errors = null;
 
@@ -290,7 +291,7 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
 
   /**
    * @aspect <NoAspect>
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
    */
   protected java.util.Map<ASTNode, java.util.Set<ASTNode>> contributorMap_Program_deadFuncs = null;
 
@@ -306,10 +307,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:82
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:82
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:82")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:82")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -347,10 +348,10 @@ protected boolean intType_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:4
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isNTA=true)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:4")
   public IntType intType() {
     ASTNode$State state = state();
     if (intType_computed) {
@@ -386,10 +387,10 @@ protected boolean boolType_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isNTA=true)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:9")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:9")
   public BoolType boolType() {
     ASTNode$State state = state();
     if (boolType_computed) {
@@ -425,10 +426,10 @@ protected boolean unknownDecl_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownDecl
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:2
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:2
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isNTA=true)
-  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:2")
   public UnknownDecl unknownDecl() {
     ASTNode$State state = state();
     if (unknownDecl_computed) {
@@ -464,10 +465,10 @@ protected boolean unknownFunc_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownFunc
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:2
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:2
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isNTA=true)
-  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="UnknownFunc", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:2")
   public UnknownFunc unknownFunc() {
     ASTNode$State state = state();
     if (unknownFunc_computed) {
@@ -503,10 +504,10 @@ protected boolean unknownType_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownType
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:2
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:2
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isNTA=true)
-  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:2")
   public UnknownType unknownType() {
     ASTNode$State state = state();
     if (unknownType_computed) {
@@ -529,10 +530,10 @@ protected boolean mainFuncReachable_visited = false;
   /**
    * @attribute syn
    * @aspect deadFuncs
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="deadFuncs", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:9")
+  @ASTNodeAnnotation.Source(aspect="deadFuncs", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:9")
   public Set<Func> mainFuncReachable() {
     if (mainFuncReachable_visited) {
       throw new RuntimeException("Circular definition of attribute Program.mainFuncReachable().");
@@ -560,10 +561,10 @@ protected boolean predefinedFunctions_visited = false;
   /**
    * @attribute syn
    * @aspect PredefinedFunctions
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/predefinedFunctions.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/predefinedFunctions.jrag:3
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isNTA=true)
-  @ASTNodeAnnotation.Source(aspect="PredefinedFunctions", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/predefinedFunctions.jrag:3")
+  @ASTNodeAnnotation.Source(aspect="PredefinedFunctions", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/predefinedFunctions.jrag:3")
   public List<Func> predefinedFunctions() {
     ASTNode$State state = state();
     if (predefinedFunctions_computed) {
@@ -589,7 +590,7 @@ protected boolean predefinedFunctions_visited = false;
   		return list;
   	}
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:28
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:28
    * @apilevel internal
    */
   public Program Define_program(ASTNode _callerNode, ASTNode _childNode) {
@@ -600,7 +601,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
    * @apilevel internal
    */
   public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
@@ -616,7 +617,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3
    * @apilevel internal
    */
   public Func Define_function(ASTNode _callerNode, ASTNode _childNode) {
@@ -627,7 +628,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:5
    * @apilevel internal
    */
   public IntType Define_intType(ASTNode _callerNode, ASTNode _childNode) {
@@ -638,7 +639,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:10
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:10
    * @apilevel internal
    */
   public BoolType Define_boolType(ASTNode _callerNode, ASTNode _childNode) {
@@ -649,7 +650,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:4
    * @apilevel internal
    */
   public UnknownDecl Define_unknownDecl(ASTNode _callerNode, ASTNode _childNode) {
@@ -660,12 +661,12 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
    * @apilevel internal
    */
   public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == unknownDecl_value) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:10
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:10
       return false;
     }
     else {
@@ -676,12 +677,12 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
    * @apilevel internal
    */
   public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == unknownDecl_value) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:11
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:11
       return false;
     }
     else {
@@ -692,7 +693,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownFunc.jrag:4
    * @apilevel internal
    */
   public UnknownFunc Define_unknownFunc(ASTNode _callerNode, ASTNode _childNode) {
@@ -703,7 +704,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:9
    * @apilevel internal
    */
   public UnknownType Define_unknownType(ASTNode _callerNode, ASTNode _childNode) {
@@ -714,7 +715,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
    * @apilevel internal
    */
   public String Define_uniqueNamePrefix(ASTNode _callerNode, ASTNode _childNode) {
@@ -731,10 +732,10 @@ protected boolean Program_errors_visited = false;
   /**
    * @attribute coll
    * @aspect Errors
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.COLL)
-  @ASTNodeAnnotation.Source(aspect="Errors", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26")
+  @ASTNodeAnnotation.Source(aspect="Errors", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:26")
   public Set<ErrorMessage> errors() {
     ASTNode$State state = state();
     if (Program_errors_computed) {
@@ -778,10 +779,10 @@ protected boolean Program_deadFuncs_visited = false;
   /**
    * @attribute coll
    * @aspect deadFuncs
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.COLL)
-  @ASTNodeAnnotation.Source(aspect="deadFuncs", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="deadFuncs", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/deadFuncs.jrag:4")
   public Set<Func> deadFuncs() {
     ASTNode$State state = state();
     if (Program_deadFuncs_computed) {

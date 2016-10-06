@@ -9,16 +9,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:26
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:26
  * @production IdUseExpr : {@link Expr} ::= <span class="component">{@link IdUse}</span>;
 
  */
 public class IdUseExpr extends Expr implements Cloneable {
   /**
    * @aspect ExprComputation
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:87
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Interp.jrag:92
    */
   public int eval(ActivationRecord actRec) {
 		return actRec.get(getIdUse().decl().uniqueName());
@@ -175,10 +176,10 @@ protected boolean isCircular_visited = false;
   /**
    * @attribute syn
    * @aspect CircularDefinitions
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:6
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:6
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:6")
+  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:6")
   public boolean isCircular() {
     if (isCircular_visited) {
       throw new RuntimeException("Circular definition of attribute IdUseExpr.isCircular().");
@@ -193,10 +194,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:19
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:19
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:19")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:19")
   public Type type() {
     if (type_visited) {
       throw new RuntimeException("Circular definition of attribute IdUseExpr.type().");
@@ -209,10 +210,10 @@ protected boolean type_visited = false;
   /**
    * @attribute inh
    * @aspect CircularDefinitions
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:9
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:9")
+  @ASTNodeAnnotation.Source(aspect="CircularDefinitions", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/CircularDefinitions.jrag:9")
   public boolean inExprOf(IdDecl decl) {
     Object _parameters = decl;
     if (inExprOf_IdDecl_visited == null) inExprOf_IdDecl_visited = new java.util.HashSet(4);
@@ -227,7 +228,7 @@ protected boolean type_visited = false;
 /** @apilevel internal */
 protected java.util.Set inExprOf_IdDecl_visited;
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:40
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:40
     if (isCircular()) {
       {
         Program target = (Program) (program());
@@ -239,7 +240,7 @@ protected java.util.Set inExprOf_IdDecl_visited;
         contributors.add(this);
       }
     }
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:52
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:52
     if (!getIdUse().decl().isVariable() && !getIdUse().decl().isUnknown()) {
       {
         Program target = (Program) (program());

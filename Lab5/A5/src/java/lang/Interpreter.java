@@ -37,7 +37,7 @@ public class Interpreter {
 			LangParser parser = new LangParser();
 			Program program = (Program) parser.parse(scanner);
             		DrAST_root_node = program; //Enable debugging with DrAST
-			System.out.println(program.dumpTree());
+			//System.out.println(program.dumpTree());
 			Set<ErrorMessage> errors = program.errors();
 			if(errors.size() == 0) { //no error detected in analysis continue
 				program.eval();

@@ -9,9 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:3
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:3
  * @production FuncParam : {@link ASTNode} ::= <span class="component">{@link IdDecl}</span>;
 
  */
@@ -164,12 +165,12 @@ public class FuncParam extends ASTNode<ASTNode> implements Cloneable {
     return (IdDecl) getChildNoTransform(0);
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
    * @apilevel internal
    */
   public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:9
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:9
       return true;
     }
     else {
@@ -180,12 +181,12 @@ public class FuncParam extends ASTNode<ASTNode> implements Cloneable {
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
    * @apilevel internal
    */
   public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:10
+      // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:10
       return false;
     }
     else {

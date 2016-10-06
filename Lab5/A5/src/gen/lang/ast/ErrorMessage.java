@@ -9,10 +9,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast class
  * @aspect Errors
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:5
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:5
  */
 public class ErrorMessage extends java.lang.Object implements Comparable<ErrorMessage> {
   

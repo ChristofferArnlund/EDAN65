@@ -9,9 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:9
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:9
  * @production UnknownType : {@link Type} ::= <span class="component">&lt;ID:String&gt;</span>;
 
  */
@@ -185,10 +186,10 @@ protected boolean isUnknownType_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownType
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:5
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:5
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:5")
+  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownType.jrag:5")
   public boolean isUnknownType() {
     if (isUnknownType_visited) {
       throw new RuntimeException("Circular definition of attribute Type.isUnknownType().");

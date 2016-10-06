@@ -9,10 +9,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast class
  * @aspect ActivationRecord
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ActivationRecord.jrag:7
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ActivationRecord.jrag:7
  */
 public class ActivationRecord extends java.lang.Object {
   

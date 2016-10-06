@@ -9,9 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * @ast node
- * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:29
+ * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/lang.ast:29
  * @production IdDecl : {@link ASTNode} ::= <span class="component">&lt;ID:String&gt;</span>;
 
  */
@@ -185,10 +186,10 @@ protected boolean typeString_visited = false;
   /**
    * @attribute syn
    * @aspect ErrorContributions
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:34
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:34
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="ErrorContributions", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:34")
+  @ASTNodeAnnotation.Source(aspect="ErrorContributions", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:34")
   public String typeString() {
     if (typeString_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.typeString().");
@@ -203,10 +204,10 @@ protected boolean isMultiplyDeclared_visited = false;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:15
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:15
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:15")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:15")
   public boolean isMultiplyDeclared() {
     if (isMultiplyDeclared_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.isMultiplyDeclared().");
@@ -225,10 +226,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:18
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:18
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:18")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/TypeAnalysis.jrag:18")
   public Type type() {
     if (type_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.type().");
@@ -243,10 +244,10 @@ protected boolean isUnknown_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownDecl
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7")
+  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/UnknownDecl.jrag:7")
   public boolean isUnknown() {
     if (isUnknown_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.isUnknown().");
@@ -261,10 +262,10 @@ protected boolean uniqueName_visited = false;
   /**
    * @attribute syn
    * @aspect uniqueIdDeclName
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:2
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:2
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="uniqueIdDeclName", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="uniqueIdDeclName", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:2")
   public String uniqueName() {
     if (uniqueName_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.uniqueName().");
@@ -280,10 +281,10 @@ protected boolean uniqueName_visited = false;
   /**
    * @attribute inh
    * @aspect IdUseTypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="IdUseTypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3")
+  @ASTNodeAnnotation.Source(aspect="IdUseTypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:3")
   public boolean isFunction() {
     if (isFunction_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.isFunction().");
@@ -298,10 +299,10 @@ protected boolean isFunction_visited = false;
   /**
    * @attribute inh
    * @aspect IdUseTypeAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="IdUseTypeAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="IdUseTypeAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/IdUseTypeAnalysis.jrag:4")
   public boolean isVariable() {
     if (isVariable_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.isVariable().");
@@ -316,10 +317,10 @@ protected boolean isVariable_visited = false;
   /**
    * @attribute inh
    * @aspect NameAnalysis
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/NameAnalysis.jrag:19")
   public IdDecl lookup(String name) {
     Object _parameters = name;
     if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
@@ -336,10 +337,10 @@ protected java.util.Set lookup_String_visited;
   /**
    * @attribute inh
    * @aspect ParamChecker
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3")
+  @ASTNodeAnnotation.Source(aspect="ParamChecker", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/ParamChecker.jrag:3")
   public Func function() {
     if (function_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.function().");
@@ -354,10 +355,10 @@ protected boolean function_visited = false;
   /**
    * @attribute inh
    * @aspect uniqueIdDeclName
-   * @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
+   * @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="uniqueIdDeclName", declaredAt="/home/marcus/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6")
+  @ASTNodeAnnotation.Source(aspect="uniqueIdDeclName", declaredAt="/h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/uniqueIdDeclName.jrag:6")
   public String uniqueNamePrefix() {
     if (uniqueNamePrefix_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.uniqueNamePrefix().");
@@ -370,7 +371,7 @@ protected boolean function_visited = false;
 /** @apilevel internal */
 protected boolean uniqueNamePrefix_visited = false;
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /home/marcus/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:56
+    // @declaredat /h/d8/a/dat13mro/git/EDAN65/Lab5/A5/src/jastadd/Errors.jrag:56
     if (isMultiplyDeclared()) {
       {
         Program target = (Program) (program());

@@ -1,9 +1,8 @@
 import java.util.Set;
 import java.util.TreeSet;
 aspect callGraphAnalysis {
-	//Collection of functions called from a function
+	//Collection of functions called from a function(defaults to add method)
 	coll Set<Func> Func.functionCalls() [new TreeSet<Func>()]
-	with add
 	root Func;
 
 	//Inherit Func for all stmts and FuncCall
@@ -13,8 +12,7 @@ aspect callGraphAnalysis {
 	//Send away me to all my stmts and FuncCalls
 	eq Func.getStmtBlock().enclosingFunction() = this;
 
-	//Contribute that im calling some function
+	//Contribute that im calling some function(defaults to true)
 	FuncCall contributes getIdUse().decl().function()
-	when true
 	to Func.functionCalls() for enclosingFunction();
 }
