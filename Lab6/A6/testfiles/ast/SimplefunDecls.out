@@ -1,0 +1,12 @@
+Program
+  List
+    Func
+      IdDecl ID="x"
+      List
+      StmtBlock
+        List
+    Func
+      IdDecl ID="y"
+      List
+      StmtBlock
+        List

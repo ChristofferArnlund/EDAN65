@@ -1,0 +1,11 @@
+aspect UnknownFunc {
+	syn nta UnknownFunc Program.unknownFunc() = new UnknownFunc(new IdDecl("<Unknown>"), new List(), new StmtBlock(new List()));
+
+	inh UnknownFunc ASTNode.unknownFunc();
+	eq Program.getChild().unknownFunc() = unknownFunc();
+
+	syn Func UnknownDecl.function() = unknownFunc();
+
+	syn boolean Func.isUnknownFunc() = false;
+	eq UnknownFunc.isUnknownFunc() = true;
+}

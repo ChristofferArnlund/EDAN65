@@ -1,0 +1,7 @@
+aspect UniqueNamesForStatements {
+	inh String While.uniqueNamePrefix();
+	inh String If.uniqueNamePrefix();
+
+	syn String While.uniqueName() = uniqueNamePrefix() + "while_";
+	syn String If.uniqueName() = uniqueNamePrefix() + "if_";
+}	

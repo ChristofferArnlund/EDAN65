@@ -1,0 +1,9 @@
+int main() {
+	int a = 1;
+	int b = 2 + a;
+	int c = 3;
+	int d = 4 + b;
+	int sum = d + a + b + c;
+	print(sum); //should print 14
+	return 0;
+}

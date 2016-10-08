@@ -1,0 +1,16 @@
+/**
+	Checks for circular definitions
+**/
+aspect CircularDefinitions {
+	//I am circular if i am used in my definition
+	syn boolean IdUseExpr.isCircular() = inExprOf(getIdUse().decl());
+
+	//I dont know if i am in use in my def
+	inh boolean IdUseExpr.inExprOf(IdDecl decl);
+
+	//For all ids in the expr you are my definition	if 
+	eq IdDeclStmt.getExpr().inExprOf(IdDecl decl) = decl == getIdDecl();
+
+	//You cant be circular
+	eq Func.getChild().inExprOf(IdDecl decl) = false;
+}

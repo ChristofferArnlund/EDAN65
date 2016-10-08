@@ -1,0 +1,7 @@
+int x() {
+
+}
+
+int l() {
+	int x = 5; //Should be ok
+}

@@ -1,0 +1,8 @@
+int sum(int a, int b) {
+	print(a / b); //if params is mixed 0 if correct 1
+}
+
+int main() {
+	sum(5, 4);
+	return 0;
+}

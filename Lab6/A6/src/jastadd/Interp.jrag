@@ -1,0 +1,147 @@
+import java.util.Iterator;
+aspect Interp {
+
+	public class ReturnException extends Exception {
+		private int returnValue;
+		public ReturnException(int returnValue) {
+			this.returnValue = returnValue;
+		}
+		public int getReturnValue() {
+			return returnValue;
+		}
+	}
+
+	//Entry point for the program
+	public void Program.eval() {
+		IdDecl mainFunc = localLookup("main");
+		if(!mainFunc.isUnknown() && mainFunc.isFunction()) 
+			mainFunc.function().eval(new ActivationRecord()); //gogo
+		else 
+			throw new RuntimeException("There is no main function!");
+	}
+
+	public void FuncCallStmt.eval(ActivationRecord actRec) {
+		getFuncCall().eval(actRec);
+	}
+
+	public int FuncCall.eval(ActivationRecord actRec) {
+		ActivationRecord newActRec = new ActivationRecord();
+		Func func = getIdUse().decl().function();
+		Iterator<Expr> exprItr = getExprs().iterator();
+		for(FuncParam fParam : func.getFuncParamss()) 
+			newActRec.put(fParam.getIdDecl().getID(), exprItr.next().eval(actRec));
+		return func.eval(newActRec);
+	}
+
+	public int Func.eval(ActivationRecord actRec) {
+		if(getFuncName().getID().equals("print"))
+			System.out.println(actRec.get("output"));
+		try{
+			getStmtBlock().eval(actRec);
+		} catch (ReturnException e) {
+			return e.getReturnValue(); //return the returnvalue
+		}
+		return 0; //return default 0
+	}
+
+	public void StmtBlock.eval(ActivationRecord actRec) throws ReturnException {
+		for(Stmt stmt : getStmts())
+			stmt.eval(actRec);
+	}
+
+	public void IdDeclStmt.eval(ActivationRecord actRec) {
+		int value = hasExpr() ? getExpr().eval(actRec) : 0;
+		actRec.put(getIdDecl().uniqueName(), value);
+	}
+
+	public void Return.eval(ActivationRecord actRec) throws ReturnException {
+		throw new ReturnException(getExpr().eval(actRec));
+	}
+
+	public void If.eval(ActivationRecord actRec) throws ReturnException {
+		if(getExpr().eval(actRec) == 1)
+			getDo().eval(actRec);
+		else if(hasElse())
+			getElse().eval(actRec);
+	}
+
+	public void While.eval(ActivationRecord actRec) throws ReturnException {
+		while(getExpr().eval(actRec) == 1)
+			getStmtBlock().eval(actRec);
+	}
+
+	public void Assign.eval(ActivationRecord actRec) {
+		actRec.put(getIdUseExpr().getIdUse().decl().uniqueName(), getExpr().eval(actRec));
+	}
+	
+	public void Stmt.eval(ActivationRecord actRec) throws ReturnException {
+		throw new RuntimeException(getClass() + " Just dont implemented(STMT FALLBACK)!");
+	}	
+}
+
+aspect ExprComputation {
+	public int Expr.eval(ActivationRecord actRec) {
+		throw new RuntimeException("Just dont implemented(EXPR FALLBACK)!");
+	}
+
+	public int IdUseExpr.eval(ActivationRecord actRec) {
+		return actRec.get(getIdUse().decl().uniqueName());
+	}
+
+	public int Numeral.eval(ActivationRecord actRec) {
+		return Integer.parseInt(getNUMERAL());
+	}
+
+	//Eval left and right then call abstract op
+	public int BinaryExpr.eval(ActivationRecord actRec) {
+		return evalOp(getLeft().eval(actRec), getRight().eval(actRec));
+	}
+
+	//Abstract op for different binaryexprs
+	public abstract int BinaryExpr.evalOp(int l, int r);
+
+	public int Add.evalOp(int l, int r) {
+		return l + r;
+	}	
+
+	public int Mul.evalOp(int l, int r) {
+		return l * r;
+	}	
+
+	public int Div.evalOp(int l, int r) {
+		return l / r;
+	}	
+
+	public int Sub.evalOp(int l, int r) {
+		return l - r;
+	}	
+
+	public int Mod.evalOp(int l, int r) {
+		return l % r;
+	}
+
+	public int Equals.evalOp(int l, int r) {
+		return l == r ? 1 : 0;
+	}
+
+	public int Not.evalOp(int l, int r) {
+		return l != r ? 1 : 0;
+	}
+
+	public int Leq.evalOp(int l, int r) {
+		return l <= r ? 1 : 0;
+	}
+
+	public int Le.evalOp(int l, int r) {
+		return l < r ? 1 : 0;
+	}
+
+	public int Geq.evalOp(int l, int r) {
+		return l >= r ? 1 : 0;
+	}
+
+	public int Ge.evalOp(int l, int r) {
+		return l > r ? 1 : 0;
+	}
+}
+

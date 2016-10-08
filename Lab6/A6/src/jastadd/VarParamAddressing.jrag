@@ -1,0 +1,33 @@
+aspect VarParamAddressing {
+	syn int ASTNode.localIndex() = prevNode().localIndex();
+	eq Func.localIndex() = 0;
+	eq IdDecl.localIndex() = (isFunction() || isFunctionParam()) ? prevNode().localIndex() : prevNode().localIndex() + 1;
+	
+	inh ASTNode ASTNode.prevNode();
+	eq ASTNode.getChild(int index).prevNode() = prevNode(index);
+	syn ASTNode ASTNode.prevNode(int index) = index > 0 ? getChild(index-1).lastNode() : this;
+	syn ASTNode ASTNode.lastNode() = prevNode(getNumChild());
+	
+
+	inh boolean IdDecl.isFunctionParam();
+	eq Program.getChild().isFunctionParam() = false;
+	eq Func.getFuncParams().isFunctionParam() = true;
+	
+	syn int Func.numLocals() = lastNode().localIndex();
+
+	inh int IdDecl.paramIndex();
+	eq Program.getChild().paramIndex() = 0;
+	eq Func.getFuncParams(int index).paramIndex() = index+1;
+
+	syn String IdDecl.address() {
+		if(isFunctionParam()) {
+			/*
+				+1 because of old base pointer and return address.
+				First param will have localIndex 1 so we will skip 2.
+			*/
+			return ((paramIndex() + 1)*8)+"(%rbp)";
+		} else {
+			return "-" + ((localIndex())*8)+"(%rbp)";
+		}
+	}
+}

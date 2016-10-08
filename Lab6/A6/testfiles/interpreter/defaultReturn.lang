@@ -1,0 +1,7 @@
+int someFunc(int n) {
+	int pointless = 5;
+}
+
+int main() {
+	print(someFunc(4));
+}

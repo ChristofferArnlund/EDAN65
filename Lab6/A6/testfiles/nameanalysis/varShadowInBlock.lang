@@ -1,0 +1,7 @@
+int m() {
+	int m = 1337; //ok
+	while(m == 0) {
+		int m = 3; //shadow
+	}
+}
+

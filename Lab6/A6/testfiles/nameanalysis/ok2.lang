@@ -1,0 +1,7 @@
+int m() {
+	int k = 5;
+	while(k == 0) {
+		int l = k + 5; //k should be visible
+	}
+}
+

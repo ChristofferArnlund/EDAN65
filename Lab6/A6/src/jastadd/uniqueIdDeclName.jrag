@@ -1,0 +1,25 @@
+aspect uniqueIdDeclName {
+	syn String IdDecl.uniqueName() {
+		return uniqueNamePrefix() + getID();
+	}
+
+	inh String IdDecl.uniqueNamePrefix();
+
+	eq StmtBlock.getStmt(int index).uniqueNamePrefix() {
+		return uniqueNamePrefix() + index + "_";
+	}
+
+	inh String StmtBlock.uniqueNamePrefix();
+
+	eq Func.getChild().uniqueNamePrefix() {
+		return "";	
+	}
+
+	//Prefix all under function with function name in order to get
+	//global unique lbls
+	eq Func.getStmtBlock().uniqueNamePrefix() = getFuncName().getID() + "_";
+
+	eq Program.getChild().uniqueNamePrefix() {
+		return "<Unknown>";
+	}
+}

@@ -1,0 +1,5 @@
+int m() {
+	int k = 5;
+	print(k);
+}
+

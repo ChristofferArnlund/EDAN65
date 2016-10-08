@@ -1,0 +1,4 @@
+int m(int hello, int a, int goodbye) {
+	int k = read();
+}
+

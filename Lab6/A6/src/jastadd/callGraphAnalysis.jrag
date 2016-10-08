@@ -1,0 +1,20 @@
+import java.util.Set;
+import java.util.TreeSet;
+aspect callGraphAnalysis {
+	//Collection of functions called from a function
+	coll Set<Func> Func.functionCalls() [new TreeSet<Func>()]
+	with add
+	root Func;
+
+	//Inherit Func for all stmts and FuncCall
+	inh Func Stmt.enclosingFunction();
+	inh Func FuncCall.enclosingFunction();
+
+	//Send away me to all my stmts and FuncCalls
+	eq Func.getStmtBlock().enclosingFunction() = this;
+
+	//Contribute that im calling some function
+	FuncCall contributes getIdUse().decl().function()
+	when true
+	to Func.functionCalls() for enclosingFunction();
+}

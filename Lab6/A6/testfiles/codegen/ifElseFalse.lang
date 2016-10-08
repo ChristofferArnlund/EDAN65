@@ -1,0 +1,8 @@
+int main() {
+	if(5 > 13) {
+		print(1);
+	} else {
+		print(0);
+	}
+	return 0;
+}

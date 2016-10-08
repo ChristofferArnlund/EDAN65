@@ -1,0 +1,14 @@
+import java.util.Set;
+import java.util.TreeSet;
+aspect deadFuncs {
+	coll Set<Func> Program.deadFuncs() [new TreeSet<Func>()] 
+	with add 
+	root Program; 
+
+	//Reachable set for the main function
+	syn Set<Func> Program.mainFuncReachable() = localLookup("main").function().reachable();
+
+	Func contributes this
+	when !program().mainFuncReachable().contains(this) && !this.getFuncName().getID().equals("main")
+	to Program.deadFuncs() for program();
+}

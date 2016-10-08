@@ -1,0 +1,7 @@
+int x() {
+	int k; //Just some pointless
+}
+
+int m() {
+	return x(); //should find x
+}

@@ -1,0 +1,182 @@
+aspect CodeGen {
+	public void Program.genCode(PrintStream out) {
+		//bootstrap
+		out.println(".global _start");
+		out.println(".data");
+		out.println("	ask_message: .ascii \"Plz enter a number: \"");
+		out.println("	ask_msg_len: .quad 20");
+		out.println("	buf: .skip 1024");
+		out.println(".text");
+		out.println("_start:");
+		out.println("	call main");
+		out.println("	movq %rax, %rdi");
+		out.println("	movq $60, %rax");
+		out.println("	syscall");
+		out.println();
+
+		for(Func func : getFuncs()) 
+			func.genCode(out);
+
+		genIOCode(out);
+	}
+
+	public void Func.genCode(PrintStream out) {
+		out.println(getFuncName().getID() + ":"); //function lbl
+		out.println("	pushq %rbp"); //remember old framepointer
+		out.println("	movq %rsp, %rbp"); //set stackpointer to framepointer
+
+		out.println("	subq $"+(8*numLocals())+",%rsp"); //alloc space for local vars
+		
+		getStmtBlock().genCode(out); //gen code for func stmts
+		
+		out.println(getFuncName().getID() + "_return:"); //gen code for return
+
+		out.println("	addq $"+(8*numLocals())+",%rsp"); //dealloc space for local vars
+
+		out.println("	popq %rbp"); //reset old framepointer
+		out.println("	ret");	     //pop pc and jump to pc
+	}
+
+	public void StmtBlock.genCode(PrintStream out) {
+		for(Stmt stmt : getStmts()) //gencode for all statements
+			stmt.genCode(out);
+	}
+
+	public abstract void Stmt.genCode(PrintStream out);
+
+	public void Assign.genCode(PrintStream out) {
+		getExpr().genCode(out); //gen result in rax
+		out.println("	movq %rax, " + getIdUseExpr().getIdUse().decl().address());
+	}
+
+	public void FuncCallStmt.genCode(PrintStream out) {
+		getFuncCall().genCode(out); //same as FuncCall just ignore result in rax
+	}
+
+	public void IdDeclStmt.genCode(PrintStream out) {
+		if(hasExpr())
+			getExpr().genCode(out);
+		//result may be in rax otherwise undefined
+		out.println("	movq %rax, " + getIdDecl().address());
+	}
+
+	public void If.genCode(PrintStream out) {
+		String elseLbl = uniqueName() + "else";
+		String doLbl = uniqueName() + "then";
+		String fiLbl = uniqueName() + "fi";
+		getExpr().genCode(out); //generate cmp
+		getExpr().genConditionalJump(out, elseLbl); //jump to elselbl
+		out.println(doLbl + ":"); //dolbl
+		getDo().genCode(out); //gen code for do block
+		out.println("	jmp " + fiLbl); //jump to fi
+		out.println(elseLbl + ":");	
+		if(hasElse()) //gencode for elseblock if it exists
+			getElse().genCode(out);
+		out.println(fiLbl + ":");
+		
+	}
+
+	public void Return.genCode(PrintStream out) {
+		getExpr().genCode(out); //generate expr value saved in %rax
+		out.println("	jmp " + enclosingFunction().getFuncName().getID() + "_return");
+	}
+
+	public void While.genCode(PrintStream out) {
+		String startLbl = uniqueName() + "start";
+		String endLbl = uniqueName() + "end";
+		out.println(startLbl + ":");
+		getExpr().genCode(out); //genereate compare
+		getExpr().genConditionalJump(out, endLbl); //if not fulfilled end
+		getStmtBlock().genCode(out); //block
+		out.println("	jmp " + startLbl); //jump back and eval
+		out.println(endLbl + ":");
+	}
+
+	public abstract void Expr.genCode(PrintStream out);
+
+	public void IdUseExpr.genCode(PrintStream out) {
+		//move result to rax
+		out.println("	movq " + getIdUse().decl().address() + ", %rax");
+	}
+
+	//Apply cmp for all logical exprs, override for arith
+	public void BinaryExpr.genCodeOp(PrintStream out) {
+		out.println("	cmp %rbx, %rax");
+	}
+
+	public void BinaryExpr.genCode(PrintStream out) {
+		getLeft().genCode(out); //gen code for left expr, result in rax
+		out.println("	pushq %rax"); //push leftvalue to stash
+		getRight().genCode(out); //gen code for right expr, result in rax
+		out.println("	movq %rax, %rbx"); //move right value to rbx
+		out.println("	popq %rax");  //pop leftvalue to rax
+		genCodeOp(out); //generate operation code and place it in rax
+	}
+	
+	public void Add.genCodeOp(PrintStream out) {
+		out.println("	addq %rbx, %rax");
+	}
+
+	public void Sub.genCodeOp(PrintStream out) {
+		out.println("	subq %rbx, %rax");
+	}
+
+	public void Div.genCodeOp(PrintStream out) {
+		out.println("	movq $0, %rdx");
+		out.println("	idivq %rbx");
+	}
+	
+	public void Mul.genCodeOp(PrintStream out) {
+		out.println("	imulq %rbx, %rax"); 	
+	}
+
+	public void Mod.genCodeOp(PrintStream out) {
+		out.println("	movq $0, %rdx");
+		out.println("	idiv %rbx"); 
+		out.println("	movq %rdx, %rax"); //fetch remainder
+	}
+
+	public void Numeral.genCode(PrintStream out) {
+		out.println("	movq $" + getNUMERAL() + ", %rax");
+	}
+
+	public void Expr.genConditionalJump(PrintStream out, String jumpLbl) {}
+	
+	public void Equals.genConditionalJump(PrintStream out, String jumpLbl) {
+		out.println("JNE " + jumpLbl);
+	}
+
+	public void Not.genConditionalJump(PrintStream out, String jumpLbl) {
+		out.println("JE " + jumpLbl);
+	}
+
+	public void Leq.genConditionalJump(PrintStream out, String jumpLbl) {
+		out.println("JG " + jumpLbl);
+	}
+
+	public void Le.genConditionalJump(PrintStream out, String jumpLbl) {
+		out.println("JGE " + jumpLbl);
+	}
+
+	public void Geq.genConditionalJump(PrintStream out, String jumpLbl) {
+		out.println("JL " + jumpLbl);
+	}
+
+	public void Ge.genConditionalJump(PrintStream out, String jumpLbl) {
+		out.println("JLE " + jumpLbl);
+	}
+
+	public void FuncCall.genCode(PrintStream out) {
+		//FuncCall : Expr ::= IdUse Expr*;
+		for(int i = getNumExpr() - 1; i >= 0; i--) {
+			getExpr(i).genCode(out); //eval result to %rax
+			out.println("	pushq %rax"); //push result to stack
+		}
+		out.println("	call " + getIdUse().decl().getID());
+		out.println("	addq $"+(getNumExpr()*8) + ", %rsp"); //dealloc params
+		//resultat i %rax
+	}
+
+	
+
+}

@@ -1,0 +1,7 @@
+int hej(int m, int l) {
+	return 1;
+}
+
+int da() {
+	return hej(5, 1337, 1336);
+}

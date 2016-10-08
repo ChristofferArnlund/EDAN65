@@ -1,0 +1,4 @@
+int main() {
+	print(1+2*3);
+	###  //this is scanning error and the interpreter should not try to interp
+}

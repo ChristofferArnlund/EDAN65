@@ -1,0 +1,19 @@
+import java.util.Set;
+import java.util.HashSet;
+aspect UnusedVars {
+	coll Set<IdDecl> Program.unusedVars() [new HashSet<IdDecl>()] 
+	with add
+	root Program;
+
+	coll Set<IdUseExpr> IdDecl.idUses() [new HashSet<IdUseExpr>()]
+	with add
+	root Program;
+
+	IdUseExpr contributes this
+	when true
+	to IdDecl.idUses() for getIdUse().decl();
+
+	IdDecl contributes this
+	when idUses().size() == 0 && isVariable()
+	to Program.unusedVars() for program();
+}

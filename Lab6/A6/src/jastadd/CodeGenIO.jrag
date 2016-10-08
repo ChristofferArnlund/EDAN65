@@ -1,0 +1,59 @@
+aspect CodeGenIO {
+	public void Program.genIOCode(PrintStream out) {
+		//read function
+		out.println("read:");
+		out.println("	pushq %rbp");
+		out.println("	movq %rsp, %rbp");
+		out.println("	movq $0, %rdi");
+		out.println("	movq $buf, %rsi");
+		out.println("	movq $1024, %rdx");
+		out.println("	movq $0, %rax");
+		out.println("	syscall");
+		out.println("	movq $0, %rdx");
+		out.println("read_atoi_loop:");
+		out.println("	cmpq $0, %rax");
+		out.println("	jle read_atoi_done");
+		out.println("	movzbq (%rsi), %rbx");
+		out.println("	cmpq $0x30, %rbx");
+		out.println("	jl read_atoi_done");
+		out.println("	cmpq $0x39, %rbx");
+		out.println("	jg read_atoi_done");
+		out.println("	imulq $10, %rdx");
+		out.println("	subq $0x30, %rbx");
+		out.println("	addq %rbx, %rdx");
+		out.println("	incq %rsi");
+		out.println("	decq %rax");
+		out.println("	jmp read_atoi_loop");
+		out.println("read_atoi_done:");
+		out.println("	movq %rdx, %rax");
+		out.println("	popq %rbp");
+		out.println("	ret");
+		out.println("");
+
+		//print function
+		out.println("print:");
+		out.println("	pushq %rbp");
+		out.println("	movq %rsp, %rbp");
+		out.println("	movq 16(%rbp), %rax");
+		out.println("	movq $(buf+1023), %rsi");
+		out.println("	movb $0x0a, (%rsi)");
+		out.println("	movq $1, %rcx");
+		out.println("print_itoa_loop:");
+		out.println("	movq $10, %rbx");
+		out.println("	movq $0, %rdx");
+		out.println("	idivq %rbx");
+		out.println("	addb $0x30, %dl");
+		out.println("	decq %rsi");
+		out.println("	movb %dl, (%rsi)");
+		out.println("	incq %rcx");
+		out.println("	cmpq $0, %rax");
+		out.println("	jg print_itoa_loop");
+		out.println("print_itoa_done:");
+		out.println("	movq $1, %rdi");
+		out.println("	movq %rcx, %rdx");
+		out.println("	movq $1, %rax");
+		out.println("	syscall");
+		out.println("	popq %rbp");
+		out.println("	ret");
+	}
+}

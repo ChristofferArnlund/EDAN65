@@ -1,0 +1,21 @@
+import java.util.Map;
+import java.util.HashMap;
+aspect ActivationRecord {
+	/**
+		Class delegating to Map interface
+	**/
+	public class ActivationRecord {
+		private Map<String, Integer> map;
+		public ActivationRecord() {
+			map = new HashMap<String, Integer>();
+		}
+
+		public void put(String name, int value) {
+			map.put(name, value);
+		}
+
+		public int get(String name) {;
+			return map.get(name);
+		}
+	}
+}
