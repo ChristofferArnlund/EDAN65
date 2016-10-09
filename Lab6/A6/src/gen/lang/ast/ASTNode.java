@@ -535,10 +535,10 @@ protected boolean localIndex_visited = false;
   /**
    * @attribute syn
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:2
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:3
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:3")
   public int localIndex() {
     if (localIndex_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.localIndex().");
@@ -553,10 +553,10 @@ protected java.util.Set prevNode_int_visited;
   /**
    * @attribute syn
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:8
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:8")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:9")
   public ASTNode prevNode(int index) {
     Object _parameters = index;
     if (prevNode_int_visited == null) prevNode_int_visited = new java.util.HashSet(4);
@@ -573,10 +573,10 @@ protected boolean lastNode_visited = false;
   /**
    * @attribute syn
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:9
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:10
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:9")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:10")
   public ASTNode lastNode() {
     if (lastNode_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.lastNode().");
@@ -697,10 +697,10 @@ protected boolean unknownType_visited = false;
   /**
    * @attribute inh
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:6
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:7
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:6")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:7")
   public ASTNode prevNode() {
     if (prevNode_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.prevNode().");
@@ -713,7 +713,7 @@ protected boolean unknownType_visited = false;
 /** @apilevel internal */
 protected boolean prevNode_visited = false;
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:6
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:7
    * @apilevel internal
    */
   public ASTNode Define_prevNode(ASTNode _callerNode, ASTNode _childNode) {
@@ -936,7 +936,7 @@ protected boolean prevNode_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:14
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:15
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isFunctionParam
    */
@@ -956,7 +956,7 @@ protected boolean prevNode_visited = false;
   }
 
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:20
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:22
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute paramIndex
    */

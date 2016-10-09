@@ -832,7 +832,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:12
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:13
    * @apilevel internal
    */
   public boolean Define_isFunctionParam(ASTNode _callerNode, ASTNode _childNode) {
@@ -843,7 +843,7 @@ protected boolean predefinedFunctions_visited = false;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:18
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:20
    * @apilevel internal
    */
   public int Define_paramIndex(ASTNode _callerNode, ASTNode _childNode) {

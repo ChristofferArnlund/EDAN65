@@ -24,7 +24,7 @@ JG fac_0_if_else
 fac_0_if_then:
 	movq $1, %rax
 	jmp fac_return
-jmp fac_0_if_fi
+	jmp fac_0_if_fi
 fac_0_if_else:
 	movq 16(%rbp), %rax
 	pushq %rax

@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class Add extends BinaryExpr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:115
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:117
    */
   public void genCodeOp(PrintStream out) {
 		out.println("	addq %rbx, %rax");

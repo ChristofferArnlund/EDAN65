@@ -19,12 +19,12 @@ import java.util.HashSet;
 public abstract class Expr extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:95
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:96
    */
   public abstract void genCode(PrintStream out);
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:142
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:144
    */
   public void genConditionalJump(PrintStream out, String jumpLbl) {}
   /**

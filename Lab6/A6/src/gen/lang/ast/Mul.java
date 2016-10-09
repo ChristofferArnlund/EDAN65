@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class Mul extends BinaryExpr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:128
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:130
    */
   public void genCodeOp(PrintStream out) {
 		out.println("	imulq %rbx, %rax"); 	

@@ -37,7 +37,7 @@ gcd1_0_0_if_then:
 	popq %rax
 	subq %rbx, %rax
 	movq %rax, 16(%rbp)
-jmp gcd1_0_0_if_fi
+	jmp gcd1_0_0_if_fi
 gcd1_0_0_if_else:
 	movq 24(%rbp), %rax
 	pushq %rax
@@ -69,7 +69,7 @@ JNE gcd2_0_if_else
 gcd2_0_if_then:
 	movq 16(%rbp), %rax
 	jmp gcd2_return
-jmp gcd2_0_if_fi
+	jmp gcd2_0_if_fi
 gcd2_0_if_else:
 gcd2_0_if_fi:
 	movq 16(%rbp), %rax
@@ -94,7 +94,9 @@ main:
 	pushq %rbp
 	movq %rsp, %rbp
 	subq $24,%rsp
+	movq $0, -8(%rbp)
 	movq %rax, -8(%rbp)
+	movq $0, -16(%rbp)
 	movq %rax, -16(%rbp)
 	movq $1814274, %rax
 	movq %rax, -8(%rbp)

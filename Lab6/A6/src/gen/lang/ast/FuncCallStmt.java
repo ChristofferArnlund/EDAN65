@@ -22,7 +22,7 @@ public class FuncCallStmt extends Stmt implements Cloneable {
    * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:52
    */
   public void genCode(PrintStream out) {
-		getFuncCall().genCode(out);	
+		getFuncCall().genCode(out); //same as FuncCall just ignore result in rax
 	}
   /**
    * @aspect Interp

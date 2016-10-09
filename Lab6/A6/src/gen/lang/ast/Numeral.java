@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class Numeral extends Expr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:138
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:140
    */
   public void genCode(PrintStream out) {
 		out.println("	movq $" + getNUMERAL() + ", %rax");

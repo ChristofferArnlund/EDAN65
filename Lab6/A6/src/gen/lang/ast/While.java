@@ -19,13 +19,13 @@ import java.util.HashSet;
 public class While extends Stmt implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:84
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:85
    */
   public void genCode(PrintStream out) {
 		String startLbl = uniqueName() + "start";
 		String endLbl = uniqueName() + "end";
 		out.println(startLbl + ":");
-		getExpr().genCode(out);
+		getExpr().genCode(out); //genereate compare
 		getExpr().genConditionalJump(out, endLbl); //if not fulfilled end
 		getStmtBlock().genCode(out); //block
 		out.println("	jmp " + startLbl); //jump back and eval
@@ -218,10 +218,10 @@ protected boolean uniqueName_visited = false;
   /**
    * @attribute syn
    * @aspect UniqueNamesForStatements
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:5
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:7
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:5")
+  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:7")
   public String uniqueName() {
     if (uniqueName_visited) {
       throw new RuntimeException("Circular definition of attribute While.uniqueName().");
@@ -234,10 +234,10 @@ protected boolean uniqueName_visited = false;
   /**
    * @attribute inh
    * @aspect UniqueNamesForStatements
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:2
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:3
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:3")
   public String uniqueNamePrefix() {
     if (uniqueNamePrefix_visited) {
       throw new RuntimeException("Circular definition of attribute While.uniqueNamePrefix().");

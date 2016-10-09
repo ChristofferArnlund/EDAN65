@@ -266,10 +266,10 @@ protected boolean localIndex_visited = false;
   /**
    * @attribute syn
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:2
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:3
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:3")
   public int localIndex() {
     if (localIndex_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.localIndex().");
@@ -284,10 +284,10 @@ protected boolean address_visited = false;
   /**
    * @attribute syn
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:22
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:24
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:22")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:24")
   public String address() {
     if (address_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.address().");
@@ -406,10 +406,10 @@ protected boolean function_visited = false;
   /**
    * @attribute inh
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:12
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:13
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:12")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:13")
   public boolean isFunctionParam() {
     if (isFunctionParam_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.isFunctionParam().");
@@ -424,10 +424,10 @@ protected boolean isFunctionParam_visited = false;
   /**
    * @attribute inh
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:18
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:20
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:18")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:20")
   public int paramIndex() {
     if (paramIndex_visited) {
       throw new RuntimeException("Circular definition of attribute IdDecl.paramIndex().");

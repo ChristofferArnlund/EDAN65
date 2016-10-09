@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class Not extends BinaryExpr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:148
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:150
    */
   public void genConditionalJump(PrintStream out, String jumpLbl) {
 		out.println("JE " + jumpLbl);

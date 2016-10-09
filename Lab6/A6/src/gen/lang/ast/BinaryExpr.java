@@ -19,14 +19,14 @@ import java.util.HashSet;
 public abstract class BinaryExpr extends Expr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:102
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:104
    */
   public void genCodeOp(PrintStream out) {
 		out.println("	cmp %rbx, %rax");
 	}
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:106
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:108
    */
   public void genCode(PrintStream out) {
 		getLeft().genCode(out); //gen code for left expr, result in rax

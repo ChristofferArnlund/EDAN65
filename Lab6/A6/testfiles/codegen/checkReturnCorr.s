@@ -10,25 +10,66 @@ _start:
 	movq $60, %rax
 	syscall
 
-main:
+kaosReturn:
 	pushq %rbp
 	movq %rsp, %rbp
 	subq $0,%rsp
 	movq $5, %rax
 	pushq %rax
-	movq $7, %rax
+	movq $3, %rax
 	movq %rax, %rbx
 	popq %rax
 	cmp %rbx, %rax
-JLE main_0_if_else
-main_0_if_then:
+JLE kaosReturn_0_if_else
+kaosReturn_0_if_then:
+	movq $7, %rax
+	pushq %rax
+	movq $13, %rax
+	movq %rax, %rbx
+	popq %rax
+	cmp %rbx, %rax
+JLE kaosReturn_0_0_if_else
+kaosReturn_0_0_if_then:
+	movq $1336, %rax
+	jmp kaosReturn_return
+	jmp kaosReturn_0_0_if_fi
+kaosReturn_0_0_if_else:
 	movq $1, %rax
+	pushq %rax
+	movq $0, %rax
+	movq %rax, %rbx
+	popq %rax
+	cmp %rbx, %rax
+JLE kaosReturn_0_0_0_if_else
+kaosReturn_0_0_0_if_then:
+	movq $1337, %rax
+	jmp kaosReturn_return
+	jmp kaosReturn_0_0_0_if_fi
+kaosReturn_0_0_0_if_else:
+kaosReturn_0_0_0_if_fi:
+	movq $1336, %rax
+	jmp kaosReturn_return
+kaosReturn_0_0_if_fi:
+	movq $1336, %rax
+	jmp kaosReturn_return
+	jmp kaosReturn_0_if_fi
+kaosReturn_0_if_else:
+kaosReturn_0_if_fi:
+	movq $1336, %rax
+	jmp kaosReturn_return
+kaosReturn_return:
+	addq $0,%rsp
+	popq %rbp
+	ret
+main:
+	pushq %rbp
+	movq %rsp, %rbp
+	subq $0,%rsp
+	call kaosReturn
+	addq $0, %rsp
 	pushq %rax
 	call print
 	addq $8, %rsp
-	jmp main_0_if_fi
-main_0_if_else:
-main_0_if_fi:
 	movq $0, %rax
 	jmp main_return
 main_return:

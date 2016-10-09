@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class Geq extends BinaryExpr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:160
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:162
    */
   public void genConditionalJump(PrintStream out, String jumpLbl) {
 		out.println("JL " + jumpLbl);

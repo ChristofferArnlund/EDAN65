@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class If extends Stmt implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:63
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:64
    */
   public void genCode(PrintStream out) {
 		String elseLbl = uniqueName() + "else";
@@ -27,10 +27,10 @@ public class If extends Stmt implements Cloneable {
 		String fiLbl = uniqueName() + "fi";
 		getExpr().genCode(out); //generate cmp
 		getExpr().genConditionalJump(out, elseLbl); //jump to elselbl
-		out.println(doLbl + ":");
-		getDo().genCode(out);
-		out.println("jmp " + fiLbl);
-		out.println(elseLbl + ":");
+		out.println(doLbl + ":"); //dolbl
+		getDo().genCode(out); //gen code for do block
+		out.println("	jmp " + fiLbl); //jump to fi
+		out.println(elseLbl + ":");	
 		if(hasElse()) //gencode for elseblock if it exists
 			getElse().genCode(out);
 		out.println(fiLbl + ":");
@@ -278,10 +278,10 @@ protected boolean uniqueName_visited = false;
   /**
    * @attribute syn
    * @aspect UniqueNamesForStatements
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:6
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:8
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:6")
+  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:8")
   public String uniqueName() {
     if (uniqueName_visited) {
       throw new RuntimeException("Circular definition of attribute If.uniqueName().");
@@ -294,10 +294,10 @@ protected boolean uniqueName_visited = false;
   /**
    * @attribute inh
    * @aspect UniqueNamesForStatements
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:3
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:4
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:3")
+  @ASTNodeAnnotation.Source(aspect="UniqueNamesForStatements", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/UniqueNamesForStatements.jrag:4")
   public String uniqueNamePrefix() {
     if (uniqueNamePrefix_visited) {
       throw new RuntimeException("Circular definition of attribute If.uniqueNamePrefix().");

@@ -24,7 +24,8 @@ public class IdDeclStmt extends Stmt implements Cloneable {
   public void genCode(PrintStream out) {
 		if(hasExpr())
 			getExpr().genCode(out);
-		//result may be in rax otherwise undefined
+		else
+			out.println("	movq $0, " + getIdDecl().address()); //zero default
 		out.println("	movq %rax, " + getIdDecl().address());
 	}
   /**

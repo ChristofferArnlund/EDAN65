@@ -40,14 +40,14 @@ main_1_1_if_then:
 	pushq %rax
 	call print
 	addq $8, %rsp
-jmp main_1_1_if_fi
+	jmp main_1_1_if_fi
 main_1_1_if_else:
 main_1_1_if_fi:
 	movq -16(%rbp), %rax
 	pushq %rax
 	call print
 	addq $8, %rsp
-jmp main_1_if_fi
+	jmp main_1_if_fi
 main_1_if_else:
 main_1_if_fi:
 	movq -8(%rbp), %rax

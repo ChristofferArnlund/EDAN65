@@ -22,7 +22,7 @@ public class StmtBlock extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:40
    */
   public void genCode(PrintStream out) {
-		for(Stmt stmt : getStmts())
+		for(Stmt stmt : getStmts()) //gencode for all statements
 			stmt.genCode(out);
 	}
   /**

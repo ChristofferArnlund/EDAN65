@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class Leq extends BinaryExpr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:152
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:154
    */
   public void genConditionalJump(PrintStream out, String jumpLbl) {
 		out.println("JG " + jumpLbl);

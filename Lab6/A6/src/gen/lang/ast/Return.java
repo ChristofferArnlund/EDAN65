@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class Return extends Stmt implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:79
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:80
    */
   public void genCode(PrintStream out) {
 		getExpr().genCode(out); //generate expr value saved in %rax

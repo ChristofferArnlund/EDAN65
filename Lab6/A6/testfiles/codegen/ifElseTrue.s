@@ -26,7 +26,7 @@ main_0_if_then:
 	pushq %rax
 	call print
 	addq $8, %rsp
-jmp main_0_if_fi
+	jmp main_0_if_fi
 main_0_if_else:
 	movq $0, %rax
 	pushq %rax

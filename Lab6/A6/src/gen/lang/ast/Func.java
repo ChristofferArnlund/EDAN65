@@ -22,15 +22,15 @@ public class Func extends ASTNode<ASTNode> implements Cloneable, Comparable<Func
    * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:23
    */
   public void genCode(PrintStream out) {
-		out.println(getFuncName().getID() + ":");
+		out.println(getFuncName().getID() + ":"); //function lbl
 		out.println("	pushq %rbp"); //remember old framepointer
 		out.println("	movq %rsp, %rbp"); //set stackpointer to framepointer
 
 		out.println("	subq $"+(8*numLocals())+",%rsp"); //alloc space for local vars
 		
-		getStmtBlock().genCode(out);
+		getStmtBlock().genCode(out); //gen code for func stmts
 		
-		out.println(getFuncName().getID() + "_return:");
+		out.println(getFuncName().getID() + "_return:"); //gen code for return
 
 		out.println("	addq $"+(8*numLocals())+",%rsp"); //dealloc space for local vars
 
@@ -454,10 +454,10 @@ protected boolean localIndex_visited = false;
   /**
    * @attribute syn
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:2
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:3
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:2")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:3")
   public int localIndex() {
     if (localIndex_visited) {
       throw new RuntimeException("Circular definition of attribute ASTNode.localIndex().");
@@ -472,10 +472,10 @@ protected boolean numLocals_visited = false;
   /**
    * @attribute syn
    * @aspect VarParamAddressing
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:16
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:17
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:16")
+  @ASTNodeAnnotation.Source(aspect="VarParamAddressing", declaredAt="/home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:17")
   public int numLocals() {
     if (numLocals_visited) {
       throw new RuntimeException("Circular definition of attribute Func.numLocals().");
@@ -589,12 +589,12 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:12
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:13
    * @apilevel internal
    */
   public boolean Define_isFunctionParam(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getFuncParamsListNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:14
+      // @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:15
       int childIndex = _callerNode.getIndexOfChild(_childNode);
       return true;
     }
@@ -606,12 +606,12 @@ protected java.util.Set lookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:18
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:20
    * @apilevel internal
    */
   public int Define_paramIndex(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getFuncParamsListNoTransform()) {
-      // @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:20
+      // @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/VarParamAddressing.jrag:22
       int index = _callerNode.getIndexOfChild(_childNode);
       return index+1;
     }

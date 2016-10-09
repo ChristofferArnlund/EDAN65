@@ -1,7 +1,9 @@
 aspect UniqueNamesForStatements {
+	//While and If statements inherit
 	inh String While.uniqueNamePrefix();
 	inh String If.uniqueNamePrefix();
 
+	//append type to uniqueName for clarity
 	syn String While.uniqueName() = uniqueNamePrefix() + "while_";
 	syn String If.uniqueName() = uniqueNamePrefix() + "if_";
 }	

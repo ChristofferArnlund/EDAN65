@@ -19,7 +19,7 @@ import java.util.HashSet;
 public class FuncCall extends Expr implements Cloneable {
   /**
    * @aspect CodeGen
-   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:168
+   * @declaredat /home/marcus/git/EDAN65/Lab6/A6/src/jastadd/CodeGen.jrag:170
    */
   public void genCode(PrintStream out) {
 		//FuncCall : Expr ::= IdUse Expr*;
