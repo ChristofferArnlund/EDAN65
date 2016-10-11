@@ -14,17 +14,34 @@ main:
 	pushq %rbp
 	movq %rsp, %rbp
 	subq $8,%rsp
-	movq $5, %rax
+	movq $1, %rax
 	pushq %rax
-	movq $5, %rax
+	movq $11, %rax
 	movq %rax, %rbx
 	popq %rax
-	imulq %rbx, %rax
+	subq %rbx, %rax
 	movq %rax, -8(%rbp)
+main_1_while_start:
+	movq -8(%rbp), %rax
+	pushq %rax
+	movq $10, %rax
+	movq %rax, %rbx
+	popq %rax
+	cmp %rbx, %rax
+JG main_1_while_end
 	movq -8(%rbp), %rax
 	pushq %rax
 	call print
 	addq $8, %rsp
+	movq -8(%rbp), %rax
+	pushq %rax
+	movq $1, %rax
+	movq %rax, %rbx
+	popq %rax
+	addq %rbx, %rax
+	movq %rax, -8(%rbp)
+	jmp main_1_while_start
+main_1_while_end:
 	movq $0, %rax
 	jmp main_return
 main_return:

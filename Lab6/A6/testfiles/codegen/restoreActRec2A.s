@@ -104,21 +104,35 @@ read_atoi_done:
 print:
 	pushq %rbp
 	movq %rsp, %rbp
-	movq 16(%rbp), %rax
-	movq $(buf+1023), %rsi
-	movb $0x0a, (%rsi)
-	movq $1, %rcx
-print_itoa_loop:
+	### convert integer to string
+	movq 16(%rbp), %rax # parameter
+	movq $(buf+1023), %rsi # write ptr (start from end of buf)
+	movb $0x0a, (%rsi) # insert newline
+	movq $1, %rcx # string length
+	movq $0xF000000000000000, %r9		#mask
+	movq %r9, %r8  				#mask for signbit
+	and  %rax, %r8				#maskout signbit
+	cmpq %r9, %r8				#check if signed
+	jne itoa_loop				#if not signed skip
+	not %rax				#invert
+	addq $1, %rax				#add one to rax
+itoa_loop: # do.. while (at least one iteration)
 	movq $10, %rbx
 	movq $0, %rdx
-	idivq %rbx
-	addb $0x30, %dl
-	decq %rsi
+	idivq %rbx # divide rdx:rax by 10
+	addb $0x30, %dl # remainder + ’0’
+	decq %rsi # move string pointer
 	movb %dl, (%rsi)
-	incq %rcx
+	incq %rcx # increment string length
 	cmpq $0, %rax
-	jg print_itoa_loop
-print_itoa_done:
+	jg itoa_loop # produce more digits
+itoa_done:
+	cmpq %r9, %r8				#check if signed
+	jne skip_sign				#if not signed skip
+	decq %rsi # move string pointer		#move string pointer
+	movb $0x2D, (%rsi) 			#insert - sign
+	incq %rcx # increment string length
+skip_sign:				#skip to if not signed
 	movq $1, %rdi
 	movq %rcx, %rdx
 	movq $1, %rax
