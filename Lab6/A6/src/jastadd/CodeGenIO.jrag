@@ -4,6 +4,11 @@ aspect CodeGenIO {
 		out.println("read:");
 		out.println("	pushq %rbp");
 		out.println("	movq %rsp, %rbp");
+		out.println("	movq $1, %rdi		#stdout");
+		out.println("	movq $ask_message, %rsi #msg");
+		out.println("	movq $20, %rdx #msglen");
+		out.println("	movq $1, %rax		#syswrite");
+		out.println("	syscall");		
 		out.println("	movq $0, %rdi");
 		out.println("	movq $buf, %rsi");
 		out.println("	movq $1024, %rdx");
@@ -29,7 +34,8 @@ aspect CodeGenIO {
 		out.println("	popq %rbp");
 		out.println("	ret");
 		out.println("");
-
+		
+		//print function
 		out.println("print:");
 		out.println("	pushq %rbp");
 		out.println("	movq %rsp, %rbp");
@@ -38,7 +44,7 @@ aspect CodeGenIO {
 		out.println("	movq $(buf+1023), %rsi # write ptr (start from end of buf)");
 		out.println("	movb $0x0a, (%rsi) # insert newline");
 		out.println("	movq $1, %rcx # string length");
-		out.println("	movq $0xF000000000000000, %r9		#mask");
+		out.println("	movq $0x8000000000000000, %r9		#mask");
 		out.println("	movq %r9, %r8  				#mask for signbit");
 		out.println("	and  %rax, %r8				#maskout signbit");
 		out.println("	cmpq %r9, %r8				#check if signed");

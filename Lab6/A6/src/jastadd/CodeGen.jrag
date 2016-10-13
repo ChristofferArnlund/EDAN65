@@ -93,6 +93,17 @@ aspect CodeGen {
 		out.println(endLbl + ":");
 	}
 
+	public void FuncCall.genCode(PrintStream out) {
+		//FuncCall : Expr ::= IdUse Expr*;
+		for(int i = getNumExpr() - 1; i >= 0; i--) {
+			getExpr(i).genCode(out); //eval result to %rax
+			out.println("	pushq %rax"); //push result to stack
+		}
+		out.println("	call " + getIdUse().decl().getID());
+		out.println("	addq $"+(getNumExpr()*8) + ", %rsp"); //dealloc params
+		//resultat i %rax
+	}
+
 	public abstract void Expr.genCode(PrintStream out);
 
 	public void IdUseExpr.genCode(PrintStream out) {
@@ -166,18 +177,4 @@ aspect CodeGen {
 	public void Ge.genConditionalJump(PrintStream out, String jumpLbl) {
 		out.println("JLE " + jumpLbl);
 	}
-
-	public void FuncCall.genCode(PrintStream out) {
-		//FuncCall : Expr ::= IdUse Expr*;
-		for(int i = getNumExpr() - 1; i >= 0; i--) {
-			getExpr(i).genCode(out); //eval result to %rax
-			out.println("	pushq %rax"); //push result to stack
-		}
-		out.println("	call " + getIdUse().decl().getID());
-		out.println("	addq $"+(getNumExpr()*8) + ", %rsp"); //dealloc params
-		//resultat i %rax
-	}
-
-	
-
 }

@@ -9,4 +9,5 @@ int main() {
 		print(i); // Prints 1
 	}
 	print(i); // Prints 0
+	return 0;
 }

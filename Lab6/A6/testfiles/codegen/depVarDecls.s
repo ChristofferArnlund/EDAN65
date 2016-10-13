@@ -62,6 +62,11 @@ main_return:
 read:
 	pushq %rbp
 	movq %rsp, %rbp
+	movq $1, %rdi		#stdout
+	movq $ask_message, %rsi #msg
+	movq $20, %rdx #msglen
+	movq $1, %rax		#syswrite
+	syscall
 	movq $0, %rdi
 	movq $buf, %rsi
 	movq $1024, %rdx
@@ -95,7 +100,7 @@ print:
 	movq $(buf+1023), %rsi # write ptr (start from end of buf)
 	movb $0x0a, (%rsi) # insert newline
 	movq $1, %rcx # string length
-	movq $0xF000000000000000, %r9		#mask
+	movq $0x8000000000000000, %r9		#mask
 	movq %r9, %r8  				#mask for signbit
 	and  %rax, %r8				#maskout signbit
 	cmpq %r9, %r8				#check if signed
